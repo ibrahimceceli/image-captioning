@@ -218,3 +218,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# veri ve modeller
+data/
+features/
+cache/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+
+# gizli anahtarlar
+.env
+kaggle.json
+
+# yerel ortam
+.venv/
+venv/

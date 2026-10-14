@@ -1,0 +1,11 @@
+﻿torch
+torchvision
+timm
+transformers
+pillow
+numpy
+pyyaml
+tqdm
+matplotlib
+gradio
+pycocoevalcap
