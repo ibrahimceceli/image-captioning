@@ -7,3 +7,7 @@ imagenet_mean: [0.485, 0.456, 0.406]
 imagenet_std: [0.229, 0.224, 0.225]
 pad_side: right
 special_tokens: ["<pad>", "<start>", "<end>", "<unk>"]
+images_dir: data/flickr8k/Images
+captions_path: data/flickr8k/captions.txt
+split_path: src/data/artifacts/flickr8k_split.json
+vocab_path: src/data/artifacts/vocab.json

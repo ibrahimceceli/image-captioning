@@ -1,0 +1,26 @@
+{
+  "n_images": 8091,
+  "captions_per_image": 5,
+  "split_counts": {
+    "train": 6000,
+    "val": 1000,
+    "test": 1000,
+    "unused": 91
+  },
+  "seed": 42,
+  "train_captions": 30000,
+  "vocab_size": 2572,
+  "special_tokens": 4,
+  "kept_words": 2568,
+  "dropped_words": 5171,
+  "min_word_freq": 5,
+  "max_length": 34,
+  "max_content_tokens": 32,
+  "length_min": 1,
+  "length_median": 10,
+  "length_mean": 10.77,
+  "length_p95": 17,
+  "length_max": 36,
+  "truncated_captions": 4,
+  "empty_captions": 0
+}
