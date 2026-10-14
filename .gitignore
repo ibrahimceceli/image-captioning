@@ -220,7 +220,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 # veri ve modeller
-data/
+/data/
 features/
 cache/
 checkpoints/

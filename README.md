@@ -46,3 +46,17 @@ Başkasının dosyasında değişiklik gerekiyorsa dosyanın sahibi Pull Request
 
 - Veri, önbellek, kontrol noktası ve `kaggle.json` repoya konmaz.
 
+## Veri hattı
+
+Üye A'nın Hafta 1 çıktısı. Model 1, 2 ve 3 bu dosyaları kullanır. Bölme yeniden üretilmez.
+
+- Bölme: `src/data/artifacts/flickr8k_split.json`. Train 6000, val 1000, test 1000. 91 görüntü `unused` içindedir ve eğitime girmez.
+
+- Sözlük: `src/data/artifacts/vocab.json`. Yalnız train altyazılarından kurulur. Sıklığı 5'in altındaki kelime `<unk>` olur.
+
+- Yollar `configs/base.yaml` içindedir. Yerel veri `data/flickr8k/Images` ve `data/flickr8k/captions.txt` olarak durur; repoda yoktur.
+
+- `token_ids` uzunluğu 34'tür: `<start>`, kelimeler, `<end>`, sağda `<pad>`. Eğitim `build_dataloader(split)` ile okur. Önbellek `image_id` (dosya adı) ile eşlenir.
+
+- Test kümesi metrik için açılmaz.
+
