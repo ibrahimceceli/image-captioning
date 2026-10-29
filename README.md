@@ -103,3 +103,20 @@ python -m src.train --config configs/model1.yaml
 - Doğrulama CIDEr'i eğitim sırasında toplu greedy ile hesaplanır (`src/decode.py` ile aynı kurallar). Final tablo `src/decode.py` ve `src/evaluate.py` ile üretilir.
 
 - Yeni model: `src/train.py` içindeki `MODELS` sözlüğüne eklenir. Arayüz: `forward(features, caption_inputs) -> (logits, attention veya None)`.
+
+## Cümle üretimi ve doğrulama satırları
+
+Eğitilmiş checkpoint'ten cümleler `src/decode.py` içindeki `decode()` ile üretilir.
+
+```bash
+python -m src.predict --checkpoint checkpoints/model1_lstm/best.pt --method greedy
+python -m src.predict --checkpoint checkpoints/model1_lstm/best.pt --method beam --beam-size 3
+```
+
+- Çıktılar `results/<ad>/` altındadır: `val_captions_<yöntem>.json` (`{image_id: cümle}`) ve `val_metrics.json` (yöntem başına CIDEr, farklı cümle sayısı, görüntü başına çıkarım süresi).
+
+- Ana tablo her model için iki satırdır: `greedy` ve `beam3`. Nucleus (`--method nucleus --top-p 0.9`) çeşitlilik deneyi olarak ayrı raporlanır.
+
+- Test kümesi yalnız final tablo için `--split test --allow-test` ile bir kez açılır.
+
+- BLEU, METEOR ve ROUGE-L `src/evaluate.py` ile bu cümle dosyalarından hesaplanır.
