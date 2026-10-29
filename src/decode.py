@@ -1,10 +1,71 @@
 """Greedy, beam and nucleus caption generation from cached image features."""
 
 from collections.abc import Mapping
+from functools import lru_cache
 import math
+from pathlib import Path
 
 import torch
 from torch import Tensor, nn
+
+
+@lru_cache(maxsize=8)
+def _load_vocabulary(path: Path):
+    from src.data.vocab import Vocabulary
+
+    try:
+        return Vocabulary.load(path)
+    except FileNotFoundError as error:
+        raise FileNotFoundError(f"Decode vocabulary file not found: {path}") from error
+
+
+def _default_vocabulary():
+    from src.data.config import load_config, repo_root
+
+    root = repo_root()
+    config_path = root / "configs" / "base.yaml"
+    try:
+        config = load_config(config_path)
+    except FileNotFoundError as error:
+        raise FileNotFoundError(f"Decode config file not found: {config_path}") from error
+    return _load_vocabulary((root / config["vocab_path"]).resolve())
+
+
+def decode(
+    model: nn.Module,
+    features: Tensor,
+    method: str = "greedy",
+    beam_size: int = 3,
+    *,
+    vocab=None,
+    top_p: float | None = None,
+    seed: int | None = None,
+) -> str:
+    """Decode one image using a Vocabulary object or its ``itos`` list.
+
+    Without vocab, load the configured vocab_path from configs/base.yaml,
+    relative to the repository root. Vocabulary files are cached by resolved
+    path for repeated calls. Explicit vocab bypasses config and file loading.
+    Special IDs are
+    resolved from the supplied words, never from assumed numeric positions.
+    For validation batches, pass ``features[i:i + 1]`` for each image.
+    """
+    if vocab is None:
+        vocab = _default_vocabulary()
+    words = vocab if isinstance(vocab, list) else getattr(vocab, "itos", None)
+    if not isinstance(words, list) or not words or any(not isinstance(word, str) for word in words):
+        raise ValueError("vocab must be a Vocabulary with an itos list, or a nonempty list of words")
+    if len(set(words)) != len(words):
+        raise ValueError("Vocabulary words must be unique")
+    ids = {word: index for index, word in enumerate(words)}
+    missing = [token for token in ("<start>", "<end>", "<pad>") if token not in ids]
+    if missing:
+        raise ValueError(f"Vocabulary is missing required special tokens: {', '.join(missing)}")
+    return generate_caption(
+        model, features, dict(enumerate(words)),
+        start_id=ids["<start>"], end_id=ids["<end>"], pad_id=ids["<pad>"],
+        method=method, beam_size=beam_size, top_p=top_p, seed=seed,
+    )
 
 
 def generate_caption(
@@ -20,7 +81,7 @@ def generate_caption(
     beam_size: int = 3,
     top_p: float | None = None,
     seed: int | None = None,
-) -> str | tuple[str, Tensor]:
+) -> str | tuple[str, Tensor | None]:
     """Generate one caption with at most 34 tokens including the start token.
 
     Features must be [1, 2048, 7, 7] or [1, 49, 2048], on the model's
@@ -35,6 +96,7 @@ def generate_caption(
     With return_attention=True, return (caption, weights), where weights
     is a detached CPU tensor [number_of_output_words, 49]. An empty caption
     has weights shaped [0, 49]. Each row belongs to the corresponding word.
+    If the model supplies no attention, weights is None instead.
     The model's existing forward interface is used by replaying the prefix.
     """
     if method not in ("greedy", "beam", "nucleus"):
@@ -60,9 +122,11 @@ def generate_caption(
 
     prefix = torch.tensor([[start_id]], dtype=torch.long, device=features.device)
     words, attention_rows = [], []
+    attention_available = True
     special_words = {"<start>", "<end>", "<pad>", "<unk>"}
 
     def predict(tokens):
+        nonlocal attention_available
         logits, attention = model(features, tokens)
         if any(token >= logits.shape[-1] for token in token_ids):
             raise ValueError("Special token IDs exceed the model vocabulary size")
@@ -73,7 +137,10 @@ def generate_caption(
             raise ValueError("Model returned invalid logits (NaN or positive infinity)")
         if not torch.isfinite(step_logits).any():
             raise ValueError("No selectable token remains after masking start and padding")
-        return step_logits, attention[0, -1].detach().cpu()
+        if attention is None:
+            attention_available = False
+        weights = attention[0, -1].detach().cpu() if return_attention and attention is not None else None
+        return step_logits, weights
 
     def append_word(next_id, weights, current_words, current_rows):
         if next_id == end_id:
@@ -155,6 +222,8 @@ def generate_caption(
 
     caption = " ".join(words)
     if return_attention:
+        if not attention_available:
+            return caption, None
         weights = torch.stack(attention_rows) if attention_rows else features.new_empty((0, 49)).cpu()
         return caption, weights
     return caption
