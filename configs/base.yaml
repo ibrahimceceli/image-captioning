@@ -11,3 +11,5 @@ images_dir: data/flickr8k/Images
 captions_path: data/flickr8k/captions.txt
 split_path: src/data/artifacts/flickr8k_split.json
 vocab_path: src/data/artifacts/vocab.json
+features_path: data/features/resnet50_layer4.npy
+features_index_path: data/features/resnet50_layer4_index.json

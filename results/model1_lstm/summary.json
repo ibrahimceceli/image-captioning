@@ -1,0 +1,14 @@
+{
+  "name": "model1_lstm",
+  "model": "lstm",
+  "parameters": 5653004,
+  "train_examples": 30000,
+  "epochs_run": 12,
+  "best_epoch": 10,
+  "select_by": "val_cider",
+  "early_stopping_monitor": "val_loss",
+  "best_val_loss": 2.8761,
+  "best_val_cider_greedy": 0.2302,
+  "train_minutes": 5.7,
+  "checkpoint": "checkpoints/model1_lstm/best.pt"
+}
