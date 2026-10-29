@@ -60,3 +60,25 @@ Başkasının dosyasında değişiklik gerekiyorsa dosyanın sahibi Pull Request
 
 - Test kümesi metrik için açılmaz.
 
+### Öznitelik önbelleği
+
+Model 1, 2 ve 3 görüntü yerine dondurulmuş ResNet50 (`IMAGENET1K_V1`) layer4 çıktısını okur. Dönüşüm ve encoder `src/data/features.py` içindedir; demo aynı modülü `extract_image` ile kullanır.
+
+```bash
+python -m src.data.cache_features
+```
+
+- Çıktılar `data/features/` altındadır: `resnet50_layer4.npy` (fp16, `[8091, 2048, 7, 7]`, yaklaşık 1,6 GB), `resnet50_layer4_index.json` (`image_id -> satır`) ve `resnet50_layer4.meta.json` (ağırlık, dtype, şekil, sürümler). Yollar `configs/base.yaml` içindeki `features_path` ve `features_index_path` alanlarıdır.
+
+- Seçenekler: `--images-dir`, `--out-dir`, `--batch-size`, `--limit` (deneme için ilk N görüntü), `--device`, `--num-workers`, `--no-amp`. GPU'da autocast kullanılır, kayıt her zaman fp16'dır.
+
+- Kaggle: girdi salt okunurdur, çıktıyı çalışma klasörüne yazın.
+
+```bash
+python -m src.data.cache_features --images-dir /kaggle/input/flickr8k/Images --out-dir /kaggle/working/features
+```
+
+- Eğitim: `build_dataloader("train", use_features=True)` batch'e `features` (float32, `[B, 2048, 7, 7]`) ekler. Önbellek başka klasördeyse `features_dir=Path("/kaggle/working/features")` verin.
+
+- Doğrulama: `build_eval_dataloader("val")` görüntü başına bir örnek (`image_id`, `features`) verir. `load_references("val")` her görüntünün 5 temiz altyazısını döndürür. İkisi de test kümesini yalnız `allow_test=True` ile açar.
+
