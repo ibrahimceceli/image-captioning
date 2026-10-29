@@ -82,3 +82,24 @@ python -m src.data.cache_features --images-dir /kaggle/input/flickr8k/Images --o
 
 - Doğrulama: `build_eval_dataloader("val")` görüntü başına bir örnek (`image_id`, `features`) verir. `load_references("val")` her görüntünün 5 temiz altyazısını döndürür. İkisi de test kümesini yalnız `allow_test=True` ile açar.
 
+## Eğitim
+
+Model 1, 2 ve 3 aynı betikle eğitilir. Her modelin ayarları `configs/` altındaki kendi dosyasındadır.
+
+```bash
+python -m src.train --config configs/model1.yaml
+```
+
+- Önbellekten okur, teacher forcing, pad yok sayılan çapraz entropi, gradyan kırpma 5, AMP (GPU'da), seed 42.
+
+- Her epoch doğrulama kaybı hesaplanır. Greedy CIDEr her `cider_every` epoch'ta, kayıp iyileştiğinde ve son epoch'ta hesaplanır. Erken durdurma `early_stopping.monitor` (varsayılan `val_loss`, sabır 5), `best.pt` seçimi `evaluation.select_by` (varsayılan `val_cider`) ile yapılır.
+
+- Çıktılar: `checkpoints/<ad>/best.pt` ve `last.pt` (repoya girmez), `results/<ad>/history.json`, `loss_curve.png`, `summary.json`, `val_captions_best.json`.
+
+- Seçenekler: `--name`, `--max-epochs`, `--limit-batches` (deneme), `--features-dir` (Kaggle), `--num-workers`, `--device`, `--resume` (`last.pt`'den devam).
+
+- Veri miktarı deneyi: config'te `data.train_fraction: 0.25` gibi. Alt küme görüntü bazlıdır ve seed ile sabittir.
+
+- Doğrulama CIDEr'i eğitim sırasında toplu greedy ile hesaplanır (`src/decode.py` ile aynı kurallar). Final tablo `src/decode.py` ve `src/evaluate.py` ile üretilir.
+
+- Yeni model: `src/train.py` içindeki `MODELS` sözlüğüne eklenir. Arayüz: `forward(features, caption_inputs) -> (logits, attention veya None)`.

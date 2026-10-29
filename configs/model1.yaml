@@ -29,6 +29,16 @@ loss:
   name: cross_entropy
   ignore_pad: true
 
+data:
+  train_fraction: 1.0      # veri miktarı deneyi: 0.25 / 0.5 / 1.0 (görüntü bazlı)
+
+# Genel özet Bölüm 5: durdurma doğrulama kaybıyla, checkpoint seçimi greedy CIDEr ile.
+# Bölüm 15 durdurmayı CIDEr ile söylüyor; ekip öyle karar verirse monitor: val_cider.
 early_stopping:
   monitor: val_loss
   patience: 5
+
+evaluation:
+  select_by: val_cider     # best.pt bu değere göre seçilir
+  cider_every: 2           # ayrıca kayıp iyileştiğinde ve son epoch'ta
+  batch_size: 64
