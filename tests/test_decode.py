@@ -1,10 +1,13 @@
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
 import torch
 from torch import nn
 
 from src.data.vocab import Vocabulary
-from src.decode import decode, generate_caption
+from src.decode import _load_vocabulary, decode, generate_caption
 from src.models.attention_lstm import AttentionLSTM
 
 
@@ -95,9 +98,57 @@ class DecodeTests(unittest.TestCase):
                     self.assertEqual(before, [module.training for module in model.modules()])
 
     def test_invalid_vocabulary(self):
-        for vocab in (None, [], ["bird"], ["<pad>", "<start>", "<end>", "bird", "bird"]):
+        for vocab in ([], ["bird"], ["<pad>", "<start>", "<end>", "bird", "bird"]):
             with self.subTest(vocab=vocab), self.assertRaises(ValueError):
                 decode(FakeModel(), self.features, "greedy", 1, vocab=vocab)
+
+    def test_default_vocabulary_cache_and_explicit_override(self):
+        from src.data.config import repo_root
+
+        _load_vocabulary.cache_clear()
+        self.addCleanup(_load_vocabulary.cache_clear)
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "configs").mkdir()
+            # Use the real config and loader, changing only its configured path.
+            config = (repo_root() / "configs" / "base.yaml").read_text(encoding="utf-8")
+            config = config.replace("src/data/artifacts/vocab.json", "words.json")
+            (root / "configs" / "base.yaml").write_text(config, encoding="utf-8")
+            self.vocab.save(root / "words.json")
+            with patch("src.data.config.repo_root", return_value=root), patch.object(
+                Vocabulary, "load", wraps=Vocabulary.load
+            ) as load:
+                for method in ("greedy", "beam", "nucleus"):
+                    kwargs = dict(top_p=0.9, seed=42) if method == "nucleus" else {}
+                    self.assertEqual(decode(FakeModel(False), self.features, method, 3, **kwargs), "a bird")
+                load.assert_called_once_with((root / "words.json").resolve())
+                override = Vocabulary(self.vocab.itos[:4] + ["another", "caption"], 5, 34)
+                # Explicit vocab must work even when default config is absent.
+                (root / "configs" / "base.yaml").unlink()
+                for vocab in (override, override.itos):
+                    self.assertEqual(decode(FakeModel(False), self.features, vocab=vocab), "another caption")
+                self.assertEqual(load.call_count, 1)
+
+    def test_real_default_configuration(self):
+        from src.data.config import load_config, repo_root
+
+        vocab = Vocabulary.load(repo_root() / load_config()["vocab_path"])
+        expected = " ".join(vocab.itos[4:6])
+        self.assertEqual(decode(FakeModel(False), self.features, method="greedy", beam_size=3), expected)
+
+    def test_missing_default_paths(self):
+        _load_vocabulary.cache_clear()
+        self.addCleanup(_load_vocabulary.cache_clear)
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            with patch("src.data.config.repo_root", return_value=root):
+                with self.assertRaises(FileNotFoundError) as context:
+                    decode(FakeModel(), self.features)
+                self.assertIn(str(root / "configs" / "base.yaml"), str(context.exception))
+                with patch("src.data.config.load_config", return_value={"vocab_path": "missing.json"}):
+                    with self.assertRaises(FileNotFoundError) as context:
+                        decode(FakeModel(), self.features)
+                self.assertIn(str(root / "missing.json"), str(context.exception))
 
     def test_special_ids_are_not_assumed(self):
         words = ["bird", "<end>", "<pad>", "<start>", "a", "<unk>"]

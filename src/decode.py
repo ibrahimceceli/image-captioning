@@ -1,10 +1,34 @@
 """Greedy, beam and nucleus caption generation from cached image features."""
 
 from collections.abc import Mapping
+from functools import lru_cache
 import math
+from pathlib import Path
 
 import torch
 from torch import Tensor, nn
+
+
+@lru_cache(maxsize=8)
+def _load_vocabulary(path: Path):
+    from src.data.vocab import Vocabulary
+
+    try:
+        return Vocabulary.load(path)
+    except FileNotFoundError as error:
+        raise FileNotFoundError(f"Decode vocabulary file not found: {path}") from error
+
+
+def _default_vocabulary():
+    from src.data.config import load_config, repo_root
+
+    root = repo_root()
+    config_path = root / "configs" / "base.yaml"
+    try:
+        config = load_config(config_path)
+    except FileNotFoundError as error:
+        raise FileNotFoundError(f"Decode config file not found: {config_path}") from error
+    return _load_vocabulary((root / config["vocab_path"]).resolve())
 
 
 def decode(
@@ -19,12 +43,15 @@ def decode(
 ) -> str:
     """Decode one image using a Vocabulary object or its ``itos`` list.
 
-    Pass vocabulary explicitly: models do not store it. Special IDs are
+    Without vocab, load the configured vocab_path from configs/base.yaml,
+    relative to the repository root. Vocabulary files are cached by resolved
+    path for repeated calls. Explicit vocab bypasses config and file loading.
+    Special IDs are
     resolved from the supplied words, never from assumed numeric positions.
     For validation batches, pass ``features[i:i + 1]`` for each image.
     """
     if vocab is None:
-        raise ValueError("decode requires vocab=Vocabulary or vocab=itos_list; models do not store vocabulary")
+        vocab = _default_vocabulary()
     words = vocab if isinstance(vocab, list) else getattr(vocab, "itos", None)
     if not isinstance(words, list) or not words or any(not isinstance(word, str) for word in words):
         raise ValueError("vocab must be a Vocabulary with an itos list, or a nonempty list of words")
