@@ -1,6 +1,63 @@
-# # Görüntü Altyazılama
+# Görüntü Altyazılama
 
 Flickr8k üzerinde CNN-LSTM, dikkat mekanizmalı LSTM, Transformer decoder ve BLIP karşılaştırması.
+
+## Kurulum
+
+Python 3.12 ile denenmiştir. Model 1, 2 ve 3 için CUDA destekli bir GPU önerilir; önbellek ve eğitim CPU'da da çalışır ama yavaştır.
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate          # Linux/macOS: source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+- GPU için PyTorch'u CUDA sürümüyle kurun, örneğin CUDA 12.4: `pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124`. Ayrıntı: [pytorch.org/get-started](https://pytorch.org/get-started/locally/). Önbellek bu projede `torch 2.6.0+cu124` ve `torchvision 0.21.0+cu124` ile üretildi.
+
+- METEOR metriği Java ister (`java -version` çalışmalı). Java yoksa BLEU, ROUGE-L ve CIDEr yine hesaplanır.
+
+- `requirements.txt` içindeki sürümler henüz sabitlenmedi. Son sürümler proje sonunda yazılacak.
+
+- Kurulumu doğrulamak için testler: `pip install pytest` ve `python -m pytest tests`.
+
+## Veri
+
+Flickr8k'nın Kaggle sürümü kullanılır: [adityajn105/flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k). İçinde 8091 görüntü (`Images/`) ve görüntü başına 5 altyazı (`captions.txt`, başlıkları `image,caption`) vardır.
+
+Kaggle sayfasından zip olarak indirip açın ya da Kaggle API kullanın. API anahtarı `kaggle.json` kullanıcı klasöründe durur (`~/.kaggle/kaggle.json`, Windows'ta `C:\Users\<ad>\.kaggle\kaggle.json`) ve repoya konmaz.
+
+```bash
+pip install kaggle
+kaggle datasets download -d adityajn105/flickr8k -p data/flickr8k --unzip
+```
+
+Beklenen yapı:
+
+```
+data/flickr8k/
+├── Images/          # 8091 .jpg
+└── captions.txt     # image,caption
+```
+
+`data/` klasörü `.gitignore` içindedir. Bölme dosyası ve sözlük repoda hazırdır, yeniden üretilmez.
+
+## Hızlı başlangıç
+
+Kurulum ve veriden sonra Model 1'i baştan sona çalıştırma sırası:
+
+```bash
+# 1. ResNet50 öznitelik önbelleği (GPU'da yaklaşık 1 dakika, ~1,6 GB)
+python -m src.data.cache_features
+
+# 2. Eğitim (RTX 3050'de yaklaşık 6 dakika, erken durdurmayla)
+python -m src.train --config configs/model1.yaml
+
+# 3. Doğrulama cümleleri ve CIDEr: greedy ve beam-3
+python -m src.predict --checkpoint checkpoints/model1_lstm/best.pt --method greedy
+python -m src.predict --checkpoint checkpoints/model1_lstm/best.pt --method beam --beam-size 3
+```
+
+Model 2 için `configs/model2.yaml` ve `checkpoints/model2_attention_lstm/best.pt` kullanılır. Sonuçlar `results/<ad>/` altına yazılır. Her adımın ayrıntısı aşağıdaki bölümlerdedir.
 
 ## Dalları
 
@@ -30,7 +87,7 @@ Başkasının dosyasında değişiklik gerekiyorsa dosyanın sahibi Pull Request
 
 - BLIP kendi görüntü işlemcisini ve tokenizer'ını kullanır.
 
-- Her model `generate(image) -> caption` verir. Eğitim önbellekten okur. Demo ham görüntü alır.
+- Her model dışarıya `generate(image) -> caption` verecek (demo aşamasında eklenecek, henüz yok). Eğitim önbellekten okur. Demo ham görüntü alır.
 
 - Sözlük token'ları: `<pad>`, `<start>`, `<end>`, `<unk>`.
 
@@ -59,6 +116,18 @@ Başkasının dosyasında değişiklik gerekiyorsa dosyanın sahibi Pull Request
 - `token_ids` uzunluğu 34'tür: `<start>`, kelimeler, `<end>`, sağda `<pad>`. Eğitim `build_dataloader(split)` ile okur. Önbellek `image_id` (dosya adı) ile eşlenir.
 
 - Test kümesi metrik için açılmaz.
+
+### Veri hazırlama betiği
+
+```bash
+python -m src.data.prepare
+```
+
+Bölme dosyası, sözlük ve `results/eda/` altındaki grafikler bu betikle üretildi. Normal kullanımda **çalıştırılması gerekmez**.
+
+- Betik `flickr8k_split.json` ve `vocab.json` dosyalarının **üzerine yazar**. Seed 42 sabit olduğu için aynı veriyle aynı sonucu verir. Çalıştırdıktan sonra `git status` bu iki dosyada değişiklik gösteriyorsa veri farklıdır: değişikliği commit etmeyin, `git checkout -- src/data/artifacts` ile geri alın.
+
+- Ne yapar: görüntü ve altyazıları eşleştirir, metin temizliğini sınar, bölmeyi ve sözlüğü kurar, EDA grafiklerini ve `results/eda/summary.json` dosyasını yazar, train ve val için örnek batch'i denetler (şekil, `<start>`, sağa pad, kümeler arası sızıntı).
 
 ### Öznitelik önbelleği
 
