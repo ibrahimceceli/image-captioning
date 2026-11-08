@@ -11,12 +11,13 @@
     "BLEU-3": 0.2566129235115428,
     "BLEU-4": 0.1698061253825711,
     "CIDEr": 0.44091638450231596,
-    "ROUGE-L": 0.4312388657409782
+    "ROUGE-L": 0.4312388657409782,
+    "METEOR": 0.18673587921458135
   },
   "metric_scale": "raw pycocoevalcap (not percentages)",
   "pycocoevalcap_version": "1.2",
   "normalization": "remove special tokens, lowercase, remove punctuation, collapse spaces",
-  "meteor_status": "not requested; no METEOR score",
+  "meteor_status": "computed",
   "predictions_path": "results/model2_attention_lstm/val_captions_greedy.json",
   "references_path": null,
   "captions_path": "data/flickr8k/captions.txt",

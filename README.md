@@ -189,3 +189,54 @@ python -m src.predict --checkpoint checkpoints/model1_lstm/best.pt --method beam
 - Test kümesi yalnız final tablo için `--split test --allow-test` ile bir kez açılır.
 
 - BLEU, METEOR ve ROUGE-L `src/evaluate.py` ile bu cümle dosyalarından hesaplanır.
+
+## Değerlendirme ve birleşik tablo
+
+Kayıtlı cümle dosyaları GPU ve checkpoint olmadan puanlanır (`src/evaluate.py`). Referanslar `data/flickr8k/captions.txt` dosyasından okunur.
+
+```bash
+python -m src.evaluate --predictions results/model1_lstm/val_captions_greedy.json --model-name model1_lstm --meteor --output results/model1_lstm/val_metrics_greedy.json
+python -m src.evaluate --predictions results/model1_lstm/val_captions_beam3.json --model-name model1_lstm --method beam --beam-size 3 --meteor --output results/model1_lstm/val_metrics_beam3.json
+```
+
+- Metrikler: BLEU-1..4, METEOR, ROUGE-L, CIDEr (ham pycocoevalcap ölçeği). `--meteor` Java ister; Java yoksa bu seçenek olmadan çalıştırın.
+- `--output` var olan bir dosyanın üzerine yazmaz. Yeniden hesaplamak için farklı bir yol verin.
+
+Tüm koşuların sonuçları tek tabloda toplanır:
+
+```bash
+python -m src.results_table
+```
+
+- Çıktı: `results/val_table.md` ve `results/val_table.csv`. Ana tablo (dört model × greedy / beam-3) ve ablation tabloları (veri miktarı, çözümleme yöntemi, attention var/yok, GloVe). Sayılar `results/` altındaki JSON'lardan okunur; sonucu olmayan model "henüz yok" görünür.
+- Deney özetleri: `results/model1_data_fraction.md` (veri miktarı), `results/model1_glove.md` (GloVe).
+
+## Deneyler
+
+Her deneyde `configs/model1.yaml` üzerinden tek ayar değişir; değişiklik deney config'indedir.
+
+| Deney | Config | Değişen ayar |
+|---|---|---|
+| Veri miktarı | `configs/model1_frac25.yaml`, `configs/model1_frac50.yaml` | `data.train_fraction` |
+| Embedding (kontrol) | `configs/model1_emb300.yaml` | `model.embedding_dim: 300` (rastgele) |
+| Embedding (GloVe) | `configs/model1_glove300.yaml` | `emb300` + GloVe başlatma (`embeddings` bölümü) |
+
+GloVe deneyi `data/glove/glove.6B.300d.txt` dosyasını ister (GloVe 6B, 400.000 satır, ~1 GB; repoda yoktur). Resmi kaynak: [nlp.stanford.edu/projects/glove](https://nlp.stanford.edu/projects/glove/). Bu projede resmi sunucuya erişilemediği için doğrulanmış bir Kaggle kopyası kullanıldı; ayrıntı `results/model1_glove.md` içindedir.
+
+## Demo
+
+```bash
+python -m app.app
+```
+
+Tarayıcıda `http://127.0.0.1:7860` açılır. Fotoğraf yüklenir; dört modelin altyazısı, çıkarım süresi ve parametre sayısı yan yana görünür, attention destekleyen modelde kelime başına harita çizilir. Checkpoint'i olmayan model kutusunda açık bir mesaj görünür. Checkpoint yolları `app/config.yaml` içindedir. Ayrıntı ve model bağlama adımları: `app/README.md`.
+
+- Sunucu varsayılan olarak yalnız bu bilgisayarda (`127.0.0.1`) açılır. `--share` herkese açık geçici bir bağlantı oluşturur; yalnız sunum sırasında kullanın.
+- Model 2 checkpoint'i repoda yoktur; `checkpoints/model2_attention_lstm_full_20261104_01/best.pt` yoluna konunca demoda çalışır.
+
+## Testler
+
+```bash
+pip install pytest
+python -m pytest tests
+```
