@@ -1,0 +1,20 @@
+{
+  "greedy": {
+    "checkpoint": "checkpoints/model2_attention_lstm_full_20261104_01/best.pt",
+    "checkpoint_epoch": 10,
+    "images": 1000,
+    "unique_captions": 877,
+    "CIDEr": 0.4409,
+    "ms_per_image": 63.2,
+    "device": "cuda"
+  },
+  "beam3": {
+    "checkpoint": "checkpoints/model2_attention_lstm_full_20261104_01/best.pt",
+    "checkpoint_epoch": 10,
+    "images": 1000,
+    "unique_captions": 813,
+    "CIDEr": 0.4697,
+    "ms_per_image": 182.65,
+    "device": "cuda"
+  }
+}

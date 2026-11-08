@@ -1,0 +1,59 @@
+{
+  "checkpoint": "checkpoints\\model2_attention_lstm_full_20261104_01\\best.pt",
+  "checkpoint_epoch": 10,
+  "split": "val",
+  "method": "beam",
+  "beam_size": 3,
+  "selection": "first three validation IDs, no quality filtering",
+  "checks": "finite nonnegative attention, unit row sums, word alignment, captions match saved beam3",
+  "examples": [
+    {
+      "image_id": "1015584366_dfcec3c85a.jpg",
+      "caption": "a black and white dog is running through the woods",
+      "references": [
+        "a black dog leaps over a log",
+        "a grey dog is leaping over a fallen tree",
+        "a large black dog leaps a fallen log",
+        "a mottled black and grey dog in a blue collar jumping over a fallen tree",
+        "the black dog jumped the tree stump"
+      ],
+      "attention_shape": [
+        10,
+        49
+      ],
+      "output": "1015584366_dfcec3c85a_beam3.png"
+    },
+    {
+      "image_id": "102455176_5f8ead62d5.jpg",
+      "caption": "a man in a red jacket is snowboarding",
+      "references": [
+        "a man uses ice picks and crampons to scale ice",
+        "an ice climber in a blue jacket and black pants is scaling a frozen ice wall",
+        "an ice climber scaling a frozen waterfall",
+        "a person in blue and red ice climbing with two picks",
+        "climber climbing an ice wall"
+      ],
+      "attention_shape": [
+        8,
+        49
+      ],
+      "output": "102455176_5f8ead62d5_beam3.png"
+    },
+    {
+      "image_id": "1028205764_7e8df9a2ea.jpg",
+      "caption": "a man is kayaking in a pool",
+      "references": [
+        "a man and a baby are in a yellow kayak on water",
+        "a man and a little boy in blue life jackets are rowing a yellow canoe",
+        "a man and child kayak through gentle waters",
+        "a man and young boy ride in a yellow kayak",
+        "man and child in yellow kayak"
+      ],
+      "attention_shape": [
+        7,
+        49
+      ],
+      "output": "1028205764_7e8df9a2ea_beam3.png"
+    }
+  ]
+}
