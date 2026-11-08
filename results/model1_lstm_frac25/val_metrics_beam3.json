@@ -1,0 +1,28 @@
+{
+  "model": "model1_lstm_frac25",
+  "split": "val",
+  "method": "beam",
+  "beam_size": 3,
+  "n_images": 1000,
+  "references_per_image": 5,
+  "metrics": {
+    "BLEU-1": 0.48896156991001277,
+    "BLEU-2": 0.2978813652785338,
+    "BLEU-3": 0.18170823101473477,
+    "BLEU-4": 0.11745511173239612,
+    "CIDEr": 0.21775593834871138,
+    "ROUGE-L": 0.3609856050286556,
+    "METEOR": 0.14905806999674012
+  },
+  "metric_scale": "raw pycocoevalcap (not percentages)",
+  "pycocoevalcap_version": "1.2",
+  "normalization": "remove special tokens, lowercase, remove punctuation, collapse spaces",
+  "meteor_status": "computed",
+  "predictions_path": "results/model1_lstm_frac25/val_captions_beam3.json",
+  "references_path": null,
+  "captions_path": "data/flickr8k/captions.txt",
+  "config_path": "configs/base.yaml",
+  "predictions_sha256": "d2214fd8a880daaa927375521de2c365d99b865e67766b730fb36d25263b4e31",
+  "reference_sha256": "e6cf5e8d8025d25b50a4945c38580d96a940b78644f31a90368dfcdca3c7e036",
+  "split_sha256": "e100030c246a35a124a874dde2c5e2153ada7f9208a75f307cc4ed1d63dbbfee"
+}

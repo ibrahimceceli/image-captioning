@@ -1,0 +1,45 @@
+# Veri miktarı deneyi (%50): model1.yaml ile aynı, yalnız name ve data.train_fraction=0.5 değişti.
+# Model 1: Show-and-Tell style CNN-LSTM baseline (src/models/lstm.py).
+# Shared data settings (vocab, split, max_length, seed) live in base.yaml.
+# Field names are kept generic so Model 2 and 3 configs can reuse them.
+name: model1_lstm_frac50
+seed: 42
+
+model:
+  type: lstm
+  embedding_dim: 256
+  hidden_dim: 512
+  num_layers: 1
+  dropout: 0.5
+
+features:
+  cache: resnet50_layer4   # [B, 2048, 7, 7] or [B, 49, 2048]
+
+optimizer:
+  name: adam
+  lr: 0.001
+
+training:
+  batch_size: 32
+  max_epochs: 30
+  grad_clip: 5.0
+  teacher_forcing: 1.0
+  amp: true
+
+loss:
+  name: cross_entropy
+  ignore_pad: true
+
+data:
+  train_fraction: 0.5      # veri miktarı deneyi: 0.25 / 0.5 / 1.0 (görüntü bazlı)
+
+# Genel özet Bölüm 5: durdurma doğrulama kaybıyla, checkpoint seçimi greedy CIDEr ile.
+# Bölüm 15 durdurmayı CIDEr ile söylüyor; ekip öyle karar verirse monitor: val_cider.
+early_stopping:
+  monitor: val_loss
+  patience: 5
+
+evaluation:
+  select_by: val_cider     # best.pt bu değere göre seçilir
+  cider_every: 2           # ayrıca kayıp iyileştiğinde ve son epoch'ta
+  batch_size: 64
