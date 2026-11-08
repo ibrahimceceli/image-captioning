@@ -1,0 +1,35 @@
+# Demo model kaydı: checkpoint yolları ve adaptör türleri YALNIZ burada durur.
+# Yollar depo köküne göredir. Sıra, arayüzdeki kutu sırasıdır.
+#
+# kind:
+#   checkpoint   -> CheckpointCaptioner: src.train.build_model + torch.load(weights_only=True)
+#   transformer  -> TransformerCaptioner: checkpoint adaptörü + çok kafalı attention'ı [n,49]'a indirger
+#   blip         -> BlipCaptioner: Üye C dolduracak (yer tutucu, şu an "henüz bağlanmadı")
+# attention: true -> modelin attention bölümündeki seçim listesinde görünür.
+
+device: auto          # auto (cuda varsa cuda) | cpu | cuda ; komut satırında --device ile ezilir
+
+models:
+  - key: model1
+    label: "Model 1 · CNN-LSTM"
+    kind: checkpoint
+    checkpoint: checkpoints/model1_lstm/best.pt
+    attention: false
+
+  - key: model2
+    label: "Model 2 · Attention LSTM"
+    kind: checkpoint
+    checkpoint: checkpoints/model2_attention_lstm_full_20261104_01/best.pt
+    attention: true
+
+  - key: model3
+    label: "Model 3 · Transformer"
+    kind: transformer
+    checkpoint: checkpoints/model3_transformer/best.pt   # Üye C: gerçek klasör adıyla değiştir
+    attention: true
+
+  - key: blip
+    label: "Model 4 · BLIP"
+    kind: blip
+    model_id: Salesforce/blip-image-captioning-base
+    attention: false
