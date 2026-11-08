@@ -1,0 +1,14 @@
+{
+  "name": "model1_lstm_glove300",
+  "model": "lstm",
+  "parameters": 5856284,
+  "train_examples": 30000,
+  "epochs_run": 13,
+  "best_epoch": 12,
+  "select_by": "val_cider",
+  "early_stopping_monitor": "val_loss",
+  "best_val_loss": 2.8314,
+  "best_val_cider_greedy": 0.2593,
+  "train_minutes": 6.8,
+  "checkpoint": "checkpoints/model1_lstm_glove300/best.pt"
+}

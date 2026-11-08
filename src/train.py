@@ -58,6 +58,53 @@ def build_model(config: dict, vocab: Vocabulary) -> nn.Module:
     return MODELS[model_type](vocab_size=len(vocab), padding_idx=vocab.pad_idx, **params)
 
 
+def apply_pretrained_embeddings(model: nn.Module, config: dict, vocab: Vocabulary,
+                                root: Path, results_dir: Path | None = None) -> dict | None:
+    """Config'te üst düzey `embeddings: {path, freeze}` varsa model.embedding'i GloVe ile başlatır.
+
+    Alan yoksa hiçbir şey yapmaz ve None döner (mevcut config'ler etkilenmez).
+    Ayrı bir torch.Generator kullanır; global RNG'ye dokunmaz, böylece modelin geri
+    kalanının başlatılması ve veri karıştırma rastgele başlatılmış koşuyla aynı kalır.
+    """
+    settings = config.get("embeddings")
+    if not settings:
+        return None
+    from src.data.glove import load_glove_matrix
+
+    embedding = getattr(model, "embedding", None)
+    if not isinstance(embedding, nn.Embedding):
+        raise ValueError("embeddings bölümü yalnız `embedding` (nn.Embedding) özniteliği olan modellerde kullanılabilir")
+    path = Path(settings["path"])
+    if not path.is_absolute():
+        path = root / path
+    dim = embedding.embedding_dim
+    expected_dim = settings.get("dim")
+    if expected_dim is not None and int(expected_dim) != dim:
+        raise ValueError(f"embeddings.dim={expected_dim}, model.embedding_dim={dim} ile uyuşmuyor")
+    matrix, stats = load_glove_matrix(path, vocab, dim, seed=int(settings.get("seed", config["seed"])))
+    if tuple(matrix.shape) != tuple(embedding.weight.shape):
+        raise ValueError(f"Embedding matrisi {tuple(matrix.shape)}, model {tuple(embedding.weight.shape)} bekliyor")
+    with torch.no_grad():
+        embedding.weight.copy_(matrix.to(embedding.weight.dtype))
+    freeze = bool(settings.get("freeze", False))
+    embedding.weight.requires_grad_(not freeze)
+    stats["freeze"] = freeze
+    try:
+        stats["glove_path"] = path.resolve().relative_to(root.resolve()).as_posix()
+    except ValueError:
+        pass
+    print(f"GloVe başlatma: {stats['covered']}/{stats['words']} kelime kapsandı "
+          f"(%{100 * stats['coverage']:.2f}), eksik {stats['missing']}, {stats['random_init']}, freeze {freeze}")
+    if stats["missing_examples"]:
+        print("Eksik kelime örnekleri: " + ", ".join(stats["missing_examples"][:15]))
+    if results_dir is not None:
+        results_dir.mkdir(parents=True, exist_ok=True)
+        (results_dir / "embedding_stats.json").write_text(
+            json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+    return stats
+
+
 def build_optimizer(config: dict, model: nn.Module) -> torch.optim.Optimizer:
     settings = config["optimizer"]
     name = settings["name"].lower()
@@ -281,7 +328,9 @@ def main() -> None:
     )
     references = load_references("val")
 
-    model = build_model(config, vocab).to(device)
+    model = build_model(config, vocab)
+    apply_pretrained_embeddings(model, config, vocab, root, results_dir)
+    model = model.to(device)
     optimizer = build_optimizer(config, model)
     scheduler = build_scheduler(config, optimizer)
     scaler = torch.amp.GradScaler("cuda", enabled=amp)

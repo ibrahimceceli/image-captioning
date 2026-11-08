@@ -1,0 +1,14 @@
+{
+  "name": "model1_lstm_emb300",
+  "model": "lstm",
+  "parameters": 5856284,
+  "train_examples": 30000,
+  "epochs_run": 12,
+  "best_epoch": 12,
+  "select_by": "val_cider",
+  "early_stopping_monitor": "val_loss",
+  "best_val_loss": 2.9155,
+  "best_val_cider_greedy": 0.2387,
+  "train_minutes": 7.0,
+  "checkpoint": "checkpoints/model1_lstm_emb300/best.pt"
+}

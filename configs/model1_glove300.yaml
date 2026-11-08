@@ -1,0 +1,56 @@
+# GloVe deneyi: model1_emb300.yaml ile aynı, yalnız name ve embeddings bölümü (GloVe 6B 300d başlatma) eklendi.
+# model1.yaml'a göre: model.embedding_dim 256 -> 300 (emb300 kontrolüyle ortak) + GloVe başlatma.
+# Model 1: Show-and-Tell style CNN-LSTM baseline (src/models/lstm.py).
+# Shared data settings (vocab, split, max_length, seed) live in base.yaml.
+# Field names are kept generic so Model 2 and 3 configs can reuse them.
+name: model1_lstm_glove300
+seed: 42
+
+model:
+  type: lstm
+  embedding_dim: 300       # GloVe deneyinin kontrolü: 256 -> 300, rastgele başlatma
+  hidden_dim: 512
+  num_layers: 1
+  dropout: 0.5
+
+# GloVe başlatma (src/train.py apply_pretrained_embeddings). model bölümünün dışında durur,
+# çünkü build_model model bölümündeki tüm anahtarları CaptionLSTM'e kwarg olarak geçirir.
+# freeze: false -> GloVe yalnız başlatma; embedding eğitim boyunca ince ayarlanır (emb300 kontrolü de
+# embedding'i eğittiği için tek fark başlatma kalır). GloVe'da olmayan kelimeler ve <start>/<end>/<unk>
+# N(0, GloVe std) ile seed 42'den, <pad> sıfır.
+embeddings:
+  path: data/glove/glove.6B.300d.txt
+  dim: 300
+  freeze: false
+
+features:
+  cache: resnet50_layer4   # [B, 2048, 7, 7] or [B, 49, 2048]
+
+optimizer:
+  name: adam
+  lr: 0.001
+
+training:
+  batch_size: 32
+  max_epochs: 30
+  grad_clip: 5.0
+  teacher_forcing: 1.0
+  amp: true
+
+loss:
+  name: cross_entropy
+  ignore_pad: true
+
+data:
+  train_fraction: 1.0      # veri miktarı deneyi: 0.25 / 0.5 / 1.0 (görüntü bazlı)
+
+# Genel özet Bölüm 5: durdurma doğrulama kaybıyla, checkpoint seçimi greedy CIDEr ile.
+# Bölüm 15 durdurmayı CIDEr ile söylüyor; ekip öyle karar verirse monitor: val_cider.
+early_stopping:
+  monitor: val_loss
+  patience: 5
+
+evaluation:
+  select_by: val_cider     # best.pt bu değere göre seçilir
+  cider_every: 2           # ayrıca kayıp iyileştiğinde ve son epoch'ta
+  batch_size: 64

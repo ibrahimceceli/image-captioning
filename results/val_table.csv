@@ -1,0 +1,9 @@
+model,run,decoding,status,BLEU-1,BLEU-2,BLEU-3,BLEU-4,METEOR,ROUGE-L,CIDEr,unique_captions,ms_per_image,parameters,checkpoint_epoch
+Model 1 — CNN-LSTM,model1_lstm,greedy,ok,0.4691,0.2907,0.1725,0.1063,,0.3718,0.2306,176,15.05,5653004,10
+Model 1 — CNN-LSTM,model1_lstm,beam-3,ok,0.5297,0.3368,0.2131,0.1389,,0.3860,0.2778,164,45.96,5653004,10
+Model 2 — Attention LSTM,model2_attention_lstm,greedy,ok,0.5638,0.3871,0.2566,0.1698,,0.4312,0.4409,877,63.20,11159565,10
+Model 2 — Attention LSTM,model2_attention_lstm,beam-3,ok,0.6170,0.4355,0.2988,0.2030,,0.4396,0.4697,813,182.65,11159565,10
+Model 3 — Transformer,model3_transformer,greedy,henüz yok,,,,,,,,,,,
+Model 3 — Transformer,model3_transformer,beam-3,henüz yok,,,,,,,,,,,
+Model 4 — BLIP,model4_blip,greedy,henüz yok,,,,,,,,,,,
+Model 4 — BLIP,model4_blip,beam-3,henüz yok,,,,,,,,,,,
