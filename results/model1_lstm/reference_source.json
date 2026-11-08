@@ -1,0 +1,10 @@
+{
+  "source": "https://www.kaggle.com/datasets/adityajn105/flickr8k",
+  "download_url": "https://www.kaggle.com/api/v1/datasets/download/adityajn105/flickr8k/captions.txt",
+  "retrieved_date": "2026-10-31",
+  "captions_path": "data/flickr8k/captions.txt",
+  "sha256": "e6cf5e8d8025d25b50a4945c38580d96a940b78644f31a90368dfcdca3c7e036",
+  "images": 8091,
+  "captions": 40455,
+  "training_vocabulary_exact_match": true
+}

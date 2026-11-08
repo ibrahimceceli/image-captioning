@@ -1,0 +1,96 @@
+{
+  "split": "val",
+  "n_images": 1000,
+  "top_p": 0.9,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "repeat_policy": "Three repeats are our experiment choice, not a README requirement.",
+  "runs": [
+    {
+      "seed": 42,
+      "unique_captions_across_images": 989,
+      "unique_caption_ratio_across_images": 0.989,
+      "metrics": {
+        "BLEU-1": 0.5134567665584545,
+        "BLEU-2": 0.32418614756686515,
+        "BLEU-3": 0.2025147992742567,
+        "BLEU-4": 0.12459802048642918,
+        "CIDEr": 0.2957981306474449,
+        "ROUGE-L": 0.38628156883951653
+      },
+      "checkpoint": "checkpoints/model2_attention_lstm_full_20261104_01/best.pt",
+      "checkpoint_epoch": 10,
+      "normalization": "remove special tokens, lowercase, remove punctuation, collapse spaces"
+    },
+    {
+      "seed": 43,
+      "unique_captions_across_images": 993,
+      "unique_caption_ratio_across_images": 0.993,
+      "metrics": {
+        "BLEU-1": 0.4871484729361468,
+        "BLEU-2": 0.2824548335310443,
+        "BLEU-3": 0.1539130790703305,
+        "BLEU-4": 0.08180003274417588,
+        "CIDEr": 0.24818876843637705,
+        "ROUGE-L": 0.3515302657846395
+      },
+      "checkpoint": "checkpoints/model2_attention_lstm_full_20261104_01/best.pt",
+      "checkpoint_epoch": 10,
+      "normalization": "remove special tokens, lowercase, remove punctuation, collapse spaces"
+    },
+    {
+      "seed": 44,
+      "unique_captions_across_images": 994,
+      "unique_caption_ratio_across_images": 0.994,
+      "metrics": {
+        "BLEU-1": 0.4296867375816893,
+        "BLEU-2": 0.22608507241677644,
+        "BLEU-3": 0.11678676676426852,
+        "BLEU-4": 0.060249523929433085,
+        "CIDEr": 0.21179237717300242,
+        "ROUGE-L": 0.2918993910827107
+      },
+      "checkpoint": "checkpoints/model2_attention_lstm_full_20261104_01/best.pt",
+      "checkpoint_epoch": 10,
+      "normalization": "remove special tokens, lowercase, remove punctuation, collapse spaces"
+    }
+  ],
+  "quality_across_seeds": {
+    "BLEU-1": {
+      "mean": 0.47676399235876354,
+      "sample_std_ddof1": 0.04283961386775748
+    },
+    "BLEU-2": {
+      "mean": 0.27757535117156196,
+      "sample_std_ddof1": 0.049232227732179785
+    },
+    "BLEU-3": {
+      "mean": 0.15773821503628524,
+      "sample_std_ddof1": 0.04299183222865627
+    },
+    "BLEU-4": {
+      "mean": 0.08888252572001272,
+      "sample_std_ddof1": 0.0327536796765038
+    },
+    "CIDEr": {
+      "mean": 0.25192642541894145,
+      "sample_std_ddof1": 0.042127416417241714
+    },
+    "ROUGE-L": {
+      "mean": 0.34323707523562225,
+      "sample_std_ddof1": 0.047734490954037166
+    }
+  },
+  "within_image_diversity": {
+    "mean_distinct_captions_across_three_seeds": 3,
+    "image_count_by_distinct_caption_count": {
+      "3": 1000
+    },
+    "comparison": "Exact generated text equality; empty captions are retained."
+  },
+  "reference_sha256": "e6cf5e8d8025d25b50a4945c38580d96a940b78644f31a90368dfcdca3c7e036",
+  "split_sha256": "e100030c246a35a124a874dde2c5e2153ada7f9208a75f307cc4ed1d63dbbfee"
+}

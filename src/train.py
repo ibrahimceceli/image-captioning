@@ -155,15 +155,11 @@ def greedy_batch(model: nn.Module, features: Tensor, vocab: Vocabulary) -> list[
 
 
 def cider_score(references: dict[str, list[str]], hypotheses: dict[str, str]) -> float:
-    """src/evaluate.py hazır olunca oradaki ortak metrik koduna geçilecek."""
-    try:
-        from pycocoevalcap.cider.cider import Cider
-    except ImportError as error:
-        raise ImportError("CIDEr için pycocoevalcap gerekir: pip install pycocoevalcap") from error
+    """Shared normalization and CIDEr; keep predict --limit subset support."""
+    from src.evaluate import cider_score as shared_cider_score
+
     refs = {image_id: references[image_id] for image_id in hypotheses}
-    hyps = {image_id: [caption] for image_id, caption in hypotheses.items()}
-    score, _ = Cider().compute_score(refs, hyps)
-    return float(score)
+    return shared_cider_score(refs, hypotheses)
 
 
 @torch.no_grad()
