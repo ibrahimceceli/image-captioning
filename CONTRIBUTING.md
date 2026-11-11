@@ -13,9 +13,9 @@ Bu dosya üç kişilik ekibin çalışma kurallarını toplar. Projenin kendisi,
 
 ## Dosya sahipliği
 
-- `src/train.py` ve `src/data/`: Üye A
+- `src/train.py`, `src/data/` ve demo iskeleti (`app/app.py`, `app/captioners.py` içindeki ortak katman): Üye A
 - `src/decode.py` ve attention modeli (`src/models/attention_lstm.py`): Üye B
-- `src/evaluate.py` ve `app/`: Üye C
+- `src/evaluate.py` ve demonun model bağlantıları (`app/captioners.py` içindeki `BlipCaptioner` ve Model 3 adaptörü, `app/config.yaml` model girdileri): Üye C
 
 Başkasının dosyasında değişiklik gerekiyorsa dosyanın sahibi Pull Request'i birleştirir.
 
