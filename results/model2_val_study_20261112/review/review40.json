@@ -1,0 +1,1308 @@
+{
+  "methodology": {
+    "reviewer": "Codex; manual visual inspection of all 40 full-image contact-sheet panels and five references per image",
+    "status": "18 initially flagged records resolved with user; other 22 original visual annotations retained; uncertain labels excluded from confirmed counts",
+    "categories": {
+      "yanlış nesne": "Görselde olmayan nesne/giysi/ortam eklenmesi veya nesnenin yanlış adlandırılması. Salt nesne atlama tek başına bu etiketi almaz. Cinsiyet görüntüden varsayılmaz.",
+      "sayı": "Açıkça yanlış adet belirtilmesi. Tekil bir aktörü anlatıp diğerini atlamak tek başına sayı hatası sayılmaz; bağlam kaybı varsa genel ifade olarak değerlendirilir.",
+      "renk": "Mevcut nesne/giysinin açıkça yanlış rengi. Renk atlama hata sayılmaz; olmayan giysi için renk yerine yanlış nesne kullanılır.",
+      "eylem": "Ana eylem veya mekânsal ilişkinin görünür durumla çelişmesi. Yalnız eylem atlama genel ifade altında değerlendirilir.",
+      "genel ifade": "Sahnenin ayırt edici ana bağlamını veya aktörler arası etkileşimi atlayan açıklama. Ana etkinliği doğru veren kısa açıklamalarda salt ayrıntı eksikliği hata sayılmaz; yarım kalma tek başına bu etiketi zorunlu kılmaz.",
+      "kelime tekrarı": "Gereksiz aynı içerik sözcüğü/öbeği tekrarı; sıradan a/the/is ve zorunlu sözdizimsel tekrarlar sayılmaz."
+    },
+    "annotations": [
+      {
+        "number": 1,
+        "labels": [
+          "yanlış nesne",
+          "renk",
+          "eylem"
+        ],
+        "reason": "Çocuk yerde uzanıp ağlıyor; bed/jumping ve kırmızı üst yerine mor elbise görünüyor.",
+        "needs_user_review": false,
+        "uncertainty": "Boy/girl ayrımı ayrıca etiketlenmedi; üç etiket yatak, renk ve eylem kanıtına dayanıyor."
+      },
+      {
+        "number": 2,
+        "labels": [
+          "renk",
+          "genel ifade"
+        ],
+        "reason": "Üst giysi siyah, mavi değil. Ayakta oluş doğru; buz blokunu testereyle yontma ana eylemi ve alet atlanmış.",
+        "needs_user_review": false
+      },
+      {
+        "number": 3,
+        "labels": [],
+        "reason": "Bir çocuğun futbol oynadığı açık, ikinci çocuğun oyuna katıldığı doğrulanamadı",
+        "needs_user_review": false,
+        "uncertainty": "Bir çocuğun futbol oynadığı açık, ikinci çocuğun oyuna katıldığı doğrulanamadı",
+        "uncertain_labels": [
+          "sayı"
+        ],
+        "human_reviewed": true,
+        "review_status": "reviewed_uncertain",
+        "human_labels": "belirsiz — sayı",
+        "human_notes": "Bir çocuğun futbol oynadığı açık, ikinci çocuğun oyuna katıldığı doğrulanamadı"
+      },
+      {
+        "number": 4,
+        "labels": [],
+        "reason": "Man sözcüğü iki ayrı kişiye gönderme yapıyor. Cümle doğal değil ve çoğul özneyle ‘are’ kullanılmalı",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "",
+        "human_notes": "Man sözcüğü iki ayrı kişiye gönderme yapıyor. Cümle doğal değil ve çoğul özneyle ‘are’ kullanılmalı"
+      },
+      {
+        "number": 5,
+        "labels": [
+          "renk",
+          "eylem"
+        ],
+        "reason": "Çocuk sığ suda ayakta; swimming değil. Görünen üst gri/mavi, şort renkli; pink bathing suit görünmüyor.",
+        "needs_user_review": false,
+        "uncertainty": "Boy/girl referans farkı bağımsız görsel cinsiyet etiketi olarak kullanılmadı."
+      },
+      {
+        "number": 6,
+        "labels": [
+          "genel ifade"
+        ],
+        "reason": "Tahmin, sahneyi ayırt eden su kenarını ve kovaları belirtmiyor. Kumda oynama ifadesi doğrulanamadığı için kesin eylem hatası olarak sayılmadı",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "genel ifade",
+        "human_notes": "Tahmin, sahneyi ayırt eden su kenarını ve kovaları belirtmiyor. Kumda oynama ifadesi doğrulanamadığı için kesin eylem hatası olarak sayılmadı"
+      },
+      {
+        "number": 7,
+        "labels": [
+          "yanlış nesne",
+          "genel ifade"
+        ],
+        "reason": "Güneş gözlüğü görünmüyor; gözler açıkta ve atkı yüzü örtüyor. Yüzü örtme ana eylemi atlanmış.",
+        "needs_user_review": false
+      },
+      {
+        "number": 8,
+        "labels": [],
+        "reason": "Tahmin ‘blowing a’ ile yarım kalıyor. Üfleme eylemi ve giysi rengi doğrulanamadı",
+        "needs_user_review": false,
+        "uncertainty": "Tahmin ‘blowing a’ ile yarım kalıyor. Üfleme eylemi ve giysi rengi doğrulanamadı",
+        "uncertain_labels": [
+          "eylem"
+        ],
+        "human_reviewed": true,
+        "review_status": "reviewed_uncertain",
+        "human_labels": "belirsiz — eylem",
+        "human_notes": "Tahmin ‘blowing a’ ile yarım kalıyor. Üfleme eylemi ve giysi rengi doğrulanamadı"
+      },
+      {
+        "number": 9,
+        "labels": [
+          "genel ifade"
+        ],
+        "reason": "Kırmızı formalı oyuncu doğru; birden çok oyuncunun etkileşimi ve tribün bağlamı atlanmış. Tek bir oyuncuyu tanımlamak tek başına yanlış sayı sayılmadı.",
+        "needs_user_review": false
+      },
+      {
+        "number": 10,
+        "labels": [
+          "genel ifade"
+        ],
+        "reason": "Siyah ve beyaz alanlar görüldüğü için kesin renk hatası sayılmadı. Tahmin karı ve kar savurma eylemini belirtmiyor",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "genel ifade",
+        "human_notes": "Siyah ve beyaz alanlar görüldüğü için kesin renk hatası sayılmadı. Tahmin karı ve kar savurma eylemini belirtmiyor"
+      },
+      {
+        "number": 11,
+        "labels": [
+          "genel ifade"
+        ],
+        "reason": "Açık hava kafe masasında oturup içecek içen insanlar; yalnız group of people gather ayırt edici bağlamı vermiyor.",
+        "needs_user_review": false
+      },
+      {
+        "number": 12,
+        "labels": [
+          "renk",
+          "genel ifade"
+        ],
+        "reason": "Kaykaycının üstü yeşil, kırmızı değil; jumping off a tamamlanmamış ve kaykay nesnesini atlıyor.",
+        "needs_user_review": false
+      },
+      {
+        "number": 13,
+        "labels": [
+          "eylem",
+          "genel ifade"
+        ],
+        "reason": "Tahmin ikinci köpeği ve aralarındaki etkileşimi atlıyor. Büyük köpeğin diğerine doğru sıçramasını arazide koşma olarak anlatıyor",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "eylem, genel ifade",
+        "human_notes": "Tahmin ikinci köpeği ve aralarındaki etkileşimi atlıyor. Büyük köpeğin diğerine doğru sıçramasını arazide koşma olarak anlatıyor"
+      },
+      {
+        "number": 14,
+        "labels": [
+          "eylem"
+        ],
+        "reason": "İnsan dağ zirvesinde ayakta değil; ön plandaki düz/çayırlık alanda at üstünde. Atın yalnız atlanmasını yanlış nesne diye saymadım.",
+        "needs_user_review": false
+      },
+      {
+        "number": 15,
+        "labels": [],
+        "reason": "Siyah-beyaz köpek bariyer/çit üzerinden atlıyor; tahmin ana içeriğe uyuyor.",
+        "needs_user_review": false
+      },
+      {
+        "number": 16,
+        "labels": [
+          "genel ifade"
+        ],
+        "reason": "Tahmin ikinci kişiyi ve birlikte yaptıkları barış işaretini atlıyor. Cümle ‘with a black’ ifadesiyle yarım kalıyor. Giysi türü ve rengi için kesin hata etiketi verilmedi",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "genel ifade",
+        "human_notes": "Tahmin ikinci kişiyi ve birlikte yaptıkları barış işaretini atlıyor. Cümle ‘with a black’ ifadesiyle yarım kalıyor. Giysi türü ve rengi için kesin hata etiketi verilmedi"
+      },
+      {
+        "number": 17,
+        "labels": [
+          "eylem"
+        ],
+        "reason": "İnsanlar suyun içinden değil köprü üzerinden geçiyor; through a river mekânsal ilişkiyi yanlış veriyor.",
+        "needs_user_review": false
+      },
+      {
+        "number": 18,
+        "labels": [],
+        "reason": "Görüntü baş sallama veya silkelenmeyle uyumlu. Bir referans koşmayı tarif ediyor ve tek kareden eylem kesinleştirilemiyor",
+        "needs_user_review": false,
+        "uncertainty": "Görüntü baş sallama veya silkelenmeyle uyumlu. Bir referans koşmayı tarif ediyor ve tek kareden eylem kesinleştirilemiyor",
+        "uncertain_labels": [
+          "eylem"
+        ],
+        "human_reviewed": true,
+        "review_status": "reviewed_uncertain",
+        "human_labels": "belirsiz — eylem",
+        "human_notes": "Görüntü baş sallama veya silkelenmeyle uyumlu. Bir referans koşmayı tarif ediyor ve tek kareden eylem kesinleştirilemiyor"
+      },
+      {
+        "number": 19,
+        "labels": [
+          "renk",
+          "genel ifade"
+        ],
+        "reason": "Üst giysiler açık gri ve kırmızı görünüyor. Tahmin ikinci çocuğu, topu ve futbol bağlamını atlıyor. Koşma, futbol sırasında mümkün olduğu için kesin eylem hatası eklenmedi",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "renk, genel ifade",
+        "human_notes": "Üst giysiler açık gri ve kırmızı görünüyor. Tahmin ikinci çocuğu, topu ve futbol bağlamını atlıyor. Koşma, futbol sırasında mümkün olduğu için kesin eylem hatası eklenmedi"
+      },
+      {
+        "number": 20,
+        "labels": [
+          "yanlış nesne",
+          "eylem"
+        ],
+        "reason": "Tahmin, boya kaplı zemini su olarak betimliyor ve oturan çocuğun yüzdüğünü söylüyor. Giysi boya ile kaplı olduğundan özgün rengi belirlenemedi",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "yanlış nesne, eylem",
+        "human_notes": "Tahmin, boya kaplı zemini su olarak betimliyor ve oturan çocuğun yüzdüğünü söylüyor. Giysi boya ile kaplı olduğundan özgün rengi belirlenemedi"
+      },
+      {
+        "number": 21,
+        "labels": [],
+        "reason": "Havuzdaki çocuk betimlemesi görüntü ve referanslarla uyumlu; kısa olması tek başına genel ifade hatası sayılmadı.",
+        "needs_user_review": false
+      },
+      {
+        "number": 22,
+        "labels": [
+          "yanlış nesne",
+          "renk",
+          "eylem"
+        ],
+        "reason": "Öndeki çocuk turuncu üstlü; white shirt yanlış. Görüntüde kucakta baby yok, holding a baby eylemi de yok; arkada başka çocuk var.",
+        "needs_user_review": false,
+        "uncertainty": "Cinsiyet tahmini etiketlenmedi; sayı ayrıca verilmedi çünkü tahmin zaten iki kişi ima ediyor."
+      },
+      {
+        "number": 23,
+        "labels": [
+          "yanlış nesne",
+          "genel ifade"
+        ],
+        "reason": "Tahmin diğer iki kişiyi ve birlikte poz verme bağlamını atlıyor, kadrajda görünmeyen bir bank ekliyor. Referanslar ayakta durmayı destekliyor ancak kırpım nedeniyle duruş görselden kesinleştirilemiyor",
+        "needs_user_review": false,
+        "uncertainty": "Tahmin diğer iki kişiyi ve birlikte poz verme bağlamını atlıyor, kadrajda görünmeyen bir bank ekliyor. Referanslar ayakta durmayı destekliyor ancak kırpım nedeniyle duruş görselden kesinleştirilemiyor",
+        "uncertain_labels": [
+          "eylem"
+        ],
+        "human_reviewed": true,
+        "review_status": "reviewed_uncertain",
+        "human_labels": "yanlış nesne, genel ifade, belirsiz — eylem",
+        "human_notes": "Tahmin diğer iki kişiyi ve birlikte poz verme bağlamını atlıyor, kadrajda görünmeyen bir bank ekliyor. Referanslar ayakta durmayı destekliyor ancak kırpım nedeniyle duruş görselden kesinleştirilemiyor"
+      },
+      {
+        "number": 24,
+        "labels": [],
+        "reason": "Tahmin kısa olsa da görüntünün ana etkinliğini doğru anlatıyor. Vuruş ve kıyafet ayrıntılarının atlanması hata sayılmadı",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "",
+        "human_notes": "Tahmin kısa olsa da görüntünün ana etkinliğini doğru anlatıyor. Vuruş ve kıyafet ayrıntılarının atlanması hata sayılmadı"
+      },
+      {
+        "number": 25,
+        "labels": [],
+        "reason": "İki kahverengi köpek sığ suda oynuyor; sayı, renk ve eylem uyumlu.",
+        "needs_user_review": false
+      },
+      {
+        "number": 26,
+        "labels": [
+          "genel ifade"
+        ],
+        "reason": "Kask doğru; elindeki megafon ve birden çok kişinin belirgin bağlamı atlanmış. Tek kişiyi betimlemek tek başına sayı hatası sayılmadı.",
+        "needs_user_review": false
+      },
+      {
+        "number": 27,
+        "labels": [
+          "yanlış nesne"
+        ],
+        "reason": "Suya atlayan kişinin üst gövdesi çıplak; green shirt uydurulmuş. Atlayış doğru, olmayan giysiye ayrıca renk etiketi verilmedi.",
+        "needs_user_review": false
+      },
+      {
+        "number": 28,
+        "labels": [
+          "genel ifade"
+        ],
+        "reason": "Havada snowboard hareketi var; doing a trick ekipman ve kar sporunu belirtmiyor.",
+        "needs_user_review": false
+      },
+      {
+        "number": 29,
+        "labels": [
+          "yanlış nesne",
+          "renk",
+          "genel ifade",
+          "kelime tekrarı"
+        ],
+        "reason": "Çocuk kırmızı mezuniyet cübbesiyle kep atıyor; blue shirt iki kez yineleniyor ve mezuniyet/eylem yok.",
+        "needs_user_review": false
+      },
+      {
+        "number": 30,
+        "labels": [
+          "yanlış nesne",
+          "renk",
+          "eylem"
+        ],
+        "reason": "Çocuklar basamak kenarından aşağı atlıyor. Tahmin ip tırmanışı anlatıyor ancak tırmanılan bir ip görünmüyor. Üst giysiler kırmızı ve pembe tonlarında, mavi parçalar ise pantolonlar",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "yanlış nesne, renk, eylem",
+        "human_notes": "Çocuklar basamak kenarından aşağı atlıyor. Tahmin ip tırmanışı anlatıyor ancak tırmanılan bir ip görünmüyor. Üst giysiler kırmızı ve pembe tonlarında, mavi parçalar ise pantolonlar"
+      },
+      {
+        "number": 31,
+        "labels": [
+          "yanlış nesne",
+          "eylem",
+          "kelime tekrarı"
+        ],
+        "reason": "Köpek kaldırımda koşuyor; görünür oyuncak yok. white and white yinelenmiş. Kahverengi ayrıntıların atlanmasına renk etiketi verilmedi.",
+        "needs_user_review": false
+      },
+      {
+        "number": 32,
+        "labels": [
+          "renk",
+          "genel ifade"
+        ],
+        "reason": "Forma turuncu, mavi değil; eldeki top ve hazırlık eylemi atlanmış.",
+        "needs_user_review": false
+      },
+      {
+        "number": 33,
+        "labels": [
+          "eylem",
+          "genel ifade",
+          "kelime tekrarı"
+        ],
+        "reason": "Tahmin ikinci köpeği ve top yakalama bağlamını atlıyor. Köpeğin topa doğru sıçramasını koşma olarak betimliyor. ‘White and white’ ifadesinde aynı renk gereksiz yere yineleniyor",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "eylem, genel ifade, kelime tekrarı",
+        "human_notes": "Tahmin ikinci köpeği ve top yakalama bağlamını atlıyor. Köpeğin topa doğru sıçramasını koşma olarak betimliyor. ‘White and white’ ifadesinde aynı renk gereksiz yere yineleniyor"
+      },
+      {
+        "number": 34,
+        "labels": [
+          "yanlış nesne",
+          "eylem"
+        ],
+        "reason": "Grup gösterişli odada ayakta; ön planda kanepe var, bed yok. Grup sit eyleminde değil.",
+        "needs_user_review": false
+      },
+      {
+        "number": 35,
+        "labels": [],
+        "reason": "Tahmin ana etkinlik olan sörfü doğru anlatıyor. Havadaki hareket belirtilmediği için açıklama daha az ayrıntılı, ancak bu eksiklik kesin hata olarak sayılmadı",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "",
+        "human_notes": "Tahmin ana etkinlik olan sörfü doğru anlatıyor. Havadaki hareket belirtilmediği için açıklama daha az ayrıntılı, ancak bu eksiklik kesin hata olarak sayılmadı"
+      },
+      {
+        "number": 36,
+        "labels": [
+          "genel ifade",
+          "kelime tekrarı"
+        ],
+        "reason": "Tahmin ikinci kişiyi ve kırmızı arabayı atlıyor. ‘A blue shirt’ öbeği gereksiz yere yineleniyor. Gömlekte mavi çizgiler görüldüğü için kesin renk hatası eklenmedi",
+        "needs_user_review": false,
+        "uncertainty": "",
+        "uncertain_labels": [],
+        "human_reviewed": true,
+        "review_status": "reviewed",
+        "human_labels": "genel ifade, kelime tekrarı",
+        "human_notes": "Tahmin ikinci kişiyi ve kırmızı arabayı atlıyor. ‘A blue shirt’ öbeği gereksiz yere yineleniyor. Gömlekte mavi çizgiler görüldüğü için kesin renk hatası eklenmedi"
+      },
+      {
+        "number": 37,
+        "labels": [
+          "yanlış nesne",
+          "renk",
+          "genel ifade"
+        ],
+        "reason": "Köpek siyah/kahverengi, black and white değil; red collar görünmüyor ve yatak bağlamı atlanmış.",
+        "needs_user_review": false
+      },
+      {
+        "number": 38,
+        "labels": [],
+        "reason": "İki kişi gerçekten oturuyor. Görsel tarif ve referanslar kanepeyi destekliyor, ancak mobilyanın türü kesinleştirilemedi",
+        "needs_user_review": false,
+        "uncertainty": "İki kişi gerçekten oturuyor. Görsel tarif ve referanslar kanepeyi destekliyor, ancak mobilyanın türü kesinleştirilemedi",
+        "uncertain_labels": [
+          "yanlış nesne"
+        ],
+        "human_reviewed": true,
+        "review_status": "reviewed_uncertain",
+        "human_labels": "belirsiz — yanlış nesne",
+        "human_notes": "İki kişi gerçekten oturuyor. Görsel tarif ve referanslar kanepeyi destekliyor, ancak mobilyanın türü kesinleştirilemedi"
+      },
+      {
+        "number": 39,
+        "labels": [],
+        "reason": "Kişi kaya duvarına tırmanıyor; ana nesne ve eylem doğru.",
+        "needs_user_review": false
+      },
+      {
+        "number": 40,
+        "labels": [],
+        "reason": "Baloncuk üfleme eylemi doğru. Tahmindeki ‘girl’ ifadesi beş referanstaki ‘boy’ ifadesiyle uyuşmuyor. Kişi niteliği görüntüden doğrulanamadı",
+        "needs_user_review": false,
+        "uncertainty": "Baloncuk üfleme eylemi doğru. Tahmindeki ‘girl’ ifadesi beş referanstaki ‘boy’ ifadesiyle uyuşmuyor. Kişi niteliği görüntüden doğrulanamadı",
+        "uncertain_labels": [
+          "kişi niteliği (boy/girl)"
+        ],
+        "human_reviewed": true,
+        "review_status": "reviewed_uncertain",
+        "human_labels": "belirsiz — kişi niteliği (boy/girl)",
+        "human_notes": "Baloncuk üfleme eylemi doğru. Tahmindeki ‘girl’ ifadesi beş referanstaki ‘boy’ ifadesiyle uyuşmuyor. Kişi niteliği görüntüden doğrulanamadı"
+      }
+    ]
+  },
+  "records": [
+    {
+      "number": 1,
+      "image_id": "3168354472_866fe70d36.jpg",
+      "beam3": "a little boy in a red shirt is jumping on a bed",
+      "references": [
+        "A girl in a purple dress crying on the floor .",
+        "A girl in a purple dress is throwing a tantrum .",
+        "A little girl in a purple plaid dress is lying on the floor crying .",
+        "A little girl in a purple plaid dress lays on the floor and cries with her toy beside her .",
+        "A young girl in a purple dress throws a tantrum ."
+      ],
+      "labels": [
+        "yanlış nesne",
+        "renk",
+        "eylem"
+      ],
+      "reason": "Çocuk yerde uzanıp ağlıyor; bed/jumping ve kırmızı üst yerine mor elbise görünüyor.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "Boy/girl ayrımı ayrıca etiketlenmedi; üç etiket yatak, renk ve eylem kanıtına dayanıyor."
+    },
+    {
+      "number": 2,
+      "image_id": "3249014584_21dd9ddd9d.jpg",
+      "beam3": "a man in a blue jacket is standing in the snow",
+      "references": [
+        "a man carves an ice block with a chainsaw .",
+        "A man has a chainsaw and is carving a block of ice .",
+        "A man in black shaving a ice sculpture .",
+        "Man carves block of ice with a saw .",
+        "Man with an ice sculpture"
+      ],
+      "labels": [
+        "renk",
+        "genel ifade"
+      ],
+      "reason": "Üst giysi siyah, mavi değil. Ayakta oluş doğru; buz blokunu testereyle yontma ana eylemi ve alet atlanmış.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 3,
+      "image_id": "1865794069_6e3a1e57bb.jpg",
+      "beam3": "two boys play soccer",
+      "references": [
+        "A blond boy with a navy blue uniform kicks a soccer ball in an open field .",
+        "A boy in an all blue uniform kicks a blue soccer ball in a grassy area .",
+        "A little boy is playing soccer at a field .",
+        "A small child plays with a ball while others relax and converse with one another .",
+        "A young boy dressed in blue and white is kicking a soccer ball ."
+      ],
+      "labels": [],
+      "reason": "Bir çocuğun futbol oynadığı açık, ikinci çocuğun oyuna katıldığı doğrulanamadı",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "Bir çocuğun futbol oynadığı açık, ikinci çocuğun oyuna katıldığı doğrulanamadı",
+      "uncertain_labels": [
+        "sayı"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "belirsiz — sayı",
+      "human_notes": "Bir çocuğun futbol oynadığı açık, ikinci çocuğun oyuna katıldığı doğrulanamadı"
+    },
+    {
+      "number": 4,
+      "image_id": "2635023078_6dae04758f.jpg",
+      "beam3": "a man and a man in a black leather jacket is standing on a sidewalk",
+      "references": [
+        "Two guys stand outside of a building that has been spray painted with words .",
+        "Two men stand near a wall that has writing painted on it .",
+        "Two young men drink beer , leaning on a graffitied wall .",
+        "Two young men in black jackets hanging out by a graffitied wall",
+        "Two young men in jeans and dark jackets standing in front of a building ."
+      ],
+      "labels": [],
+      "reason": "Man sözcüğü iki ayrı kişiye gönderme yapıyor. Cümle doğal değil ve çoğul özneyle ‘are’ kullanılmalı",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "",
+      "human_notes": "Man sözcüğü iki ayrı kişiye gönderme yapıyor. Cümle doğal değil ve çoğul özneyle ‘are’ kullanılmalı"
+    },
+    {
+      "number": 5,
+      "image_id": "2533642917_a5eace85e6.jpg",
+      "beam3": "a girl in a pink bathing suit is swimming",
+      "references": [
+        "A boy in a bathing suit stands in water .",
+        "A little boy stands in a creek on a sunny day .",
+        "a toddler wearing colorful shorts is standing in the water .",
+        "A wet child standing in water .",
+        "Little boy knee-deep in water ."
+      ],
+      "labels": [
+        "renk",
+        "eylem"
+      ],
+      "reason": "Çocuk sığ suda ayakta; swimming değil. Görünen üst gri/mavi, şort renkli; pink bathing suit görünmüyor.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "Boy/girl referans farkı bağımsız görsel cinsiyet etiketi olarak kullanılmadı."
+    },
+    {
+      "number": 6,
+      "image_id": "2085078076_b9db242d21.jpg",
+      "beam3": "a little boy is playing in the sand",
+      "references": [
+        "A small boy standing near muddy water with something in his hand while someone beside him washes clothing in buckets .",
+        "A young black child stands on the edge of a body of water near buckets .",
+        "A young boy stands near the water in a muddy river .",
+        "Child standing by a rivers edge with laundry in buckets next to them .",
+        "On shore near brown water , boy holds object beside buckets of rags ."
+      ],
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Tahmin, sahneyi ayırt eden su kenarını ve kovaları belirtmiyor. Kumda oynama ifadesi doğrulanamadığı için kesin eylem hatası olarak sayılmadı",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "genel ifade",
+      "human_notes": "Tahmin, sahneyi ayırt eden su kenarını ve kovaları belirtmiyor. Kumda oynama ifadesi doğrulanamadığı için kesin eylem hatası olarak sayılmadı"
+    },
+    {
+      "number": 7,
+      "image_id": "3275711232_e261143664.jpg",
+      "beam3": "a woman in a black coat and sunglasses",
+      "references": [
+        "A person in a knit hat hiding their face with a scarf .",
+        "A person in winter clothes covers their face with a sweater .",
+        "A woman in a park wearing a hat and holding a scarf over her face .",
+        "A woman outside covers her face with fabric .",
+        "The adult is covering their face with a piece of clothing outside"
+      ],
+      "labels": [
+        "yanlış nesne",
+        "genel ifade"
+      ],
+      "reason": "Güneş gözlüğü görünmüyor; gözler açıkta ve atkı yüzü örtüyor. Yüzü örtme ana eylemi atlanmış.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 8,
+      "image_id": "319847643_df7c2a1d25.jpg",
+      "beam3": "a little girl in a yellow shirt is blowing a",
+      "references": [
+        "A child pushes its face up towards a window of a playground .",
+        "A girl cringes when drops of water come her way .",
+        "Girls squints , presses against oval hole in wet , colorful structure .",
+        "One boy who has a funny expression on his face has his hands up by his head and is looking through a hole .",
+        "Water is spraying on the child with its face through a cut out hole ."
+      ],
+      "labels": [],
+      "reason": "Tahmin ‘blowing a’ ile yarım kalıyor. Üfleme eylemi ve giysi rengi doğrulanamadı",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "Tahmin ‘blowing a’ ile yarım kalıyor. Üfleme eylemi ve giysi rengi doğrulanamadı",
+      "uncertain_labels": [
+        "eylem"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "belirsiz — eylem",
+      "human_notes": "Tahmin ‘blowing a’ ile yarım kalıyor. Üfleme eylemi ve giysi rengi doğrulanamadı"
+    },
+    {
+      "number": 9,
+      "image_id": "241345596_91e0e2daf5.jpg",
+      "beam3": "a football player in a red jersey",
+      "references": [
+        "a crowd wearing red , cheers on the red football team .",
+        "Football players in red congratulate each other as crowds in red cheer behind .",
+        "The Oklahoma Sooners football team discuss their game while fans cheer .",
+        "Two football players talk during a game .",
+        "Two Oklahoma Sooner football players talk on the sideline ."
+      ],
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Kırmızı formalı oyuncu doğru; birden çok oyuncunun etkileşimi ve tribün bağlamı atlanmış. Tek bir oyuncuyu tanımlamak tek başına yanlış sayı sayılmadı.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 10,
+      "image_id": "2140747429_62cfd89ae9.jpg",
+      "beam3": "a young boy in a black and white jacket",
+      "references": [
+        "A child in the snow with a house in the background .",
+        "A little boy is throwing snow around outside .",
+        "Snow covers the ground and a young boy 's jacket .",
+        "The little boy with the yellow stripe on his hat is in the snow .",
+        "This boy is throwing a snowball ."
+      ],
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Siyah ve beyaz alanlar görüldüğü için kesin renk hatası sayılmadı. Tahmin karı ve kar savurma eylemini belirtmiyor",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "genel ifade",
+      "human_notes": "Siyah ve beyaz alanlar görüldüğü için kesin renk hatası sayılmadı. Tahmin karı ve kar savurma eylemini belirtmiyor"
+    },
+    {
+      "number": 11,
+      "image_id": "3099923914_fd450f6d51.jpg",
+      "beam3": "a group of people gather",
+      "references": [
+        "A group of people sit at a table in front of a large building .",
+        "People are drinking and walking in front of a brick building .",
+        "People are enjoying drinks at a table outside a large brick building .",
+        "Two people are seated at a table with drinks",
+        "Two people are sitting at an outdoor cafe in front of an old building ."
+      ],
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Açık hava kafe masasında oturup içecek içen insanlar; yalnız group of people gather ayırt edici bağlamı vermiyor.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 12,
+      "image_id": "3606846822_28c40b933a.jpg",
+      "beam3": "a man in a red shirt is jumping off a",
+      "references": [
+        "A man does a jumping trick on a skateboard .",
+        "A man in a green shirt on a half pipe , doing a skateboard stunt .",
+        "A man on a skateboard while the crowd watches .",
+        "A skateboard is sideways in the air .",
+        "a skateboarder wearing a green shirt and jumping in the air"
+      ],
+      "labels": [
+        "renk",
+        "genel ifade"
+      ],
+      "reason": "Kaykaycının üstü yeşil, kırmızı değil; jumping off a tamamlanmamış ve kaykay nesnesini atlıyor.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 13,
+      "image_id": "432490118_54a9c0e500.jpg",
+      "beam3": "a brown and white dog is running through a field",
+      "references": [
+        "A Collie and a Springer Spaniel playing outside .",
+        "The large brown and white dog is jumping towards the small brown and white dog .",
+        "Two brown and white dogs fighting on a grassy area in front of a tree .",
+        "Two brown and white dogs in the grass near a stone structure .",
+        "Two tan and white dogs look at each other in an outdoor setting ."
+      ],
+      "labels": [
+        "eylem",
+        "genel ifade"
+      ],
+      "reason": "Tahmin ikinci köpeği ve aralarındaki etkileşimi atlıyor. Büyük köpeğin diğerine doğru sıçramasını arazide koşma olarak anlatıyor",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "eylem, genel ifade",
+      "human_notes": "Tahmin ikinci köpeği ve aralarındaki etkileşimi atlıyor. Büyük köpeğin diğerine doğru sıçramasını arazide koşma olarak anlatıyor"
+    },
+    {
+      "number": 14,
+      "image_id": "270816949_ffad112278.jpg",
+      "beam3": "a man stands on a mountaintop",
+      "references": [
+        "A man on horseback on a grassy field in front of mountains .",
+        "A person on a brown horse in a prairie in front of tall mountains .",
+        "A person riding a horse with a mountain range in the far background .",
+        "A rider on a horse in front of a mountain range",
+        "Distant horse rider on plain in the middle of brown mountains ."
+      ],
+      "labels": [
+        "eylem"
+      ],
+      "reason": "İnsan dağ zirvesinde ayakta değil; ön plandaki düz/çayırlık alanda at üstünde. Atın yalnız atlanmasını yanlış nesne diye saymadım.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 15,
+      "image_id": "512045825_1be2083922.jpg",
+      "beam3": "a black and white dog is jumping over a hurdle",
+      "references": [
+        "A dog jumping over a fence .",
+        "A dog jumps over a barrier in a field .",
+        "A white dog with black spots is jumping over a white fence .",
+        "The dog leaps over the fence in the park .",
+        "The spotted dog jumps a fence ."
+      ],
+      "labels": [],
+      "reason": "Siyah-beyaz köpek bariyer/çit üzerinden atlıyor; tahmin ana içeriğe uyuyor.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 16,
+      "image_id": "3257207516_9d2bc0ea04.jpg",
+      "beam3": "a woman in a blue shirt with a black",
+      "references": [
+        "A boy and a woman in Arab costume making peace signs .",
+        "A boy and a young woman in a headscarf make peace signs .",
+        "A girl in a headdress and a boy with a bandanna are giving the peace sign to the camera .",
+        "A woman wearing a blue headcover and a boy wearing a scarf hold fingers in peace signs .",
+        "A woman with a blue headdress and a boy with a headband make a peace sign with their fingers"
+      ],
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Tahmin ikinci kişiyi ve birlikte yaptıkları barış işaretini atlıyor. Cümle ‘with a black’ ifadesiyle yarım kalıyor. Giysi türü ve rengi için kesin hata etiketi verilmedi",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "genel ifade",
+      "human_notes": "Tahmin ikinci kişiyi ve birlikte yaptıkları barış işaretini atlıyor. Cümle ‘with a black’ ifadesiyle yarım kalıyor. Giysi türü ve rengi için kesin hata etiketi verilmedi"
+    },
+    {
+      "number": 17,
+      "image_id": "229954612_a4438297ee.jpg",
+      "beam3": "a group of people are walking through a river",
+      "references": [
+        "People gather on a bridge near a weeping willow tree .",
+        "People on a bridge look at the water .",
+        "People stand on a bridge over water .",
+        "People walk on a small bridge over a lake .",
+        "Some people are crossing a green bridge over a river ."
+      ],
+      "labels": [
+        "eylem"
+      ],
+      "reason": "İnsanlar suyun içinden değil köprü üzerinden geçiyor; through a river mekânsal ilişkiyi yanlış veriyor.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 18,
+      "image_id": "3265864834_e0229020dd.jpg",
+      "beam3": "a brown dog is running on the beach",
+      "references": [
+        "A brown dog making a funny face while standing on a beach .",
+        "A brown dog shaking its head .",
+        "A brown dog wearing a chain around its neck is shaking it head .",
+        "a brown dog wearing a chain collar on a mountain running crazily .",
+        "A dark brown dog rapidly shaking off ."
+      ],
+      "labels": [],
+      "reason": "Görüntü baş sallama veya silkelenmeyle uyumlu. Bir referans koşmayı tarif ediyor ve tek kareden eylem kesinleştirilemiyor",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "Görüntü baş sallama veya silkelenmeyle uyumlu. Bir referans koşmayı tarif ediyor ve tek kareden eylem kesinleştirilemiyor",
+      "uncertain_labels": [
+        "eylem"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "belirsiz — eylem",
+      "human_notes": "Görüntü baş sallama veya silkelenmeyle uyumlu. Bir referans koşmayı tarif ediyor ve tek kareden eylem kesinleştirilemiyor"
+    },
+    {
+      "number": 19,
+      "image_id": "197504190_fd1fc3d4b7.jpg",
+      "beam3": "a boy in a green shirt is running through a field",
+      "references": [
+        "Two boys in a field kicking a soccer ball .",
+        "Two children are playing with a soccer ball on grass .",
+        "Two children playing with a ball on the grass .",
+        "Two children play soccer in the park .",
+        "Two little boys are playing outside with their soccer ball on the green grass ."
+      ],
+      "labels": [
+        "renk",
+        "genel ifade"
+      ],
+      "reason": "Üst giysiler açık gri ve kırmızı görünüyor. Tahmin ikinci çocuğu, topu ve futbol bağlamını atlıyor. Koşma, futbol sırasında mümkün olduğu için kesin eylem hatası eklenmedi",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "renk, genel ifade",
+      "human_notes": "Üst giysiler açık gri ve kırmızı görünüyor. Tahmin ikinci çocuğu, topu ve futbol bağlamını atlıyor. Koşma, futbol sırasında mümkün olduğu için kesin eylem hatası eklenmedi"
+    },
+    {
+      "number": 20,
+      "image_id": "3415578043_03d33e6efd.jpg",
+      "beam3": "a little boy in a yellow shirt is swimming in water",
+      "references": [
+        "A child covered with paint sits amid trays of multicolored paint on a surface thoroughly saturated with paint .",
+        "A child plays with paint .",
+        "A little girl in a white shirt has been playing with paint and covered herself and her room .",
+        "A young child sitting in a mess of paint .",
+        "a young child sitting in a mess of paint spilled everywhere ."
+      ],
+      "labels": [
+        "yanlış nesne",
+        "eylem"
+      ],
+      "reason": "Tahmin, boya kaplı zemini su olarak betimliyor ve oturan çocuğun yüzdüğünü söylüyor. Giysi boya ile kaplı olduğundan özgün rengi belirlenemedi",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "yanlış nesne, eylem",
+      "human_notes": "Tahmin, boya kaplı zemini su olarak betimliyor ve oturan çocuğun yüzdüğünü söylüyor. Giysi boya ile kaplı olduğundan özgün rengi belirlenemedi"
+    },
+    {
+      "number": 21,
+      "image_id": "1119463452_69d4eecd08.jpg",
+      "beam3": "a girl in a swimming pool",
+      "references": [
+        "A girl in a pink swimsuit in a pool",
+        "A girl swimming in a pool .",
+        "A little girl in a pink bathing suit swimming in a pool .",
+        "A little girl swimming in a pool .",
+        "Smiling little girl swimming in outdoor pool ."
+      ],
+      "labels": [],
+      "reason": "Havuzdaki çocuk betimlemesi görüntü ve referanslarla uyumlu; kısa olması tek başına genel ifade hatası sayılmadı.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 22,
+      "image_id": "2594042571_2e4666507e.jpg",
+      "beam3": "a young girl wearing a hat and a white shirt is holding a baby",
+      "references": [
+        "A boy with an orange shirt smiles , while a boy in a blue shirt looks on .",
+        "A little boy in a tan hat on the ground of a play area .",
+        "A smiling boy in an orange shirt with a safari hat sits at the playground , while a boy in a blue shirt looks on .",
+        "Boy in tan hat laughs while sitting near playground equipment .",
+        "Two boys , one wearing a hat , in a playground ."
+      ],
+      "labels": [
+        "yanlış nesne",
+        "renk",
+        "eylem"
+      ],
+      "reason": "Öndeki çocuk turuncu üstlü; white shirt yanlış. Görüntüde kucakta baby yok, holding a baby eylemi de yok; arkada başka çocuk var.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "Cinsiyet tahmini etiketlenmedi; sayı ayrıca verilmedi çünkü tahmin zaten iki kişi ima ediyor."
+    },
+    {
+      "number": 23,
+      "image_id": "3220126881_b0a4f7cccb.jpg",
+      "beam3": "a man in a black shirt and a black leather jacket is sitting on a bench",
+      "references": [
+        "Three people stand by a doorway posing for a photograph .",
+        "Two men and a woman pose for a picture .",
+        "Two men and a woman smile at the camera .",
+        "Two men and a woman standing near a doorway .",
+        "Two men and a woman with their arms around each other ."
+      ],
+      "labels": [
+        "yanlış nesne",
+        "genel ifade"
+      ],
+      "reason": "Tahmin diğer iki kişiyi ve birlikte poz verme bağlamını atlıyor, kadrajda görünmeyen bir bank ekliyor. Referanslar ayakta durmayı destekliyor ancak kırpım nedeniyle duruş görselden kesinleştirilemiyor",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "Tahmin diğer iki kişiyi ve birlikte poz verme bağlamını atlıyor, kadrajda görünmeyen bir bank ekliyor. Referanslar ayakta durmayı destekliyor ancak kırpım nedeniyle duruş görselden kesinleştirilemiyor",
+      "uncertain_labels": [
+        "eylem"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "yanlış nesne, genel ifade, belirsiz — eylem",
+      "human_notes": "Tahmin diğer iki kişiyi ve birlikte poz verme bağlamını atlıyor, kadrajda görünmeyen bir bank ekliyor. Referanslar ayakta durmayı destekliyor ancak kırpım nedeniyle duruş görselden kesinleştirilemiyor"
+    },
+    {
+      "number": 24,
+      "image_id": "3163563871_cef3cf33ea.jpg",
+      "beam3": "a tennis player is playing tennis",
+      "references": [
+        "A boy in a white shirt and blue shirts is playing tennis .",
+        "A boy swings his tennis racket at a tennis ball .",
+        "A kid in a black cap and light blue shorts playing tennis .",
+        "A person with sunglasses , blue shorts and a white shirt hitting a tennis ball .",
+        "A woman is hitting a tennis ball ."
+      ],
+      "labels": [],
+      "reason": "Tahmin kısa olsa da görüntünün ana etkinliğini doğru anlatıyor. Vuruş ve kıyafet ayrıntılarının atlanması hata sayılmadı",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "",
+      "human_notes": "Tahmin kısa olsa da görüntünün ana etkinliğini doğru anlatıyor. Vuruş ve kıyafet ayrıntılarının atlanması hata sayılmadı"
+    },
+    {
+      "number": 25,
+      "image_id": "2600883097_aca38cc146.jpg",
+      "beam3": "two brown dogs play in the water",
+      "references": [
+        "two brown dogs playing some water",
+        "Two brown dogs play in shallow water",
+        "Two brown dogs play in the water .",
+        "Two dogs ankle-deep in water .",
+        "Two dogs in shallow water ."
+      ],
+      "labels": [],
+      "reason": "İki kahverengi köpek sığ suda oynuyor; sayı, renk ve eylem uyumlu.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 26,
+      "image_id": "3084711346_fda0f5a3e6.jpg",
+      "beam3": "a man wearing a helmet",
+      "references": [
+        "A man in a red helmet holds a bullhorn .",
+        "A man next to a woman holding a megaphone .",
+        "A person holds a blow horn while wearing a helmet .",
+        "Two men are wearing helmets , while one of them holds a bullhorn .",
+        "Two people wearing handkerchiefs over their faces , one with a blow horn"
+      ],
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Kask doğru; elindeki megafon ve birden çok kişinin belirgin bağlamı atlanmış. Tek kişiyi betimlemek tek başına sayı hatası sayılmadı.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 27,
+      "image_id": "489065557_0eb08889cd.jpg",
+      "beam3": "a man in a green shirt is jumping into a lake",
+      "references": [
+        "A boy jumping from a rope into the water .",
+        "A boy wearing red swim trunks is swinging from a rope into the water .",
+        "A man has let go of the rope swing over the river .",
+        "A person in swimming trunks who has used a rope swing to jump into a lake .",
+        "The man is dropping from a swinging rope into a calm river ."
+      ],
+      "labels": [
+        "yanlış nesne"
+      ],
+      "reason": "Suya atlayan kişinin üst gövdesi çıplak; green shirt uydurulmuş. Atlayış doğru, olmayan giysiye ayrıca renk etiketi verilmedi.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 28,
+      "image_id": "3359563671_35b67898e7.jpg",
+      "beam3": "a man is doing a trick",
+      "references": [
+        "A person jumping on their snowboard .",
+        "A snowboarder in black and yellow is jumping on a purple snowboard .",
+        "A young man is doing a ski jump with a purple board .",
+        "Snowboarder in yellow pants and white helmet in midair .",
+        "Snowboarder holding onto board while in midair ."
+      ],
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Havada snowboard hareketi var; doing a trick ekipman ve kar sporunu belirtmiyor.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 29,
+      "image_id": "3553225222_f5ebe44af1.jpg",
+      "beam3": "a man in a blue shirt and a blue shirt",
+      "references": [
+        "A child in a graduation gown throws the cap in the air .",
+        "A child who is celebrating their graduation in a field .",
+        "A young child dressed in a graduation gown is throwing a graduation cap in the air .",
+        "A young girl throws her graduation cap into the air .",
+        "Young girl in red graduation suit flings her hat upward into the field ."
+      ],
+      "labels": [
+        "yanlış nesne",
+        "renk",
+        "genel ifade",
+        "kelime tekrarı"
+      ],
+      "reason": "Çocuk kırmızı mezuniyet cübbesiyle kep atıyor; blue shirt iki kez yineleniyor ve mezuniyet/eylem yok.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 30,
+      "image_id": "3270273940_61ef506f05.jpg",
+      "beam3": "a boy in a blue shirt is climbing a rope",
+      "references": [
+        "Children jumping off of cement .",
+        "Two children are jumping off a wall .",
+        "Two children standing on a wall .",
+        "Two young children jumping off of a cement ledge onto the dirt ground .",
+        "Two young girls are jumping off of a steep step ."
+      ],
+      "labels": [
+        "yanlış nesne",
+        "renk",
+        "eylem"
+      ],
+      "reason": "Çocuklar basamak kenarından aşağı atlıyor. Tahmin ip tırmanışı anlatıyor ancak tırmanılan bir ip görünmüyor. Üst giysiler kırmızı ve pembe tonlarında, mavi parçalar ise pantolonlar",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "yanlış nesne, renk, eylem",
+      "human_notes": "Çocuklar basamak kenarından aşağı atlıyor. Tahmin ip tırmanışı anlatıyor ancak tırmanılan bir ip görünmüyor. Üst giysiler kırmızı ve pembe tonlarında, mavi parçalar ise pantolonlar"
+    },
+    {
+      "number": 31,
+      "image_id": "3488087117_2719647989.jpg",
+      "beam3": "a white and white dog is playing with a toy",
+      "references": [
+        "a brown and white dog jumps on the sidewalk .",
+        "A little white dog in running on the sidewalk .",
+        "A white dog with brown ears is running on the sidewalk .",
+        "Little brown and white dog running on the sidewalk .",
+        "The dog is running ."
+      ],
+      "labels": [
+        "yanlış nesne",
+        "eylem",
+        "kelime tekrarı"
+      ],
+      "reason": "Köpek kaldırımda koşuyor; görünür oyuncak yok. white and white yinelenmiş. Kahverengi ayrıntıların atlanmasına renk etiketi verilmedi.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 32,
+      "image_id": "2933637854_984614e18b.jpg",
+      "beam3": "a football player in a blue uniform",
+      "references": [
+        "a football player wearing an orange jersey holding a football",
+        "A football player wearing an orange uniform smiling and holding the football .",
+        "A man in an orange jersey with the letter \" 12 \" on it plays football .",
+        "A University of Miami player holds a football .",
+        "Number 12 in orange gets ready to throw the football ."
+      ],
+      "labels": [
+        "renk",
+        "genel ifade"
+      ],
+      "reason": "Forma turuncu, mavi değil; eldeki top ve hazırlık eylemi atlanmış.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 33,
+      "image_id": "2854959952_3991a385ab.jpg",
+      "beam3": "a white and white dog is running through the grass",
+      "references": [
+        "One dog leaps to catch a softball while another looks on .",
+        "The two dogs , one of which is leaping in the air , are chasing a ball outdoors .",
+        "two dogs jump for a ball on a green field .",
+        "Two dogs play catch with a ball in a field .",
+        "Two small dogs pursuing a ball across a grassy field ."
+      ],
+      "labels": [
+        "eylem",
+        "genel ifade",
+        "kelime tekrarı"
+      ],
+      "reason": "Tahmin ikinci köpeği ve top yakalama bağlamını atlıyor. Köpeğin topa doğru sıçramasını koşma olarak betimliyor. ‘White and white’ ifadesinde aynı renk gereksiz yere yineleniyor",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "eylem, genel ifade, kelime tekrarı",
+      "human_notes": "Tahmin ikinci köpeği ve top yakalama bağlamını atlıyor. Köpeğin topa doğru sıçramasını koşma olarak betimliyor. ‘White and white’ ifadesinde aynı renk gereksiz yere yineleniyor"
+    },
+    {
+      "number": 34,
+      "image_id": "3097171315_0ba7d283b1.jpg",
+      "beam3": "a group of people sit on a bed",
+      "references": [
+        "a group of people are congregated in a room by a big round mirror .",
+        "A group of people enter a fancy golden living room .",
+        "A group of people mills about in a room with crystal chandelier , a brown leather couch and a large round mirror .",
+        "A group of people stand in a fancily decorated room .",
+        "The people are gathered in a room with a sofa , round mirror , and chandelier ."
+      ],
+      "labels": [
+        "yanlış nesne",
+        "eylem"
+      ],
+      "reason": "Grup gösterişli odada ayakta; ön planda kanepe var, bed yok. Grup sit eyleminde değil.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 35,
+      "image_id": "3085667865_fa001816be.jpg",
+      "beam3": "a man is surfing on a surfboard",
+      "references": [
+        "a lone surfboarder jumping a wave on a white surfboard .",
+        "A man flies into the air with his surfboard .",
+        "A person in a wetsuit is in midair while surfing .",
+        "A surfer is in the air above the ocean .",
+        "A surfer performs a trick ."
+      ],
+      "labels": [],
+      "reason": "Tahmin ana etkinlik olan sörfü doğru anlatıyor. Havadaki hareket belirtilmediği için açıklama daha az ayrıntılı, ancak bu eksiklik kesin hata olarak sayılmadı",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "",
+      "human_notes": "Tahmin ana etkinlik olan sörfü doğru anlatıyor. Havadaki hareket belirtilmediği için açıklama daha az ayrıntılı, ancak bu eksiklik kesin hata olarak sayılmadı"
+    },
+    {
+      "number": 36,
+      "image_id": "3530843182_35af2c821c.jpg",
+      "beam3": "a man wearing a blue shirt and a blue shirt",
+      "references": [
+        "A couple practice different ways to wear sunglasses in front of a red car .",
+        "A girl and boy with sunglasses and a red car behind them .",
+        "A man with sunglasses and a woman with a hat are in front of a car .",
+        "a man with sunglasses on his head is looking at the woman with a white hat and red scarf next to him whilst standing in front of a red sports car .",
+        "A woman in a crochet hat and sunglasses smiles while the man beside her in a plaid short and sunglasses looks behind her ."
+      ],
+      "labels": [
+        "genel ifade",
+        "kelime tekrarı"
+      ],
+      "reason": "Tahmin ikinci kişiyi ve kırmızı arabayı atlıyor. ‘A blue shirt’ öbeği gereksiz yere yineleniyor. Gömlekte mavi çizgiler görüldüğü için kesin renk hatası eklenmedi",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "genel ifade, kelime tekrarı",
+      "human_notes": "Tahmin ikinci kişiyi ve kırmızı arabayı atlıyor. ‘A blue shirt’ öbeği gereksiz yere yineleniyor. Gömlekte mavi çizgiler görüldüğü için kesin renk hatası eklenmedi"
+    },
+    {
+      "number": 37,
+      "image_id": "418796494_bdb441de42.jpg",
+      "beam3": "a black and white dog with a red collar",
+      "references": [
+        "A dachshund puppy jumps on a bed .",
+        "A puppy jumps on a bed with purple sheets .",
+        "A puppy on a bed with blue sheets and pillow .",
+        "A small black and brown puppy is looking up",
+        "The dog is on the bed ."
+      ],
+      "labels": [
+        "yanlış nesne",
+        "renk",
+        "genel ifade"
+      ],
+      "reason": "Köpek siyah/kahverengi, black and white değil; red collar görünmüyor ve yatak bağlamı atlanmış.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 38,
+      "image_id": "3052038928_9f53aa2084.jpg",
+      "beam3": "a group of people sit on a bench",
+      "references": [
+        "A group of five young adults lounging indoors .",
+        "A man and a woman sit on a couch and look at each other while three other men stand by .",
+        "A small group of people standing while two sit on the couch .",
+        "There are four men and one woman .",
+        "Three men are setting up a scene by measuring the lights for a couple sitting on a low couch ."
+      ],
+      "labels": [],
+      "reason": "İki kişi gerçekten oturuyor. Görsel tarif ve referanslar kanepeyi destekliyor, ancak mobilyanın türü kesinleştirilemedi",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "İki kişi gerçekten oturuyor. Görsel tarif ve referanslar kanepeyi destekliyor, ancak mobilyanın türü kesinleştirilemedi",
+      "uncertain_labels": [
+        "yanlış nesne"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "belirsiz — yanlış nesne",
+      "human_notes": "İki kişi gerçekten oturuyor. Görsel tarif ve referanslar kanepeyi destekliyor, ancak mobilyanın türü kesinleştirilemedi"
+    },
+    {
+      "number": 39,
+      "image_id": "374828031_9d087da5cf.jpg",
+      "beam3": "a man climbs a rock wall",
+      "references": [
+        "a climber is scaling a reddish colored rock face .",
+        "a lone man climbing a huge rock wall",
+        "A man climbing a cliff .",
+        "A man climbing a rock cliff .",
+        "The man is scaling a large copper boulder ."
+      ],
+      "labels": [],
+      "reason": "Kişi kaya duvarına tırmanıyor; ana nesne ve eylem doğru.",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read"
+    },
+    {
+      "number": 40,
+      "image_id": "2599903773_0f724d8f63.jpg",
+      "beam3": "a little girl blowing bubbles",
+      "references": [
+        "A boy in a plaid shirt blowing bubbles with a yellow bubble wand .",
+        "A boy in over-alls blowing bubbles in a field .",
+        "A boy in overalls blows bubbles .",
+        "A young boy blows bubbles on a grassy lawn .",
+        "Little boy in plaid shirt blows bubbles outdoors ."
+      ],
+      "labels": [],
+      "reason": "Baloncuk üfleme eylemi doğru. Tahmindeki ‘girl’ ifadesi beş referanstaki ‘boy’ ifadesiyle uyuşmuyor. Kişi niteliği görüntüden doğrulanamadı",
+      "needs_user_review": false,
+      "visual_inspection": "full-image contact sheet visually inspected, caption and all five references read",
+      "uncertainty": "Baloncuk üfleme eylemi doğru. Tahmindeki ‘girl’ ifadesi beş referanstaki ‘boy’ ifadesiyle uyuşmuyor. Kişi niteliği görüntüden doğrulanamadı",
+      "uncertain_labels": [
+        "kişi niteliği (boy/girl)"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "belirsiz — kişi niteliği (boy/girl)",
+      "human_notes": "Baloncuk üfleme eylemi doğru. Tahmindeki ‘girl’ ifadesi beş referanstaki ‘boy’ ifadesiyle uyuşmuyor. Kişi niteliği görüntüden doğrulanamadı"
+    }
+  ]
+}

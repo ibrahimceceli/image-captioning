@@ -1,0 +1,86 @@
+{
+  "git_base": "a625d64",
+  "checkpoint_sha256": "902073d3b34e4c75b6bee33c16c3ab61214f44c54109df7e8b9b77c913158f42",
+  "checkpoint_epoch": 10,
+  "checkpoint_config_matches_model2_yaml": true,
+  "checkpoint_historical_hash_available": false,
+  "historical_checkpoint_identity_evidence": "same path, epoch 10, architecture and vocab size; historical binary SHA256 was not recorded",
+  "config_differences": {
+    "model.attention_dim": {
+      "model1": null,
+      "model2": 512
+    },
+    "model.num_layers": {
+      "model1": 1,
+      "model2": null
+    },
+    "model.type": {
+      "model1": "lstm",
+      "model2": "attention_lstm"
+    },
+    "name": {
+      "model1": "model1_lstm",
+      "model2": "model2_attention_lstm"
+    }
+  },
+  "same_sections": [
+    "data",
+    "evaluation",
+    "training",
+    "optimizer",
+    "features",
+    "seed",
+    "loss",
+    "early_stopping"
+  ],
+  "shared_base_sha256": "d9feef458379bf7ef972f1c100a23fd81ae29655190db6d31d071c4eb434a480",
+  "split_sha256": "e100030c246a35a124a874dde2c5e2153ada7f9208a75f307cc4ed1d63dbbfee",
+  "vocab_sha256": "5f3a9a62015a2b5e96e87cc4b38420e8075b900f8e6dc27cdc041fabdde175aa",
+  "validation_cache": {
+    "image_count": 1000,
+    "exact_val_coverage": true,
+    "metadata": {
+      "weights": "ResNet50_Weights.IMAGENET1K_V1",
+      "layer": "layer4 (avgpool ve fc atıldı)",
+      "dtype": "float16",
+      "shape": [
+        1000,
+        2048,
+        7,
+        7
+      ],
+      "amp": true,
+      "resize_short_edge": 256,
+      "image_size": 224,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "torch": "2.6.0+cu118",
+      "torchvision": "0.21.0+cu118",
+      "device": "cuda",
+      "seconds": 24.6
+    }
+  },
+  "torch": "2.6.0+cu118",
+  "torchvision": "0.21.0+cu118",
+  "device": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+  "nucleus_files_sha256": {
+    "results/model2_attention_lstm/nucleus_p09_seed42/quality_metrics.json": "45fe98417bf4341ea8385c19decdcc9286512e6724e53565de8eaf3c3d467eb6",
+    "results/model2_attention_lstm/nucleus_p09_seed42/val_captions_nucleus0.9.json": "6095828d37c76fab70ca1f71e57872eedd31431be09f751c86f14368838a36fe",
+    "results/model2_attention_lstm/nucleus_p09_seed42/val_metrics.json": "708e90cb01e262c07d8936a277749da52ae60def82303b849baff7d52921c322",
+    "results/model2_attention_lstm/nucleus_p09_seed43/quality_metrics.json": "a76cb605554d57300c913c74b8d71718eaba07ab3616f20ddd533c84e69a6e26",
+    "results/model2_attention_lstm/nucleus_p09_seed43/val_captions_nucleus0.9.json": "0a6349d83509ca6f4e3937ad50dc277b0877697eb9d56c90d7bb3983b4927237",
+    "results/model2_attention_lstm/nucleus_p09_seed43/val_metrics.json": "488fecd2ed45b752d8b834d977a031e14db4175f3721bae734da370fb6059eed",
+    "results/model2_attention_lstm/nucleus_p09_seed44/quality_metrics.json": "d3abb66c78f3e64765b9862694df23f18fa5f8bf89933908e9a6734375544335",
+    "results/model2_attention_lstm/nucleus_p09_seed44/val_captions_nucleus0.9.json": "86296cbcc8d488ec7058886caf5bcd1e5d8f327fbf8f2204ca1db940e29e0581",
+    "results/model2_attention_lstm/nucleus_p09_seed44/val_metrics.json": "6c3d5084209233e32fe8dd6cdb7301bf1a1ebd261785030bf3f79034bdfa0fca",
+    "results/model2_attention_lstm/nucleus_p09_summary.json": "142f36d8ec9199138b3cec1cbe906e60d19138d782ef90f686bb1c9dc1a494c7"
+  }
+}

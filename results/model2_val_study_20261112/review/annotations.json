@@ -1,0 +1,459 @@
+{
+  "reviewer": "Codex; manual visual inspection of all 40 full-image contact-sheet panels and five references per image",
+  "status": "18 initially flagged records resolved with user; other 22 original visual annotations retained; uncertain labels excluded from confirmed counts",
+  "categories": {
+    "yanlış nesne": "Görselde olmayan nesne/giysi/ortam eklenmesi veya nesnenin yanlış adlandırılması. Salt nesne atlama tek başına bu etiketi almaz. Cinsiyet görüntüden varsayılmaz.",
+    "sayı": "Açıkça yanlış adet belirtilmesi. Tekil bir aktörü anlatıp diğerini atlamak tek başına sayı hatası sayılmaz; bağlam kaybı varsa genel ifade olarak değerlendirilir.",
+    "renk": "Mevcut nesne/giysinin açıkça yanlış rengi. Renk atlama hata sayılmaz; olmayan giysi için renk yerine yanlış nesne kullanılır.",
+    "eylem": "Ana eylem veya mekânsal ilişkinin görünür durumla çelişmesi. Yalnız eylem atlama genel ifade altında değerlendirilir.",
+    "genel ifade": "Sahnenin ayırt edici ana bağlamını veya aktörler arası etkileşimi atlayan açıklama. Ana etkinliği doğru veren kısa açıklamalarda salt ayrıntı eksikliği hata sayılmaz; yarım kalma tek başına bu etiketi zorunlu kılmaz.",
+    "kelime tekrarı": "Gereksiz aynı içerik sözcüğü/öbeği tekrarı; sıradan a/the/is ve zorunlu sözdizimsel tekrarlar sayılmaz."
+  },
+  "annotations": [
+    {
+      "number": 1,
+      "labels": [
+        "yanlış nesne",
+        "renk",
+        "eylem"
+      ],
+      "reason": "Çocuk yerde uzanıp ağlıyor; bed/jumping ve kırmızı üst yerine mor elbise görünüyor.",
+      "needs_user_review": false,
+      "uncertainty": "Boy/girl ayrımı ayrıca etiketlenmedi; üç etiket yatak, renk ve eylem kanıtına dayanıyor."
+    },
+    {
+      "number": 2,
+      "labels": [
+        "renk",
+        "genel ifade"
+      ],
+      "reason": "Üst giysi siyah, mavi değil. Ayakta oluş doğru; buz blokunu testereyle yontma ana eylemi ve alet atlanmış.",
+      "needs_user_review": false
+    },
+    {
+      "number": 3,
+      "labels": [],
+      "reason": "Bir çocuğun futbol oynadığı açık, ikinci çocuğun oyuna katıldığı doğrulanamadı",
+      "needs_user_review": false,
+      "uncertainty": "Bir çocuğun futbol oynadığı açık, ikinci çocuğun oyuna katıldığı doğrulanamadı",
+      "uncertain_labels": [
+        "sayı"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "belirsiz — sayı",
+      "human_notes": "Bir çocuğun futbol oynadığı açık, ikinci çocuğun oyuna katıldığı doğrulanamadı"
+    },
+    {
+      "number": 4,
+      "labels": [],
+      "reason": "Man sözcüğü iki ayrı kişiye gönderme yapıyor. Cümle doğal değil ve çoğul özneyle ‘are’ kullanılmalı",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "",
+      "human_notes": "Man sözcüğü iki ayrı kişiye gönderme yapıyor. Cümle doğal değil ve çoğul özneyle ‘are’ kullanılmalı"
+    },
+    {
+      "number": 5,
+      "labels": [
+        "renk",
+        "eylem"
+      ],
+      "reason": "Çocuk sığ suda ayakta; swimming değil. Görünen üst gri/mavi, şort renkli; pink bathing suit görünmüyor.",
+      "needs_user_review": false,
+      "uncertainty": "Boy/girl referans farkı bağımsız görsel cinsiyet etiketi olarak kullanılmadı."
+    },
+    {
+      "number": 6,
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Tahmin, sahneyi ayırt eden su kenarını ve kovaları belirtmiyor. Kumda oynama ifadesi doğrulanamadığı için kesin eylem hatası olarak sayılmadı",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "genel ifade",
+      "human_notes": "Tahmin, sahneyi ayırt eden su kenarını ve kovaları belirtmiyor. Kumda oynama ifadesi doğrulanamadığı için kesin eylem hatası olarak sayılmadı"
+    },
+    {
+      "number": 7,
+      "labels": [
+        "yanlış nesne",
+        "genel ifade"
+      ],
+      "reason": "Güneş gözlüğü görünmüyor; gözler açıkta ve atkı yüzü örtüyor. Yüzü örtme ana eylemi atlanmış.",
+      "needs_user_review": false
+    },
+    {
+      "number": 8,
+      "labels": [],
+      "reason": "Tahmin ‘blowing a’ ile yarım kalıyor. Üfleme eylemi ve giysi rengi doğrulanamadı",
+      "needs_user_review": false,
+      "uncertainty": "Tahmin ‘blowing a’ ile yarım kalıyor. Üfleme eylemi ve giysi rengi doğrulanamadı",
+      "uncertain_labels": [
+        "eylem"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "belirsiz — eylem",
+      "human_notes": "Tahmin ‘blowing a’ ile yarım kalıyor. Üfleme eylemi ve giysi rengi doğrulanamadı"
+    },
+    {
+      "number": 9,
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Kırmızı formalı oyuncu doğru; birden çok oyuncunun etkileşimi ve tribün bağlamı atlanmış. Tek bir oyuncuyu tanımlamak tek başına yanlış sayı sayılmadı.",
+      "needs_user_review": false
+    },
+    {
+      "number": 10,
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Siyah ve beyaz alanlar görüldüğü için kesin renk hatası sayılmadı. Tahmin karı ve kar savurma eylemini belirtmiyor",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "genel ifade",
+      "human_notes": "Siyah ve beyaz alanlar görüldüğü için kesin renk hatası sayılmadı. Tahmin karı ve kar savurma eylemini belirtmiyor"
+    },
+    {
+      "number": 11,
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Açık hava kafe masasında oturup içecek içen insanlar; yalnız group of people gather ayırt edici bağlamı vermiyor.",
+      "needs_user_review": false
+    },
+    {
+      "number": 12,
+      "labels": [
+        "renk",
+        "genel ifade"
+      ],
+      "reason": "Kaykaycının üstü yeşil, kırmızı değil; jumping off a tamamlanmamış ve kaykay nesnesini atlıyor.",
+      "needs_user_review": false
+    },
+    {
+      "number": 13,
+      "labels": [
+        "eylem",
+        "genel ifade"
+      ],
+      "reason": "Tahmin ikinci köpeği ve aralarındaki etkileşimi atlıyor. Büyük köpeğin diğerine doğru sıçramasını arazide koşma olarak anlatıyor",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "eylem, genel ifade",
+      "human_notes": "Tahmin ikinci köpeği ve aralarındaki etkileşimi atlıyor. Büyük köpeğin diğerine doğru sıçramasını arazide koşma olarak anlatıyor"
+    },
+    {
+      "number": 14,
+      "labels": [
+        "eylem"
+      ],
+      "reason": "İnsan dağ zirvesinde ayakta değil; ön plandaki düz/çayırlık alanda at üstünde. Atın yalnız atlanmasını yanlış nesne diye saymadım.",
+      "needs_user_review": false
+    },
+    {
+      "number": 15,
+      "labels": [],
+      "reason": "Siyah-beyaz köpek bariyer/çit üzerinden atlıyor; tahmin ana içeriğe uyuyor.",
+      "needs_user_review": false
+    },
+    {
+      "number": 16,
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Tahmin ikinci kişiyi ve birlikte yaptıkları barış işaretini atlıyor. Cümle ‘with a black’ ifadesiyle yarım kalıyor. Giysi türü ve rengi için kesin hata etiketi verilmedi",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "genel ifade",
+      "human_notes": "Tahmin ikinci kişiyi ve birlikte yaptıkları barış işaretini atlıyor. Cümle ‘with a black’ ifadesiyle yarım kalıyor. Giysi türü ve rengi için kesin hata etiketi verilmedi"
+    },
+    {
+      "number": 17,
+      "labels": [
+        "eylem"
+      ],
+      "reason": "İnsanlar suyun içinden değil köprü üzerinden geçiyor; through a river mekânsal ilişkiyi yanlış veriyor.",
+      "needs_user_review": false
+    },
+    {
+      "number": 18,
+      "labels": [],
+      "reason": "Görüntü baş sallama veya silkelenmeyle uyumlu. Bir referans koşmayı tarif ediyor ve tek kareden eylem kesinleştirilemiyor",
+      "needs_user_review": false,
+      "uncertainty": "Görüntü baş sallama veya silkelenmeyle uyumlu. Bir referans koşmayı tarif ediyor ve tek kareden eylem kesinleştirilemiyor",
+      "uncertain_labels": [
+        "eylem"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "belirsiz — eylem",
+      "human_notes": "Görüntü baş sallama veya silkelenmeyle uyumlu. Bir referans koşmayı tarif ediyor ve tek kareden eylem kesinleştirilemiyor"
+    },
+    {
+      "number": 19,
+      "labels": [
+        "renk",
+        "genel ifade"
+      ],
+      "reason": "Üst giysiler açık gri ve kırmızı görünüyor. Tahmin ikinci çocuğu, topu ve futbol bağlamını atlıyor. Koşma, futbol sırasında mümkün olduğu için kesin eylem hatası eklenmedi",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "renk, genel ifade",
+      "human_notes": "Üst giysiler açık gri ve kırmızı görünüyor. Tahmin ikinci çocuğu, topu ve futbol bağlamını atlıyor. Koşma, futbol sırasında mümkün olduğu için kesin eylem hatası eklenmedi"
+    },
+    {
+      "number": 20,
+      "labels": [
+        "yanlış nesne",
+        "eylem"
+      ],
+      "reason": "Tahmin, boya kaplı zemini su olarak betimliyor ve oturan çocuğun yüzdüğünü söylüyor. Giysi boya ile kaplı olduğundan özgün rengi belirlenemedi",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "yanlış nesne, eylem",
+      "human_notes": "Tahmin, boya kaplı zemini su olarak betimliyor ve oturan çocuğun yüzdüğünü söylüyor. Giysi boya ile kaplı olduğundan özgün rengi belirlenemedi"
+    },
+    {
+      "number": 21,
+      "labels": [],
+      "reason": "Havuzdaki çocuk betimlemesi görüntü ve referanslarla uyumlu; kısa olması tek başına genel ifade hatası sayılmadı.",
+      "needs_user_review": false
+    },
+    {
+      "number": 22,
+      "labels": [
+        "yanlış nesne",
+        "renk",
+        "eylem"
+      ],
+      "reason": "Öndeki çocuk turuncu üstlü; white shirt yanlış. Görüntüde kucakta baby yok, holding a baby eylemi de yok; arkada başka çocuk var.",
+      "needs_user_review": false,
+      "uncertainty": "Cinsiyet tahmini etiketlenmedi; sayı ayrıca verilmedi çünkü tahmin zaten iki kişi ima ediyor."
+    },
+    {
+      "number": 23,
+      "labels": [
+        "yanlış nesne",
+        "genel ifade"
+      ],
+      "reason": "Tahmin diğer iki kişiyi ve birlikte poz verme bağlamını atlıyor, kadrajda görünmeyen bir bank ekliyor. Referanslar ayakta durmayı destekliyor ancak kırpım nedeniyle duruş görselden kesinleştirilemiyor",
+      "needs_user_review": false,
+      "uncertainty": "Tahmin diğer iki kişiyi ve birlikte poz verme bağlamını atlıyor, kadrajda görünmeyen bir bank ekliyor. Referanslar ayakta durmayı destekliyor ancak kırpım nedeniyle duruş görselden kesinleştirilemiyor",
+      "uncertain_labels": [
+        "eylem"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "yanlış nesne, genel ifade, belirsiz — eylem",
+      "human_notes": "Tahmin diğer iki kişiyi ve birlikte poz verme bağlamını atlıyor, kadrajda görünmeyen bir bank ekliyor. Referanslar ayakta durmayı destekliyor ancak kırpım nedeniyle duruş görselden kesinleştirilemiyor"
+    },
+    {
+      "number": 24,
+      "labels": [],
+      "reason": "Tahmin kısa olsa da görüntünün ana etkinliğini doğru anlatıyor. Vuruş ve kıyafet ayrıntılarının atlanması hata sayılmadı",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "",
+      "human_notes": "Tahmin kısa olsa da görüntünün ana etkinliğini doğru anlatıyor. Vuruş ve kıyafet ayrıntılarının atlanması hata sayılmadı"
+    },
+    {
+      "number": 25,
+      "labels": [],
+      "reason": "İki kahverengi köpek sığ suda oynuyor; sayı, renk ve eylem uyumlu.",
+      "needs_user_review": false
+    },
+    {
+      "number": 26,
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Kask doğru; elindeki megafon ve birden çok kişinin belirgin bağlamı atlanmış. Tek kişiyi betimlemek tek başına sayı hatası sayılmadı.",
+      "needs_user_review": false
+    },
+    {
+      "number": 27,
+      "labels": [
+        "yanlış nesne"
+      ],
+      "reason": "Suya atlayan kişinin üst gövdesi çıplak; green shirt uydurulmuş. Atlayış doğru, olmayan giysiye ayrıca renk etiketi verilmedi.",
+      "needs_user_review": false
+    },
+    {
+      "number": 28,
+      "labels": [
+        "genel ifade"
+      ],
+      "reason": "Havada snowboard hareketi var; doing a trick ekipman ve kar sporunu belirtmiyor.",
+      "needs_user_review": false
+    },
+    {
+      "number": 29,
+      "labels": [
+        "yanlış nesne",
+        "renk",
+        "genel ifade",
+        "kelime tekrarı"
+      ],
+      "reason": "Çocuk kırmızı mezuniyet cübbesiyle kep atıyor; blue shirt iki kez yineleniyor ve mezuniyet/eylem yok.",
+      "needs_user_review": false
+    },
+    {
+      "number": 30,
+      "labels": [
+        "yanlış nesne",
+        "renk",
+        "eylem"
+      ],
+      "reason": "Çocuklar basamak kenarından aşağı atlıyor. Tahmin ip tırmanışı anlatıyor ancak tırmanılan bir ip görünmüyor. Üst giysiler kırmızı ve pembe tonlarında, mavi parçalar ise pantolonlar",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "yanlış nesne, renk, eylem",
+      "human_notes": "Çocuklar basamak kenarından aşağı atlıyor. Tahmin ip tırmanışı anlatıyor ancak tırmanılan bir ip görünmüyor. Üst giysiler kırmızı ve pembe tonlarında, mavi parçalar ise pantolonlar"
+    },
+    {
+      "number": 31,
+      "labels": [
+        "yanlış nesne",
+        "eylem",
+        "kelime tekrarı"
+      ],
+      "reason": "Köpek kaldırımda koşuyor; görünür oyuncak yok. white and white yinelenmiş. Kahverengi ayrıntıların atlanmasına renk etiketi verilmedi.",
+      "needs_user_review": false
+    },
+    {
+      "number": 32,
+      "labels": [
+        "renk",
+        "genel ifade"
+      ],
+      "reason": "Forma turuncu, mavi değil; eldeki top ve hazırlık eylemi atlanmış.",
+      "needs_user_review": false
+    },
+    {
+      "number": 33,
+      "labels": [
+        "eylem",
+        "genel ifade",
+        "kelime tekrarı"
+      ],
+      "reason": "Tahmin ikinci köpeği ve top yakalama bağlamını atlıyor. Köpeğin topa doğru sıçramasını koşma olarak betimliyor. ‘White and white’ ifadesinde aynı renk gereksiz yere yineleniyor",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "eylem, genel ifade, kelime tekrarı",
+      "human_notes": "Tahmin ikinci köpeği ve top yakalama bağlamını atlıyor. Köpeğin topa doğru sıçramasını koşma olarak betimliyor. ‘White and white’ ifadesinde aynı renk gereksiz yere yineleniyor"
+    },
+    {
+      "number": 34,
+      "labels": [
+        "yanlış nesne",
+        "eylem"
+      ],
+      "reason": "Grup gösterişli odada ayakta; ön planda kanepe var, bed yok. Grup sit eyleminde değil.",
+      "needs_user_review": false
+    },
+    {
+      "number": 35,
+      "labels": [],
+      "reason": "Tahmin ana etkinlik olan sörfü doğru anlatıyor. Havadaki hareket belirtilmediği için açıklama daha az ayrıntılı, ancak bu eksiklik kesin hata olarak sayılmadı",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "",
+      "human_notes": "Tahmin ana etkinlik olan sörfü doğru anlatıyor. Havadaki hareket belirtilmediği için açıklama daha az ayrıntılı, ancak bu eksiklik kesin hata olarak sayılmadı"
+    },
+    {
+      "number": 36,
+      "labels": [
+        "genel ifade",
+        "kelime tekrarı"
+      ],
+      "reason": "Tahmin ikinci kişiyi ve kırmızı arabayı atlıyor. ‘A blue shirt’ öbeği gereksiz yere yineleniyor. Gömlekte mavi çizgiler görüldüğü için kesin renk hatası eklenmedi",
+      "needs_user_review": false,
+      "uncertainty": "",
+      "uncertain_labels": [],
+      "human_reviewed": true,
+      "review_status": "reviewed",
+      "human_labels": "genel ifade, kelime tekrarı",
+      "human_notes": "Tahmin ikinci kişiyi ve kırmızı arabayı atlıyor. ‘A blue shirt’ öbeği gereksiz yere yineleniyor. Gömlekte mavi çizgiler görüldüğü için kesin renk hatası eklenmedi"
+    },
+    {
+      "number": 37,
+      "labels": [
+        "yanlış nesne",
+        "renk",
+        "genel ifade"
+      ],
+      "reason": "Köpek siyah/kahverengi, black and white değil; red collar görünmüyor ve yatak bağlamı atlanmış.",
+      "needs_user_review": false
+    },
+    {
+      "number": 38,
+      "labels": [],
+      "reason": "İki kişi gerçekten oturuyor. Görsel tarif ve referanslar kanepeyi destekliyor, ancak mobilyanın türü kesinleştirilemedi",
+      "needs_user_review": false,
+      "uncertainty": "İki kişi gerçekten oturuyor. Görsel tarif ve referanslar kanepeyi destekliyor, ancak mobilyanın türü kesinleştirilemedi",
+      "uncertain_labels": [
+        "yanlış nesne"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "belirsiz — yanlış nesne",
+      "human_notes": "İki kişi gerçekten oturuyor. Görsel tarif ve referanslar kanepeyi destekliyor, ancak mobilyanın türü kesinleştirilemedi"
+    },
+    {
+      "number": 39,
+      "labels": [],
+      "reason": "Kişi kaya duvarına tırmanıyor; ana nesne ve eylem doğru.",
+      "needs_user_review": false
+    },
+    {
+      "number": 40,
+      "labels": [],
+      "reason": "Baloncuk üfleme eylemi doğru. Tahmindeki ‘girl’ ifadesi beş referanstaki ‘boy’ ifadesiyle uyuşmuyor. Kişi niteliği görüntüden doğrulanamadı",
+      "needs_user_review": false,
+      "uncertainty": "Baloncuk üfleme eylemi doğru. Tahmindeki ‘girl’ ifadesi beş referanstaki ‘boy’ ifadesiyle uyuşmuyor. Kişi niteliği görüntüden doğrulanamadı",
+      "uncertain_labels": [
+        "kişi niteliği (boy/girl)"
+      ],
+      "human_reviewed": true,
+      "review_status": "reviewed_uncertain",
+      "human_labels": "belirsiz — kişi niteliği (boy/girl)",
+      "human_notes": "Baloncuk üfleme eylemi doğru. Tahmindeki ‘girl’ ifadesi beş referanstaki ‘boy’ ifadesiyle uyuşmuyor. Kişi niteliği görüntüden doğrulanamadı"
+    }
+  ]
+}

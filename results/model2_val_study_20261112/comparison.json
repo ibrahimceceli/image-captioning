@@ -1,0 +1,68 @@
+{
+  "rows": [
+    {
+      "run": "historical_beam3",
+      "beam_size": 3,
+      "BLEU-1": 0.616994977818954,
+      "BLEU-2": 0.4354708500834034,
+      "BLEU-3": 0.2987882640940557,
+      "BLEU-4": 0.20298886879059969,
+      "CIDEr": 0.4697009365425026,
+      "ROUGE-L": 0.43957149345819474,
+      "METEOR": 0.18606545544905592,
+      "unique_captions": 813,
+      "ms_per_image": 182.65,
+      "decode_seconds_approx": 182.65,
+      "images": 1000
+    },
+    {
+      "run": "beam3_recheck",
+      "beam_size": 3,
+      "BLEU-1": 0.6169055791727143,
+      "BLEU-2": 0.4354103290251858,
+      "BLEU-3": 0.29871086691880994,
+      "BLEU-4": 0.20286166274162015,
+      "CIDEr": 0.4700595433962746,
+      "ROUGE-L": 0.4394516564315188,
+      "unique_captions": 813,
+      "ms_per_image": 111.99,
+      "decode_seconds_approx": 111.99,
+      "images": 1000
+    },
+    {
+      "run": "beam5",
+      "beam_size": 5,
+      "BLEU-1": 0.6018804704397831,
+      "BLEU-2": 0.42887125271994647,
+      "BLEU-3": 0.2980324679521931,
+      "BLEU-4": 0.20612474683448168,
+      "CIDEr": 0.4590305822486281,
+      "ROUGE-L": 0.4337352765161569,
+      "unique_captions": 773,
+      "ms_per_image": 193.55,
+      "decode_seconds_approx": 193.55,
+      "images": 1000
+    }
+  ],
+  "delta_beam5_minus_local_beam3": {
+    "BLEU-1": -0.01502510873293117,
+    "BLEU-2": -0.006539076305239311,
+    "BLEU-3": -0.0006783989666168111,
+    "BLEU-4": 0.0032630840928615235,
+    "CIDEr": -0.01102896114764651,
+    "ROUGE-L": -0.005716379915361891
+  },
+  "local_beam3_vs_historical_changed_captions": 5,
+  "changed_caption_ids": [
+    "1426014905_da60d72957.jpg",
+    "1463732130_a754441289.jpg",
+    "2635023078_6dae04758f.jpg",
+    "2698666984_13e17236ae.jpg",
+    "3503623999_bbd5dcfb18.jpg"
+  ],
+  "historical_timing_is_cross_environment": true,
+  "meteor_local_status": "unavailable: Java executable not installed; both new local runs omit METEOR; historical beam3 METEOR preserved",
+  "timing_scope": "synchronized decoder only, excludes ResNet50 extraction/cache construction/model loading/metrics",
+  "all_runs_exact_same_val_ids": true,
+  "references_and_split_hashes_match": true
+}

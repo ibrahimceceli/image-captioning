@@ -1,0 +1,79 @@
+[
+  {
+    "number": 1,
+    "image_id": "3168354472_866fe70d36.jpg",
+    "archived_beam3": "a little boy in a red shirt is jumping on a bed",
+    "local_beam3": "a little boy in a red shirt is jumping on a bed",
+    "matches_archived_caption": true,
+    "attention_source": "beam3 decoded path",
+    "attention_shape": [
+      12,
+      49
+    ],
+    "row_sums_close_to_one": true,
+    "image_crop": "Resize(short edge 256), CenterCrop(224), RGB before normalization",
+    "figure": "results/model2_val_study_20261112/attention/01_3168354472_866fe70d36_beam3.png",
+    "labels": [
+      "yanlış nesne",
+      "renk",
+      "eylem"
+    ]
+  },
+  {
+    "number": 15,
+    "image_id": "512045825_1be2083922.jpg",
+    "archived_beam3": "a black and white dog is jumping over a hurdle",
+    "local_beam3": "a black and white dog is jumping over a hurdle",
+    "matches_archived_caption": true,
+    "attention_source": "beam3 decoded path",
+    "attention_shape": [
+      10,
+      49
+    ],
+    "row_sums_close_to_one": true,
+    "image_crop": "Resize(short edge 256), CenterCrop(224), RGB before normalization",
+    "figure": "results/model2_val_study_20261112/attention/15_512045825_1be2083922_beam3.png",
+    "labels": []
+  },
+  {
+    "number": 29,
+    "image_id": "3553225222_f5ebe44af1.jpg",
+    "archived_beam3": "a man in a blue shirt and a blue shirt",
+    "local_beam3": "a man in a blue shirt and a blue shirt",
+    "matches_archived_caption": true,
+    "attention_source": "beam3 decoded path",
+    "attention_shape": [
+      10,
+      49
+    ],
+    "row_sums_close_to_one": true,
+    "image_crop": "Resize(short edge 256), CenterCrop(224), RGB before normalization",
+    "figure": "results/model2_val_study_20261112/attention/29_3553225222_f5ebe44af1_beam3.png",
+    "labels": [
+      "yanlış nesne",
+      "renk",
+      "genel ifade",
+      "kelime tekrarı"
+    ]
+  },
+  {
+    "number": 33,
+    "image_id": "2854959952_3991a385ab.jpg",
+    "archived_beam3": "a white and white dog is running through the grass",
+    "local_beam3": "a white and white dog is running through the grass",
+    "matches_archived_caption": true,
+    "attention_source": "beam3 decoded path",
+    "attention_shape": [
+      10,
+      49
+    ],
+    "row_sums_close_to_one": true,
+    "image_crop": "Resize(short edge 256), CenterCrop(224), RGB before normalization",
+    "figure": "results/model2_val_study_20261112/attention/33_2854959952_3991a385ab_beam3.png",
+    "labels": [
+      "eylem",
+      "genel ifade",
+      "kelime tekrarı"
+    ]
+  }
+]
