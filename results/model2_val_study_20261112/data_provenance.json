@@ -1,0 +1,11 @@
+{
+  "source": "https://www.kaggle.com/api/v1/datasets/download/adityajn105/flickr8k",
+  "dataset": "adityajn105/flickr8k",
+  "archive_sha256": "0677f83ccb736b08e73ddd1219ba1ba12bc72a8742a71df4edaaaa4abc64d42b",
+  "captions_sha256": "e6cf5e8d8025d25b50a4945c38580d96a940b78644f31a90368dfcdca3c7e036",
+  "matches_historical_beam3_references": true,
+  "images_extracted": 1000,
+  "only_image_partition_extracted": "val",
+  "test_images_extracted": false,
+  "test_predictions_or_metrics": false
+}

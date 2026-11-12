@@ -1,0 +1,18 @@
+{
+  "beam3": {
+    "checkpoint": "checkpoints/model2_attention_lstm_full_20261104_01/best.pt",
+    "checkpoint_epoch": 10,
+    "images": 1000,
+    "unique_captions": 813,
+    "unique_caption_ratio": 0.813,
+    "seed": 42,
+    "top_p": null,
+    "sampling_seed_policy": "decoder resets local CPU generator to the run seed for each image",
+    "max_tokens_including_start": 34,
+    "batch_size": 1,
+    "amp": false,
+    "CIDEr": 0.4701,
+    "ms_per_image": 111.99,
+    "device": "cuda"
+  }
+}
