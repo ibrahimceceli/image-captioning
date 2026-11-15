@@ -71,7 +71,7 @@ def main() -> None:
             if path.exists():
                 raise FileExistsError(f"Output already exists: {path}")
 
-    state = torch.load(args.checkpoint, map_location=device, weights_only=False)
+    state = torch.load(args.checkpoint, map_location=device, weights_only=True)
     config = state["config"]
     model = build_model(config, vocab).to(device)
     model.load_state_dict(state["model"])

@@ -1,28 +1,30 @@
-# Ekip içi çalışma
+**English** · [Türkçe](CONTRIBUTING.tr.md)
 
-Bu dosya üç kişilik ekibin çalışma kurallarını toplar. Projenin kendisi, sabit kararlar ve tekrar çalıştırma adımları [README.md](README.md) içindedir.
+# Team workflow
 
-## Dallar
+This file collects the working rules of the three-person team. The project itself, the fixed decisions and the reproduction steps are in [README.md](README.md).
 
-- `main`: çalışan ortak kod
-- `data`: Üye A
-- `attention`: Üye B
-- `transformer-demo`: Üye C
+## Branches
 
-Çalışmaya başlamadan `main` dalını çekip kendi dalınıza alın. Bitince kendi dalınıza commit atın ve `main` dalına Pull Request açın.
+- `main`: working shared code
+- `data`: Member A
+- `attention`: Member B
+- `transformer-demo`: Member C
 
-## Dosya sahipliği
+Before starting, pull `main` into your own branch. When you are done, commit to your branch and open a pull request into `main`.
 
-- `src/train.py`, `src/data/` ve demo iskeleti (`app/app.py`, `app/captioners.py` içindeki ortak katman): Üye A
-- `src/decode.py` ve attention modeli (`src/models/attention_lstm.py`): Üye B
-- `src/evaluate.py` ve demonun model bağlantıları (`app/captioners.py` içindeki `BlipCaptioner` ve Model 3 adaptörü, `app/config.yaml` model girdileri): Üye C
+## File ownership
 
-Başkasının dosyasında değişiklik gerekiyorsa dosyanın sahibi Pull Request'i birleştirir.
+- `src/train.py`, `src/data/` and the demo skeleton (`app/app.py`, the shared layer in `app/captioners.py`): Member A
+- `src/decode.py` and the attention model (`src/models/attention_lstm.py`): Member B
+- `src/evaluate.py` and the demo's model connections (`BlipCaptioner` and the Model 3 adapter in `app/captioners.py`, the model entries in `app/config.yaml`): Member C
 
-## Pull Request kuralı
+If a change is needed in someone else's file, the owner of that file merges the pull request.
 
-- Her değişiklik kendi dalınızdan `main` dalına Pull Request ile gelir.
-- Başkasının dosyasına dokunan Pull Request'i o dosyanın sahibi birleştirir.
-- Genel özette "kilitli" yazan değerler ([README: Sabit kararlar](README.md#sabit-kararlar)) değiştirilmez.
-- Veri, öznitelik önbelleği, checkpoint ve `kaggle.json` commit edilmez (`.gitignore`).
-- `python -m src.data.prepare` çalıştırdıktan sonra `src/data/artifacts/` altında değişiklik görünürse commit etmeyin; `git checkout -- src/data/artifacts` ile geri alın.
+## Pull request rules
+
+- Every change reaches `main` through a pull request from your own branch.
+- A pull request that touches someone else's file is merged by that file's owner.
+- Values marked as "locked" in the project overview ([README: Fixed decisions](README.md#fixed-decisions)) are not changed.
+- Data, the feature cache, checkpoints and `kaggle.json` are never committed (`.gitignore`).
+- If `src/data/artifacts/` shows changes after running `python -m src.data.prepare`, do not commit them; revert with `git checkout -- src/data/artifacts`.

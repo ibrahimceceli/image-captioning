@@ -152,7 +152,7 @@ def audit():
     diff = {key: {'model1': f1.get(key), 'model2': f2.get(key)}
             for key in sorted(f1.keys() | f2.keys()) if f1.get(key) != f2.get(key)}
     checkpoint = ROOT/'checkpoints/model2_attention_lstm_full_20261104_01/best.pt'
-    state = torch.load(checkpoint, map_location='cpu', weights_only=False)
+    state = torch.load(checkpoint, map_location='cpu', weights_only=True)
     assert state['config'] == c2 and state['epoch'] == 10 and state['vocab_size'] == 2572
     val = json.loads((ROOT/'src/data/artifacts/flickr8k_split.json').read_text())['val']
     index = json.loads((ROOT/'data/features/model2_val_20261112/resnet50_layer4_index.json').read_text())
@@ -373,7 +373,7 @@ def attention_examples():
     records = json.loads((STUDY/'review/review40.json').read_text(encoding='utf-8'))['records']
     device = 'cuda'
     checkpoint = ROOT/'checkpoints/model2_attention_lstm_full_20261104_01/best.pt'
-    state = torch.load(checkpoint, map_location='cpu', weights_only=False)
+    state = torch.load(checkpoint, map_location='cpu', weights_only=True)
     vocab = Vocabulary.load(ROOT/'src/data/artifacts/vocab.json')
     model = build_model(state['config'], vocab).to(device)
     model.load_state_dict(state['model'])

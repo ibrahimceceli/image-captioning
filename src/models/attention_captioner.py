@@ -24,7 +24,7 @@ class AttentionCaptioner:
     to RGB, resized, center-cropped and ImageNet-normalized by the shared
     feature pipeline. For Gradio use an Image component with type="pil".
     The caller creates and retains this object outside the UI callback.
-    Only load trusted checkpoints: training checkpoints contain Python data.
+    Checkpoints are loaded with weights_only=True, so they cannot run code.
     """
 
     def __init__(
@@ -48,7 +48,7 @@ class AttentionCaptioner:
         config = load_config(root / config_path if config_path is not None else None)
         self.device = torch.device(device)
         self.vocab = Vocabulary.load(root / config["vocab_path"])
-        state = torch.load(root / checkpoint, map_location="cpu", weights_only=False)
+        state = torch.load(root / checkpoint, map_location="cpu", weights_only=True)
         params = dict(state["config"]["model"])
         if params.pop("type") != "attention_lstm":
             raise ValueError("AttentionCaptioner requires an attention_lstm checkpoint")

@@ -346,7 +346,7 @@ def main() -> None:
     start_epoch = 1
     best = {"monitor": None, "select": None, "epoch": None, "stale": 0}
     if args.resume:
-        state = torch.load(checkpoint_dir / "last.pt", map_location=device, weights_only=False)
+        state = torch.load(checkpoint_dir / "last.pt", map_location=device, weights_only=True)
         model.load_state_dict(state["model"])
         optimizer.load_state_dict(state["optimizer"])
         scaler.load_state_dict(state["scaler"])
