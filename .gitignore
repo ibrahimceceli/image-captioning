@@ -227,6 +227,11 @@ checkpoints/
 *.pt
 *.pth
 *.ckpt
+*.safetensors
+*.bin
+*.npy
+*.npz
+*.zip
 
 # gizli anahtarlar
 .env

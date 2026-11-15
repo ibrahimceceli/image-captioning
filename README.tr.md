@@ -452,6 +452,8 @@ Test dosyaları: `tests/test_lstm.py` (Model 1), `tests/test_transformer.py` (Mo
 - **Sabitlenmiş paket sürümleri:** Test edilen paket sürümleri Python 3.12.3 ortamında [requirements.txt](requirements.txt) içinde sabitlenmiştir ([report/demo_dogrulama.md](report/demo_dogrulama.md)); yine de farklı donanım veya CUDA sürümleri küçük sayısal farklar doğurabilir.
 - **Model 2 checkpoint'i repoda yok:** Model 2 sonuçları commit'li JSON'lardan okunabilir; yeniden puanlama ve demo için checkpoint ekip içinden alınmalı ya da yeniden eğitilmelidir.
 - **Genel sınırlılıklar:** modeller görüntüde olmayan nesneleri anlatabilir (hallucination), eğitim verisindeki yanlılık altyazılara yansır ve küçük veri jenerik cümlelere yol açar. Kalitatif karşılaştırma ve 40 görüntülük hata incelemesi: [report/kalitatif_karsilastirma_4model.md](report/kalitatif_karsilastirma_4model.md).
+- **Örnek görseller:** `results/` altındaki attention görsellerinde kullanılan fotoğraflar Flickr8k veri setinden alınmıştır (Hodosh vd., 2013). Fotoğrafların hakları Flickr'daki sahiplerine aittir; burada yalnız araştırma ve eğitim amaçlı örnek olarak gösterilmiştir.
+- **Checkpoint yükleme:** tüm checkpoint'ler `torch.load(..., weights_only=True)` ile açılır; dosya yalnız tensör ve temel veri tipleri içerebilir, kod çalıştıramaz.
 
 ## Kaynakça
 

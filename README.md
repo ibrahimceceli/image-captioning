@@ -451,6 +451,8 @@ Test files: `tests/test_lstm.py` (Model 1), `tests/test_transformer.py` (Model 3
 - **Pinned package versions:** the tested versions are pinned in [requirements.txt](requirements.txt) for Python 3.12.3 ([report/demo_dogrulama.md](report/demo_dogrulama.md)); different hardware or CUDA versions may still cause small numerical differences.
 - **Model 2 checkpoint is not in the repository:** Model 2 results can be read from the committed JSON files; for re-scoring and the demo, get the checkpoint from the team or retrain.
 - **General limitations:** the models can describe objects that are not in the image (hallucination), biases in the training data carry over into the captions, and small data leads to generic sentences. Qualitative comparison and the 40-image error review: [report/kalitatif_karsilastirma_4model.md](report/kalitatif_karsilastirma_4model.md).
+- **Example images:** the photos shown in the attention figures under `results/` come from the Flickr8k dataset (Hodosh et al., 2013). The photos belong to their owners on Flickr and are shown here only as examples for research and education.
+- **Checkpoint loading:** all checkpoints are opened with `torch.load(..., weights_only=True)`; a file can only contain tensors and basic data types and cannot run code.
 
 ## References
 
