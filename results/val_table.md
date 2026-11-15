@@ -35,6 +35,10 @@ Doğrulama kümesi, 1000 görüntü × 5 referans, ham pycocoevalcap ölçeği (
 - `model2_attention_lstm/val_metrics_beam3.json`
 - `model2_attention_lstm/val_metrics_greedy.json`
 - `model2_attention_lstm_full_20261104_01/summary.json`
+- `model3_transformer/summary.json`
+- `model3_transformer/val_metrics.json`
+- `model3_transformer/val_metrics_beam3.json`
+- `model3_transformer/val_metrics_greedy.json`
 - `model4_blip_finetuned/summary.json`
 - `model4_blip_finetuned/val_metrics.json`
 - `model4_blip_finetuned/val_metrics_beam3.json`
@@ -52,8 +56,8 @@ Doğrulama kümesi, 1000 görüntü × 5 referans, ham pycocoevalcap ölçeği (
 | Model 1 — CNN-LSTM | beam-3 | 0.5297 | 0.3368 | 0.2131 | 0.1389 | 0.1590 | 0.3860 | 0.2778 | 164 | 45.96 | 5,653,004 | 10 |
 | Model 2 — Attention LSTM | greedy | 0.5638 | 0.3871 | 0.2566 | 0.1698 | 0.1867 | 0.4312 | 0.4409 | 877 | 63.20 | 11,159,565 | 10 |
 | Model 2 — Attention LSTM | beam-3 | 0.6170 | 0.4355 | 0.2988 | 0.2030 | 0.1861 | 0.4396 | 0.4697 | 813 | 182.65 | 11,159,565 | 10 |
-| Model 3 — Transformer | greedy | henüz yok |  |  |  |  |  |  |  |  |  |  |
-| Model 3 — Transformer | beam-3 | henüz yok |  |  |  |  |  |  |  |  |  |  |
+| Model 3 — Transformer | greedy | 0.6013 | 0.4153 | 0.2818 | 0.1872 | 0.1923 | 0.4441 | 0.4763 | 942 | 53.21 | 5,016,588 | 8 |
+| Model 3 — Transformer | beam-3 | 0.6050 | 0.4232 | 0.2925 | 0.1984 | 0.1869 | 0.4418 | 0.4778 | 900 | 160.59 | 5,016,588 | 8 |
 | Model 4 — BLIP (fine-tune edilmeden) | greedy | 0.6336 | 0.4839 | 0.3470 | 0.2427 | — | 0.4875 | 0.6337 | 808 | 156.37 | 223,971,644 | — |
 | Model 4 — BLIP (fine-tune edilmeden) | beam-3 | 0.6553 | 0.4986 | 0.3653 | 0.2621 | — | 0.4777 | 0.6833 | 772 | 205.57 | 223,971,644 | — |
 | Model 4 — BLIP (fine-tune edilmiş) | greedy | 0.7606 | 0.6034 | 0.4622 | 0.3463 | — | 0.5733 | 1.0141 | 969 | 216.94 | 223,971,644 | 2 |
@@ -124,4 +128,4 @@ Kontrol edilenler: her koşuda split == "val", n_images == 1000, 5 referans; met
 
 **Eksik dosyalar** (ilgili satırlar "henüz yok" ya da "—"):
 
-- `model3_transformer/` (klasör yok — koşu henüz yapılmadı)
+- Yok.

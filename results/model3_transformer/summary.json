@@ -1,0 +1,14 @@
+{
+  "name": "model3_transformer",
+  "model": "transformer",
+  "parameters": 5016588,
+  "train_examples": 30000,
+  "epochs_run": 11,
+  "best_epoch": 8,
+  "select_by": "val_cider",
+  "early_stopping_monitor": "val_loss",
+  "best_val_loss": 3.5886,
+  "best_val_cider_greedy": 0.4772,
+  "train_minutes": 8.3,
+  "checkpoint": "checkpoints/model3_transformer/best.pt"
+}

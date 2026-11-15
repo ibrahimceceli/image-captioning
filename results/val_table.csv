@@ -3,8 +3,8 @@ Model 1 — CNN-LSTM,model1_lstm,greedy,ok,0.4691,0.2907,0.1725,0.1063,0.1555,0.
 Model 1 — CNN-LSTM,model1_lstm,beam-3,ok,0.5297,0.3368,0.2131,0.1389,0.1590,0.3860,0.2778,164,45.96,5653004,10
 Model 2 — Attention LSTM,model2_attention_lstm,greedy,ok,0.5638,0.3871,0.2566,0.1698,0.1867,0.4312,0.4409,877,63.20,11159565,10
 Model 2 — Attention LSTM,model2_attention_lstm,beam-3,ok,0.6170,0.4355,0.2988,0.2030,0.1861,0.4396,0.4697,813,182.65,11159565,10
-Model 3 — Transformer,model3_transformer,greedy,henüz yok,,,,,,,,,,,
-Model 3 — Transformer,model3_transformer,beam-3,henüz yok,,,,,,,,,,,
+Model 3 — Transformer,model3_transformer,greedy,ok,0.6013,0.4153,0.2818,0.1872,0.1923,0.4441,0.4763,942,53.21,5016588,8
+Model 3 — Transformer,model3_transformer,beam-3,ok,0.6050,0.4232,0.2925,0.1984,0.1869,0.4418,0.4778,900,160.59,5016588,8
 Model 4 — BLIP (fine-tune edilmeden),model4_blip_pretrained,greedy,ok,0.6336,0.4839,0.3470,0.2427,,0.4875,0.6337,808,156.37,223971644,
 Model 4 — BLIP (fine-tune edilmeden),model4_blip_pretrained,beam-3,ok,0.6553,0.4986,0.3653,0.2621,,0.4777,0.6833,772,205.57,223971644,
 Model 4 — BLIP (fine-tune edilmiş),model4_blip_finetuned,greedy,ok,0.7606,0.6034,0.4622,0.3463,,0.5733,1.0141,969,216.94,223971644,2

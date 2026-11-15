@@ -14,7 +14,8 @@ Doğrulama kümesi: 1000 görüntü × 5 referans. Metrikler ham pycocoevalcap �
 | Model 1 — CNN-LSTM | beam-3 | 0.1389 | 0.1590 | 0.3860 | 0.2778 | 164 | 5,653,004 |
 | Model 2 — Attention LSTM | greedy | 0.1698 | 0.1867 | 0.4312 | 0.4409 | 877 | 11,159,565 |
 | Model 2 — Attention LSTM | beam-3 | 0.2030 | 0.1861 | 0.4396 | 0.4697 | 813 | 11,159,565 |
-| Model 3 — Transformer | greedy / beam-3 | ⏳ bekleniyor | | | | | |
+| Model 3 — Transformer | greedy | 0.1872 | 0.1923 | 0.4441 | 0.4763 | 942 | 5,016,588 |
+| Model 3 — Transformer | beam-3 | 0.1984 | 0.1869 | 0.4418 | 0.4778 | 900 | 5,016,588 |
 | Model 4 — BLIP (fine-tune edilmeden) | greedy | 0.2427 | — | 0.4875 | 0.6337 | 808 | 223,971,644 |
 | Model 4 — BLIP (fine-tune edilmeden) | beam-3 | 0.2621 | — | 0.4777 | 0.6833 | 772 | 223,971,644 |
 | Model 4 — BLIP (fine-tune'lu) | greedy | 0.3463 | — | 0.5733 | 1.0141 | 969 | 223,971,644 |
