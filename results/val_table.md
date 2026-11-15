@@ -35,6 +35,14 @@ Doğrulama kümesi, 1000 görüntü × 5 referans, ham pycocoevalcap ölçeği (
 - `model2_attention_lstm/val_metrics_beam3.json`
 - `model2_attention_lstm/val_metrics_greedy.json`
 - `model2_attention_lstm_full_20261104_01/summary.json`
+- `model4_blip_finetuned/summary.json`
+- `model4_blip_finetuned/val_metrics.json`
+- `model4_blip_finetuned/val_metrics_beam3.json`
+- `model4_blip_finetuned/val_metrics_greedy.json`
+- `model4_blip_pretrained/summary.json`
+- `model4_blip_pretrained/val_metrics.json`
+- `model4_blip_pretrained/val_metrics_beam3.json`
+- `model4_blip_pretrained/val_metrics_greedy.json`
 
 ## Ana tablo — 4 model (BLIP iki varyant) × greedy / beam-3
 
@@ -46,10 +54,10 @@ Doğrulama kümesi, 1000 görüntü × 5 referans, ham pycocoevalcap ölçeği (
 | Model 2 — Attention LSTM | beam-3 | 0.6170 | 0.4355 | 0.2988 | 0.2030 | 0.1861 | 0.4396 | 0.4697 | 813 | 182.65 | 11,159,565 | 10 |
 | Model 3 — Transformer | greedy | henüz yok |  |  |  |  |  |  |  |  |  |  |
 | Model 3 — Transformer | beam-3 | henüz yok |  |  |  |  |  |  |  |  |  |  |
-| Model 4 — BLIP (fine-tune edilmeden) | greedy | henüz yok |  |  |  |  |  |  |  |  |  |  |
-| Model 4 — BLIP (fine-tune edilmeden) | beam-3 | henüz yok |  |  |  |  |  |  |  |  |  |  |
-| Model 4 — BLIP (fine-tune edilmiş) | greedy | henüz yok |  |  |  |  |  |  |  |  |  |  |
-| Model 4 — BLIP (fine-tune edilmiş) | beam-3 | henüz yok |  |  |  |  |  |  |  |  |  |  |
+| Model 4 — BLIP (fine-tune edilmeden) | greedy | 0.6336 | 0.4839 | 0.3470 | 0.2427 | — | 0.4875 | 0.6337 | 808 | 156.37 | 223,971,644 | — |
+| Model 4 — BLIP (fine-tune edilmeden) | beam-3 | 0.6553 | 0.4986 | 0.3653 | 0.2621 | — | 0.4777 | 0.6833 | 772 | 205.57 | 223,971,644 | — |
+| Model 4 — BLIP (fine-tune edilmiş) | greedy | 0.7606 | 0.6034 | 0.4622 | 0.3463 | — | 0.5733 | 1.0141 | 969 | 216.94 | 223,971,644 | 2 |
+| Model 4 — BLIP (fine-tune edilmiş) | beam-3 | 0.7482 | 0.5973 | 0.4634 | 0.3522 | — | 0.5862 | 1.0571 | 978 | 291.60 | 223,971,644 | 2 |
 
 Metrikler `val_metrics_{greedy,beam3}.json` (src/evaluate.py); farklı cümle, ms/görüntü ve checkpoint epoch `val_metrics.json` (src/predict.py, cihaz: cuda); parametre sayısı eğitim `summary.json`. METEOR hesaplanmadıysa "—". Koşu eşlemesi: Model 1 — CNN-LSTM = `model1_lstm`, Model 2 — Attention LSTM = `model2_attention_lstm`, Model 3 — Transformer = `model3_transformer`, Model 4 — BLIP (fine-tune edilmeden) = `model4_blip_pretrained`, Model 4 — BLIP (fine-tune edilmiş) = `model4_blip_finetuned`.
 
@@ -117,5 +125,3 @@ Kontrol edilenler: her koşuda split == "val", n_images == 1000, 5 referans; met
 **Eksik dosyalar** (ilgili satırlar "henüz yok" ya da "—"):
 
 - `model3_transformer/` (klasör yok — koşu henüz yapılmadı)
-- `model4_blip_finetuned/` (klasör yok — koşu henüz yapılmadı)
-- `model4_blip_pretrained/` (klasör yok — koşu henüz yapılmadı)

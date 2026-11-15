@@ -1,0 +1,22 @@
+{
+  "name": "model4_blip_finetuned",
+  "model": "blip",
+  "variant": "finetune",
+  "parameters": 223971644,
+  "checkpoint": "/kaggle/working/image-captioning/checkpoints/model4_blip/best",
+  "pretrained_model": "Salesforce/blip-image-captioning-base",
+  "pretrained_revision": "82a37760796d32b1411fe092ab5d4e227313294b",
+  "seed": 42,
+  "split_sha256": "e100030c246a35a124a874dde2c5e2153ada7f9208a75f307cc4ed1d63dbbfee",
+  "generation": {
+    "do_sample": false,
+    "num_beams": 3,
+    "max_new_tokens": 33,
+    "min_length": 0,
+    "length_penalty": 1.0,
+    "repetition_penalty": 1.0,
+    "no_repeat_ngram_size": 0
+  },
+  "epochs": 5,
+  "best_epoch": 2
+}

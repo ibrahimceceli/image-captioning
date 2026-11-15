@@ -15,8 +15,10 @@ Doğrulama kümesi: 1000 görüntü × 5 referans. Metrikler ham pycocoevalcap �
 | Model 2 — Attention LSTM | greedy | 0.1698 | 0.1867 | 0.4312 | 0.4409 | 877 | 11,159,565 |
 | Model 2 — Attention LSTM | beam-3 | 0.2030 | 0.1861 | 0.4396 | 0.4697 | 813 | 11,159,565 |
 | Model 3 — Transformer | greedy / beam-3 | ⏳ bekleniyor | | | | | |
-| Model 4 — BLIP (fine-tune edilmeden) | greedy / beam-3 | ⏳ bekleniyor | | | | | |
-| Model 4 — BLIP (fine-tune'lu) | greedy / beam-3 | ⏳ bekleniyor | | | | | |
+| Model 4 — BLIP (fine-tune edilmeden) | greedy | 0.2427 | — | 0.4875 | 0.6337 | 808 | 223,971,644 |
+| Model 4 — BLIP (fine-tune edilmeden) | beam-3 | 0.2621 | — | 0.4777 | 0.6833 | 772 | 223,971,644 |
+| Model 4 — BLIP (fine-tune'lu) | greedy | 0.3463 | — | 0.5733 | 1.0141 | 969 | 223,971,644 |
+| Model 4 — BLIP (fine-tune'lu) | beam-3 | 0.3522 | — | 0.5862 | 1.0571 | 978 | 223,971,644 |
 
 [Üye C ara raporu ve deney durumu](report/uye_c_ara_rapor.md)
 
@@ -79,7 +81,7 @@ Repoda **olmayanlar** (`.gitignore`): `data/` (görüntüler, altyazılar, özni
 | Model 1 — CNN-LSTM | Show-and-Tell tarzı alt sınır: 49 bölgenin ortalaması (2048) LSTM'in başlangıç durumuna verilir; embedding 256, LSTM 512, 1 katman | `src/models/lstm.py` | `configs/model1.yaml` | 5,653,004 |
 | Model 2 — Attention LSTM | Show-Attend-and-Tell tarzı: 7×7 = 49 bölge üzerinde her kelimede Bahdanau attention | `src/models/attention_lstm.py` | `configs/model2.yaml` | 11,159,565 |
 | Model 3 — Transformer | 49 bölge → d_model 256; 3 katman, 8 kafa, self- + cross-attention decoder | `src/models/transformer.py` | `configs/model3.yaml` | 5,016,588 |
-| Model 4 — BLIP | `Salesforce/blip-image-captioning-base`; fine-tune edilmeden ve Flickr8k'da fine-tune edilerek | `src/blip.py` | `src.blip` komut satırı | koşuda kaydedilir |
+| Model 4 — BLIP | `Salesforce/blip-image-captioning-base`; fine-tune edilmeden ve Flickr8k'da fine-tune edilerek | `src/blip.py` | `src.blip` komut satırı | 223,971,644 |
 
 
 Parametre sayıları eğitim `summary.json` dosyalarındandır ve paylaşılan ResNet50 encoder'ı içermez. Embedding boyutu 300 olan deney koşuları (`emb300`, `glove300`) 5,856,284 parametredir.
@@ -438,7 +440,7 @@ Dallar, dosya sahipliği ve Pull Request kuralları: [CONTRIBUTING.md](CONTRIBUT
 
 ### Üye C: BLIP çalışma akışı (9 Kasım)
 
-BLIP kodu ve demo adaptörü eklendi; henüz gerçek GPU eğitimi ve BLIP sonuçları yok.
+Kaggle T4 üzerinde beş epoch tamamlandı. En iyi checkpoint ikinci epoch'tan seçildi. [Üye C raporu](report/uye_c_ara_rapor.md) ve [doğrulama tablosu](results/val_table.md) iki koşunun ölçümlerini içerir.
 Kaggle adımları: [notebook](notebooks/member_c_blip_kaggle.ipynb) ve
 [durum/çalıştırma notları](report/uye_c_blip_plan.md).
 
