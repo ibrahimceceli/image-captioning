@@ -34,4 +34,8 @@ Ayça'nın aynı ortamda yaptığı takip deneyinde arama genişliği 3'ten 5'e 
 
 **15 Kasım Kaggle doğrulaması.** Hazır BLIP, ortak 1.000 doğrulama görüntüsü üzerinde greedy ile 0,2427 BLEU-4 ve 0,6337 CIDEr, beam-3 ile 0,2621 BLEU-4 ve 0,6833 CIDEr elde etti. Beam-3 ile CIDEr artışı 0,0496 oldu. Hazır BLIP'in beam-3 CIDEr değeri Model 2'nin aynı bölmedeki 0,4697 değerinden yüksek. BLIP dış verilerle önceden eğitildiği ve farklı bir görüntü kodlayıcısı kullandığı için bu fark yalnızca çözücü mimarisine bağlanamaz. METEOR bu koşuda hesaplanmadı. [Kaggle deney günlüğü, sürüm 2](https://www.kaggle.com/code/peluska/notebooka728ac7736/log?scriptVersionId=369724091)
 
-**Devam eden deney.** BLIP, 6.000 Flickr8k görüntüsüyle beş epoch boyunca eğitildi. Beşinci epoch sonunda 3.750/3.750 eğitim adımı görüldü. Fine-tuning sonrası doğrulama dosyalarının Kaggle çıktısından aktarılması bekleniyor. Model 3 eğitimi hedef kapsamda bekliyor. Test bölmesi final değerlendirmesine ayrıldı.
+**Fine-tuning sonucu.** BLIP, Flickr8k eğitim bölmesindeki 6.000 görüntüyle beş epoch eğitildi. Ölçülen epoch'lar arasında en yüksek greedy doğrulama CIDEr değeri ikinci epoch'ta elde edildi. Bu checkpoint ile 1.000 doğrulama görüntüsünde greedy CIDEr 1,0141 ve beam-3 CIDEr 1,0571 oldu. Hazır modele göre beam-3 kazanımı 0,3738. Beam-3 ile üretilen farklı cümle sayısı 772'den 978'e, görüntü başına ortalama süre 205,6 ms'den 291,6 ms'ye çıktı.
+
+Dört tahmin dosyasının görüntü kimlikleri ortak doğrulama bölmesiyle eşleştirildi. Her görüntünün beş referans açıklamasıyla BLEU-1–4, ROUGE-L ve CIDEr yeniden hesaplandı ve Kaggle değerleriyle karşılaştırıldı. METEOR bu dört koşuda hesaplanmadı. Test bölmesi final değerlendirmesine ayrıldı.
+
+[Hazır BLIP çıktıları](../results/model4_blip_pretrained/) · [Fine-tuning çıktıları ve eğitim geçmişi](../results/model4_blip_finetuned/) · [Birleşik tablo](../results/val_table.md)

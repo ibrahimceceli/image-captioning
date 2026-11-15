@@ -1,0 +1,20 @@
+{
+  "greedy": {
+    "checkpoint": "Salesforce/blip-image-captioning-base",
+    "checkpoint_epoch": null,
+    "images": 1000,
+    "unique_captions": 808,
+    "CIDEr": 0.6337281337005801,
+    "ms_per_image": 156.3700876000005,
+    "device": "cuda"
+  },
+  "beam3": {
+    "checkpoint": "Salesforce/blip-image-captioning-base",
+    "checkpoint_epoch": null,
+    "images": 1000,
+    "unique_captions": 772,
+    "CIDEr": 0.6833018826363675,
+    "ms_per_image": 205.573415988001,
+    "device": "cuda"
+  }
+}
