@@ -298,42 +298,40 @@ class TransformerCaptioner(CheckpointCaptioner):
 
 @register_adapter("blip")
 class BlipCaptioner(Captioner):
-    """Model 4 (BLIP) — Üye C dolduracak yer tutucu. Attention haritası yok.
-
-    BLIP kendi işlemcisini kullanır: paylaşılan ResNet50 ve 224 kırpım kullanılmaz,
-    generate() PreparedImage.original'ı (ön işlenmemiş RGB PIL) almalı.
-    options: model_id (app/config.yaml, ör. Salesforce/blip-image-captioning-base).
-
-    Doldurulacaklar (taslak):
-
-        def load(self):
-            from transformers import BlipForConditionalGeneration, BlipProcessor
-            self.processor = BlipProcessor.from_pretrained(self.options["model_id"])
-            self.model = BlipForConditionalGeneration.from_pretrained(self.options["model_id"])
-            self.model.to(self.device).eval()
-            self.params = count_params(self.model)
-
-        @torch.no_grad()
-        def generate(self, image, method="greedy", beam_size=3):
-            beam_size = check_decoding(method, beam_size)
-            rgb = image.original if isinstance(image, PreparedImage) else image.convert("RGB")
-            inputs = self.processor(images=rgb, return_tensors="pt").to(self.device)
-            # süreyi işlemci + generate için ölçün (_sync ile)
-            out = self.model.generate(**inputs, num_beams=1 if method == "greedy" else beam_size,
-                                      max_new_tokens=30)
-            caption = self.processor.decode(out[0], skip_special_tokens=True).strip().lower()
-            return CaptionResult(caption, caption.split(), None, ms, self.params, detail="...")
-    """
+    """BLIP's own processor on the original RGB image, without shared ResNet features."""
 
     needs_features = False
 
     def load(self) -> None:
-        raise NotConnectedError(
-            "henüz bağlanmadı: BLIP adaptörü (app/captioners.py · BlipCaptioner) Üye C tarafından doldurulacak"
-        )
+        from src.blip import load_blip
 
+        source = self.options["model_id"]
+        if source != "Salesforce/blip-image-captioning-base":
+            local = repo_path(source)
+            if not local.is_dir():
+                raise NotConnectedError(f"BLIP checkpoint bulunamadı: {display_path(local)}")
+            source = str(local)
+        self.processor, self.model = load_blip(source, self.device)
+        self.model.eval()
+        self.params = count_params(self.model)
+        self.source = self.options["model_id"]
+
+    @torch.inference_mode()
     def generate(self, image, method: str = "greedy", beam_size: int = 3) -> CaptionResult:
-        raise NotConnectedError(self.status)
+        from src.blip import generation_options
+        from src.evaluate import normalize_caption
+
+        beam_size = check_decoding(method, beam_size)
+        rgb = (image.original if isinstance(image, PreparedImage) else image).convert("RGB")
+        _sync(self.device)
+        started = time.perf_counter()
+        inputs = self.processor(images=rgb, return_tensors="pt").to(self.device)
+        out = self.model.generate(**inputs, **generation_options(method, beam_size))
+        caption = normalize_caption(self.processor.decode(out[0], skip_special_tokens=True))
+        _sync(self.device)
+        return CaptionResult(caption, caption.split(), None,
+                             1000 * (time.perf_counter() - started), self.params,
+                             detail=f"BLIP: {self.source}")
 
 
 # --------------------------------------------------------------------------- kayıt

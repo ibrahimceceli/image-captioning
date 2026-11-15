@@ -36,7 +36,7 @@ Doğrulama kümesi, 1000 görüntü × 5 referans, ham pycocoevalcap ölçeği (
 - `model2_attention_lstm/val_metrics_greedy.json`
 - `model2_attention_lstm_full_20261104_01/summary.json`
 
-## Ana tablo — 4 model × greedy / beam-3
+## Ana tablo — 4 model (BLIP iki varyant) × greedy / beam-3
 
 | Model | Çözme | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr | Farklı cümle (/1000) | ms/görüntü | Parametre | Checkpoint epoch |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -46,10 +46,12 @@ Doğrulama kümesi, 1000 görüntü × 5 referans, ham pycocoevalcap ölçeği (
 | Model 2 — Attention LSTM | beam-3 | 0.6170 | 0.4355 | 0.2988 | 0.2030 | 0.1861 | 0.4396 | 0.4697 | 813 | 182.65 | 11,159,565 | 10 |
 | Model 3 — Transformer | greedy | henüz yok |  |  |  |  |  |  |  |  |  |  |
 | Model 3 — Transformer | beam-3 | henüz yok |  |  |  |  |  |  |  |  |  |  |
-| Model 4 — BLIP | greedy | henüz yok |  |  |  |  |  |  |  |  |  |  |
-| Model 4 — BLIP | beam-3 | henüz yok |  |  |  |  |  |  |  |  |  |  |
+| Model 4 — BLIP (fine-tune edilmeden) | greedy | henüz yok |  |  |  |  |  |  |  |  |  |  |
+| Model 4 — BLIP (fine-tune edilmeden) | beam-3 | henüz yok |  |  |  |  |  |  |  |  |  |  |
+| Model 4 — BLIP (fine-tune edilmiş) | greedy | henüz yok |  |  |  |  |  |  |  |  |  |  |
+| Model 4 — BLIP (fine-tune edilmiş) | beam-3 | henüz yok |  |  |  |  |  |  |  |  |  |  |
 
-Metrikler `val_metrics_{greedy,beam3}.json` (src/evaluate.py); farklı cümle, ms/görüntü ve checkpoint epoch `val_metrics.json` (src/predict.py, cihaz: cuda); parametre sayısı eğitim `summary.json`. METEOR hesaplanmadıysa "—". Koşu eşlemesi: Model 1 — CNN-LSTM = `model1_lstm`, Model 2 — Attention LSTM = `model2_attention_lstm`, Model 3 — Transformer = `model3_transformer`, Model 4 — BLIP = `model4_blip`.
+Metrikler `val_metrics_{greedy,beam3}.json` (src/evaluate.py); farklı cümle, ms/görüntü ve checkpoint epoch `val_metrics.json` (src/predict.py, cihaz: cuda); parametre sayısı eğitim `summary.json`. METEOR hesaplanmadıysa "—". Koşu eşlemesi: Model 1 — CNN-LSTM = `model1_lstm`, Model 2 — Attention LSTM = `model2_attention_lstm`, Model 3 — Transformer = `model3_transformer`, Model 4 — BLIP (fine-tune edilmeden) = `model4_blip_pretrained`, Model 4 — BLIP (fine-tune edilmiş) = `model4_blip_finetuned`.
 
 ## Ablation tabloları
 
@@ -115,4 +117,5 @@ Kontrol edilenler: her koşuda split == "val", n_images == 1000, 5 referans; met
 **Eksik dosyalar** (ilgili satırlar "henüz yok" ya da "—"):
 
 - `model3_transformer/` (klasör yok — koşu henüz yapılmadı)
-- `model4_blip/` (klasör yok — koşu henüz yapılmadı)
+- `model4_blip_finetuned/` (klasör yok — koşu henüz yapılmadı)
+- `model4_blip_pretrained/` (klasör yok — koşu henüz yapılmadı)

@@ -18,7 +18,7 @@ Doğrulama kümesi: 1000 görüntü × 5 referans. Metrikler ham pycocoevalcap �
 | Model 4 — BLIP (fine-tune edilmeden) | greedy / beam-3 | ⏳ bekleniyor | | | | | |
 | Model 4 — BLIP (fine-tune'lu) | greedy / beam-3 | ⏳ bekleniyor | | | | | |
 
-<!-- TODO(Üye C): Model 3 ve BLIP (fine-tune'lu ve fine-tune edilmeden) doğrulama satırlarını ekle. Sonuç klasörleri results/model3_transformer/ ve results/model4_blip/ (adlar src/results_table.py MAIN_RUNS içinde; BLIP'in iki varyantı için eşleme orada genişletilmeli), sonra python -m src.results_table çalıştırıp bu tabloyu val_table.md'den güncelle. -->
+[Üye C ara raporu ve deney durumu](report/uye_c_ara_rapor.md)
 
 **Test kümesi sonuçları: ⏳ bekleniyor.** Test kümesi henüz açılmadı; model seçimi dondurulduktan sonra final tablo için bir kez açılacak.
 
@@ -78,10 +78,9 @@ Repoda **olmayanlar** (`.gitignore`): `data/` (görüntüler, altyazılar, özni
 |---|---|---|---|---:|
 | Model 1 — CNN-LSTM | Show-and-Tell tarzı alt sınır: 49 bölgenin ortalaması (2048) LSTM'in başlangıç durumuna verilir; embedding 256, LSTM 512, 1 katman | `src/models/lstm.py` | `configs/model1.yaml` | 5,653,004 |
 | Model 2 — Attention LSTM | Show-Attend-and-Tell tarzı: 7×7 = 49 bölge üzerinde her kelimede Bahdanau attention | `src/models/attention_lstm.py` | `configs/model2.yaml` | 11,159,565 |
-| Model 3 — Transformer | 49 bölge → d_model 256; 3 katman, 8 kafa, self- + cross-attention decoder | ⏳ bekleniyor | ⏳ bekleniyor | ⏳ |
-| Model 4 — BLIP | `Salesforce/blip-image-captioning-base`; fine-tune edilmeden ve Flickr8k'da fine-tune edilerek | ⏳ bekleniyor | ⏳ bekleniyor | ⏳ |
+| Model 3 — Transformer | 49 bölge → d_model 256; 3 katman, 8 kafa, self- + cross-attention decoder | `src/models/transformer.py` | `configs/model3.yaml` | 5,016,588 |
+| Model 4 — BLIP | `Salesforce/blip-image-captioning-base`; fine-tune edilmeden ve Flickr8k'da fine-tune edilerek | `src/blip.py` | `src.blip` komut satırı | koşuda kaydedilir |
 
-<!-- TODO(Üye C): Model 3 ve BLIP için kod dosyası, config ve parametre sayısını doldur. -->
 
 Parametre sayıları eğitim `summary.json` dosyalarındandır ve paylaşılan ResNet50 encoder'ı içermez. Embedding boyutu 300 olan deney koşuları (`emb300`, `glove300`) 5,856,284 parametredir.
 
@@ -245,13 +244,22 @@ python -m src.results_table
 python -m app.app
 ```
 
-Model 1 ve Model 2 checkpoint'leri yukarıdaki yollardaysa demoda çalışır; diğer kutular "checkpoint bulunamadı" ya da "henüz bağlanmadı" gösterir.
+Model 1 ve Model 2 checkpoint'leri yukarıdaki yollardaysa demoda çalışır; Model 3 eğitimin ürettiği best.pt dosyasını, BLIP ise kendi işlemcisini ve ağırlıklarını yükler.
 
 ### 8. Model 3 ve BLIP
 
-⏳ **Bekleniyor (Üye C).** Eğitim, tahmin ve değerlendirme komutları kod eklendiğinde buraya yazılacak.
+Önbellek hazır olduğunda Model 3 için depo kökünden:
 
-<!-- TODO(Üye C): Model 3 (Transformer) eğitim / tahmin / değerlendirme komutlarını ve sürelerini ekle (config, checkpoints/model3_transformer/, results/model3_transformer/). BLIP için fine-tune edilmeden ve fine-tune'lu çalıştırma adımlarını, HF model indirme notunu ve sürelerini ekle (results/model4_blip/). -->
+```bash
+python -m src.train --config configs/model3.yaml
+python -m src.predict --checkpoint checkpoints/model3_transformer/best.pt --method greedy
+python -m src.predict --checkpoint checkpoints/model3_transformer/best.pt --method beam --beam-size 3
+python -m src.evaluate --predictions results/model3_transformer/val_captions_greedy.json --model-name model3_transformer --output results/model3_transformer/val_metrics_greedy.json
+python -m src.evaluate --predictions results/model3_transformer/val_captions_beam3.json --model-name model3_transformer --method beam --beam-size 3 --output results/model3_transformer/val_metrics_beam3.json
+python -m src.results_table
+```
+
+BLIP için [Kaggle notebook’u](notebooks/member_c_blip_kaggle.ipynb) ve aşağıdaki iki koşu kullanılır.
 
 ### 9. Test kümesi (final, bir kez)
 
@@ -411,7 +419,7 @@ Test dosyaları: `tests/test_lstm.py` (Model 1), `tests/test_decode.py` (çözme
 1. O. Vinyals, A. Toshev, S. Bengio, D. Erhan. *Show and Tell: A Neural Image Caption Generator.* CVPR, 2015. [arXiv:1411.4555](https://arxiv.org/abs/1411.4555)
 2. K. Xu, J. Ba, R. Kiros, K. Cho, A. Courville, R. Salakhutdinov, R. Zemel, Y. Bengio. *Show, Attend and Tell: Neural Image Caption Generation with Visual Attention.* ICML, 2015. [arXiv:1502.03044](https://arxiv.org/abs/1502.03044)
 3. D. Bahdanau, K. Cho, Y. Bengio. *Neural Machine Translation by Jointly Learning to Align and Translate.* ICLR, 2015. [arXiv:1409.0473](https://arxiv.org/abs/1409.0473)
-4. Transformer tabanlı görüntü altyazılama çalışması: ⏳ bekleniyor. <!-- TODO(Üye C): Model 3 için atıf yapılacak Transformer tabanlı altyazılama çalışmasını ekle. -->
+4. M. Cornia, M. Stefanini, L. Baraldi ve R. Cucchiara. [Meshed-Memory Transformer for Image Captioning](https://arxiv.org/abs/1912.08226), CVPR 2020. İlgili çalışma. Model 3 ortak ResNet50 önbelleğiyle standart bir Transformer decoder kullanır.
 5. J. Li, D. Li, C. Xiong, S. Hoi. *BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation.* ICML, 2022. [arXiv:2201.12086](https://arxiv.org/abs/2201.12086)
 6. M. Hodosh, P. Young, J. Hockenmaier. *Framing Image Description as a Ranking Task: Data, Models and Evaluation Metrics.* Journal of Artificial Intelligence Research, 47, 2013. (Flickr8k)
 7. K. He, X. Zhang, S. Ren, J. Sun. *Deep Residual Learning for Image Recognition.* CVPR, 2016. [arXiv:1512.03385](https://arxiv.org/abs/1512.03385)
@@ -426,3 +434,22 @@ Test dosyaları: `tests/test_lstm.py` (Model 1), `tests/test_decode.py` (çözme
 ## Ekip içi çalışma
 
 Dallar, dosya sahipliği ve Pull Request kuralları: [CONTRIBUTING.md](CONTRIBUTING.md).
+
+
+### Üye C: BLIP çalışma akışı (9 Kasım)
+
+BLIP kodu ve demo adaptörü eklendi; henüz gerçek GPU eğitimi ve BLIP sonuçları yok.
+Kaggle adımları: [notebook](notebooks/member_c_blip_kaggle.ipynb) ve
+[durum/çalıştırma notları](report/uye_c_blip_plan.md).
+
+```bash
+python -m src.blip pretrained --images-dir data/flickr8k/Images --captions data/flickr8k/captions.txt --output results/model4_blip_pretrained
+python -m src.blip finetune --images-dir data/flickr8k/Images --captions data/flickr8k/captions.txt --output results/model4_blip_finetuned --checkpoint checkpoints/model4_blip --epochs 5
+```
+
+İki koşu da greedy ve beam-3 tahminlerini, ortak metrikleri, parametre sayısını ve
+çıkarım süresini yazar. Test bölmesi bu komutlarda açılmaz. METEOR ayrıca hesaplanır.
+Fine-tuning tamamlanınca demo için `app/config.yaml` BLIP `model_id` alanını
+`checkpoints/model4_blip/best` yapın ve etiketi fine-tune edilmiş olarak değiştirin.
+Çalışan ortamın sürümleri her koşuda `environment.txt` olarak kaydedilir; ortak
+requirements sürümlerinin sabitlenmesi GPU ve demo doğrulamasından sonra yapılacaktır.

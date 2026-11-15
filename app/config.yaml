@@ -4,7 +4,7 @@
 # kind:
 #   checkpoint   -> CheckpointCaptioner: src.train.build_model + torch.load(weights_only=True)
 #   transformer  -> TransformerCaptioner: checkpoint adaptörü + çok kafalı attention'ı [n,49]'a indirger
-#   blip         -> BlipCaptioner: Üye C dolduracak (yer tutucu, şu an "henüz bağlanmadı")
+#   blip         -> BlipCaptioner: kendi işlemcisiyle BLIP veya yerel save_pretrained klasörü
 # attention: true -> modelin attention bölümündeki seçim listesinde görünür.
 
 device: auto          # auto (cuda varsa cuda) | cpu | cuda ; komut satırında --device ile ezilir
@@ -25,11 +25,12 @@ models:
   - key: model3
     label: "Model 3 · Transformer"
     kind: transformer
-    checkpoint: checkpoints/model3_transformer/best.pt   # Üye C: gerçek klasör adıyla değiştir
+    checkpoint: checkpoints/model3_transformer/best.pt
     attention: true
 
   - key: blip
-    label: "Model 4 · BLIP"
+    label: "Model 4 · BLIP (fine-tune edilmeden)"
     kind: blip
+    # Fine-tune sonrası: checkpoints/model4_blip/best (etiketi de güncelleyin)
     model_id: Salesforce/blip-image-captioning-base
     attention: false

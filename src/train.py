@@ -26,10 +26,12 @@ from src.data.dataset import build_dataloader, build_eval_dataloader, collate_ca
 from src.data.vocab import Vocabulary
 from src.models.attention_lstm import AttentionLSTM
 from src.models.lstm import CaptionLSTM
+from src.models.transformer import CaptionTransformer
 
 MODELS = {
     "lstm": CaptionLSTM,
     "attention_lstm": AttentionLSTM,
+    "transformer": CaptionTransformer,
 }
 SPECIAL_WORDS = {"<pad>", "<start>", "<end>", "<unk>"}
 
