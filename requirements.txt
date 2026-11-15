@@ -1,11 +1,17 @@
-﻿torch
-torchvision
-timm
-transformers
-pillow
-numpy
-pyyaml
-tqdm
-matplotlib
-gradio
-pycocoevalcap
+﻿# Python 3.12.3 ile doğrulanan bağımlılık sürümleri
+# CUDA 12.4 GPU kurulumu için (yerel test ortamı: torch==2.6.0+cu124, torchvision==0.21.0+cu124):
+#   pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu124
+# Not: İlk taslaktaki `timm` kod tabanında kullanılmıyor ve aktif yerel ortamda kurulu değildir.
+torch==2.6.0
+torchvision==0.21.0
+transformers==5.17.0
+pillow==10.4.0
+numpy==1.26.4
+PyYAML==6.0.1
+tqdm==4.66.4
+# Yerel ortamda 3.9.1 test edildi; PyPI'de 3.9.1 Windows wheel'i geri çekildiği (yanked) için
+# temiz Windows kurulumunda kaynak derlemesi gerekirse matplotlib==3.9.1.post1 kullanılabilir.
+matplotlib==3.9.1
+gradio==6.31.0
+pycocoevalcap==1.2
+pytest==9.1.1

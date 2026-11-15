@@ -1,0 +1,550 @@
+[
+  {
+    "number": 1,
+    "image_id": "3168354472_866fe70d36.jpg",
+    "model": "model3_transformer",
+    "checkpoint": "checkpoints/model3_transformer/best.pt",
+    "checkpoint_epoch": 8,
+    "device": "cpu",
+    "archived_beam3": "a little girl in a pink dress is sitting on a bed",
+    "local_cpu_beam3": "a little girl in a pink dress is sitting on a bed",
+    "matches_archived_caption": true,
+    "matches_feature_store_caption": true,
+    "max_attn_diff_enc_vs_feature_store": 0.000454,
+    "attention_source": "beam3 decoded path (last decoder block cross-attention, 8 heads averaged)",
+    "attention_shape": [
+      12,
+      49
+    ],
+    "finite_and_nonnegative": true,
+    "row_sums_close_to_one": true,
+    "max_row_sum_error": 1.1920928955078125e-07,
+    "mean_entropy_nats": 3.2031,
+    "mean_max_weight": 0.1413,
+    "image_crop": "Resize(short edge 256), CenterCrop(224), RGB before normalization",
+    "figure": "results/model3_transformer/attention/01_3168354472_866fe70d36_beam3.png",
+    "model2_review40_labels": [
+      "yanlış nesne",
+      "renk",
+      "eylem"
+    ],
+    "per_word_attention": [
+      {
+        "word": "a",
+        "max_weight": 0.1874,
+        "peak_cell_row_col": [
+          1,
+          4
+        ],
+        "entropy_nats": 3.1139
+      },
+      {
+        "word": "little",
+        "max_weight": 0.2205,
+        "peak_cell_row_col": [
+          1,
+          4
+        ],
+        "entropy_nats": 2.941
+      },
+      {
+        "word": "girl",
+        "max_weight": 0.1027,
+        "peak_cell_row_col": [
+          1,
+          4
+        ],
+        "entropy_nats": 3.4209
+      },
+      {
+        "word": "in",
+        "max_weight": 0.111,
+        "peak_cell_row_col": [
+          2,
+          4
+        ],
+        "entropy_nats": 3.1664
+      },
+      {
+        "word": "a",
+        "max_weight": 0.1035,
+        "peak_cell_row_col": [
+          1,
+          3
+        ],
+        "entropy_nats": 3.3044
+      },
+      {
+        "word": "pink",
+        "max_weight": 0.08,
+        "peak_cell_row_col": [
+          1,
+          0
+        ],
+        "entropy_nats": 3.291
+      },
+      {
+        "word": "dress",
+        "max_weight": 0.1436,
+        "peak_cell_row_col": [
+          6,
+          4
+        ],
+        "entropy_nats": 3.1997
+      },
+      {
+        "word": "is",
+        "max_weight": 0.151,
+        "peak_cell_row_col": [
+          6,
+          6
+        ],
+        "entropy_nats": 3.0831
+      },
+      {
+        "word": "sitting",
+        "max_weight": 0.1025,
+        "peak_cell_row_col": [
+          2,
+          4
+        ],
+        "entropy_nats": 3.5226
+      },
+      {
+        "word": "on",
+        "max_weight": 0.1276,
+        "peak_cell_row_col": [
+          6,
+          6
+        ],
+        "entropy_nats": 3.2656
+      },
+      {
+        "word": "a",
+        "max_weight": 0.1591,
+        "peak_cell_row_col": [
+          6,
+          6
+        ],
+        "entropy_nats": 3.153
+      },
+      {
+        "word": "bed",
+        "max_weight": 0.2069,
+        "peak_cell_row_col": [
+          6,
+          6
+        ],
+        "entropy_nats": 2.9757
+      }
+    ]
+  },
+  {
+    "number": 15,
+    "image_id": "512045825_1be2083922.jpg",
+    "model": "model3_transformer",
+    "checkpoint": "checkpoints/model3_transformer/best.pt",
+    "checkpoint_epoch": 8,
+    "device": "cpu",
+    "archived_beam3": "a black and white dog is jumping over a red rail",
+    "local_cpu_beam3": "a black and white dog is jumping over a red rail",
+    "matches_archived_caption": true,
+    "matches_feature_store_caption": true,
+    "max_attn_diff_enc_vs_feature_store": 0.000427,
+    "attention_source": "beam3 decoded path (last decoder block cross-attention, 8 heads averaged)",
+    "attention_shape": [
+      11,
+      49
+    ],
+    "finite_and_nonnegative": true,
+    "row_sums_close_to_one": true,
+    "max_row_sum_error": 1.1920928955078125e-07,
+    "mean_entropy_nats": 3.3895,
+    "mean_max_weight": 0.107,
+    "image_crop": "Resize(short edge 256), CenterCrop(224), RGB before normalization",
+    "figure": "results/model3_transformer/attention/15_512045825_1be2083922_beam3.png",
+    "model2_review40_labels": [],
+    "per_word_attention": [
+      {
+        "word": "a",
+        "max_weight": 0.1026,
+        "peak_cell_row_col": [
+          1,
+          5
+        ],
+        "entropy_nats": 3.1717
+      },
+      {
+        "word": "black",
+        "max_weight": 0.1932,
+        "peak_cell_row_col": [
+          3,
+          3
+        ],
+        "entropy_nats": 3.2564
+      },
+      {
+        "word": "and",
+        "max_weight": 0.0736,
+        "peak_cell_row_col": [
+          3,
+          3
+        ],
+        "entropy_nats": 3.5548
+      },
+      {
+        "word": "white",
+        "max_weight": 0.0978,
+        "peak_cell_row_col": [
+          0,
+          5
+        ],
+        "entropy_nats": 3.6033
+      },
+      {
+        "word": "dog",
+        "max_weight": 0.0458,
+        "peak_cell_row_col": [
+          3,
+          2
+        ],
+        "entropy_nats": 3.6925
+      },
+      {
+        "word": "is",
+        "max_weight": 0.0676,
+        "peak_cell_row_col": [
+          5,
+          6
+        ],
+        "entropy_nats": 3.5864
+      },
+      {
+        "word": "jumping",
+        "max_weight": 0.0925,
+        "peak_cell_row_col": [
+          1,
+          5
+        ],
+        "entropy_nats": 3.5187
+      },
+      {
+        "word": "over",
+        "max_weight": 0.1722,
+        "peak_cell_row_col": [
+          6,
+          3
+        ],
+        "entropy_nats": 3.077
+      },
+      {
+        "word": "a",
+        "max_weight": 0.105,
+        "peak_cell_row_col": [
+          6,
+          3
+        ],
+        "entropy_nats": 3.3221
+      },
+      {
+        "word": "red",
+        "max_weight": 0.1356,
+        "peak_cell_row_col": [
+          5,
+          6
+        ],
+        "entropy_nats": 3.2401
+      },
+      {
+        "word": "rail",
+        "max_weight": 0.0909,
+        "peak_cell_row_col": [
+          5,
+          6
+        ],
+        "entropy_nats": 3.2617
+      }
+    ]
+  },
+  {
+    "number": 29,
+    "image_id": "3553225222_f5ebe44af1.jpg",
+    "model": "model3_transformer",
+    "checkpoint": "checkpoints/model3_transformer/best.pt",
+    "checkpoint_epoch": 8,
+    "device": "cpu",
+    "archived_beam3": "a young girl in a red dress is wearing a red dress",
+    "local_cpu_beam3": "a young girl in a red dress is wearing a red dress",
+    "matches_archived_caption": true,
+    "matches_feature_store_caption": true,
+    "max_attn_diff_enc_vs_feature_store": 0.000485,
+    "attention_source": "beam3 decoded path (last decoder block cross-attention, 8 heads averaged)",
+    "attention_shape": [
+      12,
+      49
+    ],
+    "finite_and_nonnegative": true,
+    "row_sums_close_to_one": true,
+    "max_row_sum_error": 1.1920928955078125e-07,
+    "mean_entropy_nats": 3.36,
+    "mean_max_weight": 0.1253,
+    "image_crop": "Resize(short edge 256), CenterCrop(224), RGB before normalization",
+    "figure": "results/model3_transformer/attention/29_3553225222_f5ebe44af1_beam3.png",
+    "model2_review40_labels": [
+      "yanlış nesne",
+      "renk",
+      "genel ifade",
+      "kelime tekrarı"
+    ],
+    "per_word_attention": [
+      {
+        "word": "a",
+        "max_weight": 0.1084,
+        "peak_cell_row_col": [
+          1,
+          4
+        ],
+        "entropy_nats": 3.3589
+      },
+      {
+        "word": "young",
+        "max_weight": 0.1696,
+        "peak_cell_row_col": [
+          2,
+          3
+        ],
+        "entropy_nats": 3.0191
+      },
+      {
+        "word": "girl",
+        "max_weight": 0.1719,
+        "peak_cell_row_col": [
+          2,
+          3
+        ],
+        "entropy_nats": 3.1925
+      },
+      {
+        "word": "in",
+        "max_weight": 0.108,
+        "peak_cell_row_col": [
+          2,
+          3
+        ],
+        "entropy_nats": 3.596
+      },
+      {
+        "word": "a",
+        "max_weight": 0.1162,
+        "peak_cell_row_col": [
+          5,
+          3
+        ],
+        "entropy_nats": 3.3411
+      },
+      {
+        "word": "red",
+        "max_weight": 0.1475,
+        "peak_cell_row_col": [
+          2,
+          2
+        ],
+        "entropy_nats": 3.2914
+      },
+      {
+        "word": "dress",
+        "max_weight": 0.1577,
+        "peak_cell_row_col": [
+          6,
+          3
+        ],
+        "entropy_nats": 3.2943
+      },
+      {
+        "word": "is",
+        "max_weight": 0.0869,
+        "peak_cell_row_col": [
+          2,
+          3
+        ],
+        "entropy_nats": 3.4298
+      },
+      {
+        "word": "wearing",
+        "max_weight": 0.0989,
+        "peak_cell_row_col": [
+          2,
+          3
+        ],
+        "entropy_nats": 3.5127
+      },
+      {
+        "word": "a",
+        "max_weight": 0.1359,
+        "peak_cell_row_col": [
+          5,
+          3
+        ],
+        "entropy_nats": 3.4925
+      },
+      {
+        "word": "red",
+        "max_weight": 0.0812,
+        "peak_cell_row_col": [
+          1,
+          3
+        ],
+        "entropy_nats": 3.4206
+      },
+      {
+        "word": "dress",
+        "max_weight": 0.1213,
+        "peak_cell_row_col": [
+          6,
+          3
+        ],
+        "entropy_nats": 3.3711
+      }
+    ]
+  },
+  {
+    "number": 33,
+    "image_id": "2854959952_3991a385ab.jpg",
+    "model": "model3_transformer",
+    "checkpoint": "checkpoints/model3_transformer/best.pt",
+    "checkpoint_epoch": 8,
+    "device": "cpu",
+    "archived_beam3": "a black and white dog is jumping up to catch a frisbee",
+    "local_cpu_beam3": "a black and white dog is jumping up to catch a frisbee",
+    "matches_archived_caption": true,
+    "matches_feature_store_caption": true,
+    "max_attn_diff_enc_vs_feature_store": 0.000636,
+    "attention_source": "beam3 decoded path (last decoder block cross-attention, 8 heads averaged)",
+    "attention_shape": [
+      12,
+      49
+    ],
+    "finite_and_nonnegative": true,
+    "row_sums_close_to_one": true,
+    "max_row_sum_error": 1.1920928955078125e-07,
+    "mean_entropy_nats": 3.3462,
+    "mean_max_weight": 0.1175,
+    "image_crop": "Resize(short edge 256), CenterCrop(224), RGB before normalization",
+    "figure": "results/model3_transformer/attention/33_2854959952_3991a385ab_beam3.png",
+    "model2_review40_labels": [
+      "eylem",
+      "genel ifade",
+      "kelime tekrarı"
+    ],
+    "per_word_attention": [
+      {
+        "word": "a",
+        "max_weight": 0.1285,
+        "peak_cell_row_col": [
+          6,
+          4
+        ],
+        "entropy_nats": 3.26
+      },
+      {
+        "word": "black",
+        "max_weight": 0.0916,
+        "peak_cell_row_col": [
+          1,
+          4
+        ],
+        "entropy_nats": 3.3541
+      },
+      {
+        "word": "and",
+        "max_weight": 0.1008,
+        "peak_cell_row_col": [
+          4,
+          1
+        ],
+        "entropy_nats": 3.3694
+      },
+      {
+        "word": "white",
+        "max_weight": 0.1182,
+        "peak_cell_row_col": [
+          0,
+          6
+        ],
+        "entropy_nats": 3.4574
+      },
+      {
+        "word": "dog",
+        "max_weight": 0.1064,
+        "peak_cell_row_col": [
+          6,
+          4
+        ],
+        "entropy_nats": 3.4709
+      },
+      {
+        "word": "is",
+        "max_weight": 0.0856,
+        "peak_cell_row_col": [
+          0,
+          6
+        ],
+        "entropy_nats": 3.362
+      },
+      {
+        "word": "jumping",
+        "max_weight": 0.0991,
+        "peak_cell_row_col": [
+          6,
+          4
+        ],
+        "entropy_nats": 3.3721
+      },
+      {
+        "word": "up",
+        "max_weight": 0.1449,
+        "peak_cell_row_col": [
+          0,
+          6
+        ],
+        "entropy_nats": 3.2562
+      },
+      {
+        "word": "to",
+        "max_weight": 0.2333,
+        "peak_cell_row_col": [
+          0,
+          6
+        ],
+        "entropy_nats": 3.0055
+      },
+      {
+        "word": "catch",
+        "max_weight": 0.0844,
+        "peak_cell_row_col": [
+          5,
+          0
+        ],
+        "entropy_nats": 3.478
+      },
+      {
+        "word": "a",
+        "max_weight": 0.1169,
+        "peak_cell_row_col": [
+          0,
+          6
+        ],
+        "entropy_nats": 3.4001
+      },
+      {
+        "word": "frisbee",
+        "max_weight": 0.1001,
+        "peak_cell_row_col": [
+          1,
+          6
+        ],
+        "entropy_nats": 3.3689
+      }
+    ]
+  }
+]
