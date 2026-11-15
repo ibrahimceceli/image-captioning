@@ -1,4 +1,8 @@
-"""BLIP fine-tuning and validation. No test split is exposed by this workflow."""
+"""BLIP fine-tuning and validation.
+
+`pretrained` and `finetune` only use train/val. The final test split is reachable
+only through `evaluate --split test --allow-test`, run once for the final table.
+"""
 import argparse
 import hashlib
 import json
@@ -15,9 +19,10 @@ from src.evaluate import cider_score, normalize_caption, read_json
 MODEL_ID = "Salesforce/blip-image-captioning-base"
 
 
-def selected_data(captions_path, images_dir, split_path, split):
-    if split not in ("train", "val"):
-        raise ValueError("Only train/val are allowed; final test is a separate team step")
+def selected_data(captions_path, images_dir, split_path, split, allow_test=False):
+    allowed = ("train", "val", "test") if allow_test else ("train", "val")
+    if split not in allowed:
+        raise ValueError("Only train/val are allowed; final test needs explicit allow_test")
     partition = read_json(Path(split_path))
     for key, count in (("train", 6000), ("val", 1000)):
         if len(partition[key]) != count or len(set(partition[key])) != count:
@@ -70,7 +75,7 @@ def predict(model, processor, references, images_dir, device, method):
     captions = {}
     elapsed = 0.0
     with torch.inference_mode():
-        # Untimed warmup, using a validation image (never the test set).
+        # Untimed warmup on the first image of the evaluated split.
         with Image.open(Path(images_dir) / next(iter(references))) as image:
             inputs = processor(images=image.convert("RGB"), return_tensors="pt").to(device)
             model.generate(**inputs, **generation_options(method))
@@ -185,16 +190,63 @@ def train(args, processor, model, device, train_refs, val_refs):
     return args.checkpoint / 'best'
 
 
+def evaluate_checkpoint(args, device, split_path):
+    """Greedy and beam-3 for an existing BLIP (hub id or local save_pretrained folder)."""
+    refs = selected_data(args.captions, args.images_dir, split_path, args.split, allow_test=args.allow_test)
+    local = Path(args.source) if Path(args.source).is_absolute() else repo_root() / args.source
+    if local.is_dir():
+        source = str(local)
+        try:
+            label = local.resolve().relative_to(repo_root().resolve()).as_posix()
+        except ValueError:
+            label = local.name
+    elif args.source == MODEL_ID:
+        source = label = MODEL_ID
+    else:
+        raise FileNotFoundError(f"BLIP checkpoint folder not found: {local}")
+    processor, model = load_blip(source, device)
+    metadata = {}
+    for method, tag in [('greedy', 'greedy'), ('beam', 'beam3')]:
+        captions, milliseconds = predict(model, processor, refs, args.images_dir, device, method)
+        predictions = args.output / f'{args.split}_captions_{tag}.json'
+        save_json(predictions, captions)
+        metadata[tag] = {'checkpoint': label, 'checkpoint_epoch': args.checkpoint_epoch,
+                         'images': len(captions), 'unique_captions': len(set(captions.values())),
+                         'CIDEr': cider_score(refs, captions), 'ms_per_image': milliseconds,
+                         'device': device.type}
+        save_json(args.output / f'{args.split}_metrics.json', metadata)
+        command = [sys.executable, '-m', 'src.evaluate', '--predictions', str(predictions),
+                   '--captions', str(args.captions), '--model-name', args.model_name,
+                   '--split', args.split, '--method', method,
+                   '--output', str(args.output / f'{args.split}_metrics_{tag}.json')]
+        if method == 'beam':
+            command += ['--beam-size', '3']
+        if args.allow_test:
+            command += ['--allow-test']
+        if args.meteor:
+            command += ['--meteor']
+        subprocess.run(command, check=True, cwd=repo_root())
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['pretrained', 'finetune'])
+    parser.add_argument('action', choices=['pretrained', 'finetune', 'evaluate'])
     parser.add_argument('--images-dir', type=Path, required=True)
     parser.add_argument('--captions', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--checkpoint', type=Path, default=repo_root() / 'checkpoints/model4_blip')
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--device', default='cuda')
+    # evaluate: existing model on val, or once on test for the final table.
+    parser.add_argument('--source', default=MODEL_ID, help='evaluate: hub id or local save_pretrained folder')
+    parser.add_argument('--split', choices=['val', 'test'], default='val')
+    parser.add_argument('--allow-test', action='store_true', help='Only for the final test table')
+    parser.add_argument('--model-name', help='evaluate: name written to metric files (default: output name)')
+    parser.add_argument('--checkpoint-epoch', type=int, help='evaluate: epoch of the selected checkpoint')
+    parser.add_argument('--meteor', action='store_true', help='evaluate: also compute METEOR (Java)')
     args = parser.parse_args()
+    if args.split == 'test' and not args.allow_test:
+        parser.error('The test split is reserved for the final table; pass --allow-test explicitly')
     args.images_dir = args.images_dir.resolve()
     args.captions = args.captions.resolve()
     args.output = args.output.resolve()
@@ -215,6 +267,11 @@ def main():
     if device.type == 'cuda' and not torch.cuda.is_available():
         parser.error('CUDA unavailable: enable a GPU or explicitly select --device cpu')
     split_path = repo_root() / 'src/data/artifacts/flickr8k_split.json'
+    if args.action == 'evaluate':
+        args.output.mkdir(parents=True, exist_ok=True)
+        args.model_name = args.model_name or args.output.name
+        evaluate_checkpoint(args, device, split_path)
+        return
     val_refs = selected_data(args.captions, args.images_dir, split_path, 'val')
     train_refs = selected_data(args.captions, args.images_dir, split_path, 'train') if args.action == 'finetune' else None
     args.output.mkdir(parents=True, exist_ok=True)

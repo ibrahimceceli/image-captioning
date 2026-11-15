@@ -21,6 +21,13 @@ class BlipTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Only train/val'):
             selected_data('missing', 'missing', 'missing', 'test')
 
+    def test_test_split_only_with_explicit_allow_test(self):
+        # allow_test passes the split guard; the missing files then fail at I/O.
+        with self.assertRaises(OSError):
+            selected_data('missing', 'missing', 'missing', 'test', allow_test=True)
+        with self.assertRaisesRegex(ValueError, 'Only train/val'):
+            selected_data('missing', 'missing', 'missing', 'unused', allow_test=True)
+
     def test_partition_checks_and_five_references(self):
         partition = {'train': [f't{i}' for i in range(6000)], 'val': [f'v{i}' for i in range(1000)], 'test': []}
         refs = {key: ['A dog runs.'] * 5 for key in partition['val']}

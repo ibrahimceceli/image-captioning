@@ -1,0 +1,34 @@
+{
+  "greedy": {
+    "checkpoint": "checkpoints/model1_lstm/best.pt",
+    "checkpoint_epoch": 10,
+    "images": 1000,
+    "unique_captions": 171,
+    "unique_caption_ratio": 0.171,
+    "seed": 42,
+    "top_p": null,
+    "sampling_seed_policy": "decoder resets local CPU generator to the run seed for each image",
+    "max_tokens_including_start": 34,
+    "batch_size": 1,
+    "amp": false,
+    "CIDEr": 0.2273,
+    "ms_per_image": 17.34,
+    "device": "cuda"
+  },
+  "beam3": {
+    "checkpoint": "checkpoints/model1_lstm/best.pt",
+    "checkpoint_epoch": 10,
+    "images": 1000,
+    "unique_captions": 155,
+    "unique_caption_ratio": 0.155,
+    "seed": 42,
+    "top_p": null,
+    "sampling_seed_policy": "decoder resets local CPU generator to the run seed for each image",
+    "max_tokens_including_start": 34,
+    "batch_size": 1,
+    "amp": false,
+    "CIDEr": 0.2653,
+    "ms_per_image": 48.91,
+    "device": "cuda"
+  }
+}

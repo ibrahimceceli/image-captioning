@@ -1,0 +1,20 @@
+{
+  "greedy": {
+    "checkpoint": "checkpoints/model4_blip/best",
+    "checkpoint_epoch": 2,
+    "images": 1000,
+    "unique_captions": 961,
+    "CIDEr": 1.0119285045321798,
+    "ms_per_image": 241.84982929972466,
+    "device": "cuda"
+  },
+  "beam3": {
+    "checkpoint": "checkpoints/model4_blip/best",
+    "checkpoint_epoch": 2,
+    "images": 1000,
+    "unique_captions": 975,
+    "CIDEr": 1.045622715254248,
+    "ms_per_image": 332.52263069938635,
+    "device": "cuda"
+  }
+}

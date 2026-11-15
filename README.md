@@ -14,19 +14,33 @@ Doğrulama kümesi: 1000 görüntü × 5 referans. Metrikler ham pycocoevalcap �
 | Model 1 — CNN-LSTM | beam-3 | 0.1389 | 0.1590 | 0.3860 | 0.2778 | 164 | 5,653,004 |
 | Model 2 — Attention LSTM | greedy | 0.1698 | 0.1867 | 0.4312 | 0.4409 | 877 | 11,159,565 |
 | Model 2 — Attention LSTM | beam-3 | 0.2030 | 0.1861 | 0.4396 | 0.4697 | 813 | 11,159,565 |
-| Model 3 — Transformer | greedy / beam-3 | ⏳ bekleniyor | | | | | |
-| Model 4 — BLIP (fine-tune edilmeden) | greedy | 0.2427 | — | 0.4875 | 0.6337 | 808 | 223,971,644 |
-| Model 4 — BLIP (fine-tune edilmeden) | beam-3 | 0.2621 | — | 0.4777 | 0.6833 | 772 | 223,971,644 |
-| Model 4 — BLIP (fine-tune'lu) | greedy | 0.3463 | — | 0.5733 | 1.0141 | 969 | 223,971,644 |
-| Model 4 — BLIP (fine-tune'lu) | beam-3 | 0.3522 | — | 0.5862 | 1.0571 | 978 | 223,971,644 |
+| Model 3 — Transformer | greedy | 0.1872 | 0.1923 | 0.4441 | 0.4763 | 942 | 5,016,588 |
+| Model 3 — Transformer | beam-3 | 0.1984 | 0.1869 | 0.4418 | 0.4778 | 900 | 5,016,588 |
+| Model 4 — BLIP (fine-tune edilmeden) | greedy | 0.2427 | 0.2040 | 0.4875 | 0.6337 | 808 | 223,971,644 |
+| Model 4 — BLIP (fine-tune edilmeden) | beam-3 | 0.2621 | 0.2093 | 0.4777 | 0.6833 | 772 | 223,971,644 |
+| Model 4 — BLIP (fine-tune'lu) | greedy | 0.3463 | 0.2797 | 0.5733 | 1.0141 | 969 | 223,971,644 |
+| Model 4 — BLIP (fine-tune'lu) | beam-3 | 0.3522 | 0.2910 | 0.5862 | 1.0571 | 978 | 223,971,644 |
 
 [Üye C ara raporu ve deney durumu](report/uye_c_ara_rapor.md)
 
-**Test kümesi sonuçları: ⏳ bekleniyor.** Test kümesi henüz açılmadı; model seçimi dondurulduktan sonra final tablo için bir kez açılacak.
+### Test kümesi sonuçları
 
-<!-- TODO(Ekip, final): Test kümesi tablosunu (dört model × greedy / beam-3) model seçimi dondurulduktan sonra bir kez üret ve buraya ekle. Komutlar "Tekrar çalıştırma" bölümünde: predict --split test --allow-test, evaluate --split test --allow-test. -->
+Test kümesi: 1000 görüntü × 5 referans. Değerler `results/model1_lstm/test/`, `results/model2_attention_lstm/test/`, `results/model3_transformer/test/` ve `results/model4_blip_pretrained/test/` altındaki `test_metrics*.json` dosyalarından alınmıştır (Model 1–3 için `predict --split test --allow-test`, tümü için `evaluate --split test --allow-test --meteor`, ham pycocoevalcap ölçeği). BLIP'in iki varyantı da test kümesinde değerlendirilmiştir: fine-tune edilmeden `results/model4_blip_pretrained/test/`, fine-tune'lu (Kaggle'da eğitilen epoch 2 checkpoint'i, `python -m src.blip evaluate --split test --allow-test`) `results/model4_blip_finetuned/test/`.
 
-Ablation tabloları (veri miktarı %25 / %50 / %100, çözme yöntemi greedy / beam-3 / nucleus, attention var / yok, rastgele vs GloVe embedding) ve tutarlılık kontrolleri `results/val_table.md` içindedir. Deney yorumları: `results/model1_data_fraction.md`, `results/model1_glove.md`, `report/model2_durum_20261108.md`.
+| Model | Çözme | BLEU-4 | METEOR | ROUGE-L | CIDEr | Farklı cümle (/1000) | Parametre |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Model 1 — CNN-LSTM | greedy | 0.1020 | 0.1541 | 0.3740 | 0.2273 | 171 | 5,653,004 |
+| Model 1 — CNN-LSTM | beam-3 | 0.1302 | 0.1571 | 0.3818 | 0.2653 | 155 | 5,653,004 |
+| Model 2 — Attention LSTM | greedy | 0.1715 | 0.1893 | 0.4446 | 0.4446 | 864 | 11,159,565 |
+| Model 2 — Attention LSTM | beam-3 | 0.2026 | 0.1893 | 0.4503 | 0.4789 | 817 | 11,159,565 |
+| Model 3 — Transformer | greedy | 0.1859 | 0.1938 | 0.4464 | 0.4535 | 941 | 5,016,588 |
+| Model 3 — Transformer | beam-3 | 0.1956 | 0.1892 | 0.4491 | 0.4704 | 885 | 5,016,588 |
+| Model 4 — BLIP (fine-tune edilmeden) | greedy | 0.2482 | 0.2114 | 0.5017 | 0.6323 | 790 | 223,971,644 |
+| Model 4 — BLIP (fine-tune edilmeden) | beam-3 | 0.2648 | 0.2125 | 0.4876 | 0.6744 | 786 | 223,971,644 |
+| Model 4 — BLIP (fine-tune'lu) | greedy | 0.3504 | 0.2835 | 0.5845 | 1.0119 | 961 | 223,971,644 |
+| Model 4 — BLIP (fine-tune'lu) | beam-3 | 0.3520 | 0.2923 | 0.5859 | 1.0456 | 975 | 223,971,644 |
+
+Ablation tabloları (veri miktarı %25 / %50 / %100, çözme yöntemi greedy / beam-3 / nucleus, attention var / yok, rastgele vs GloVe embedding) ve tutarlılık kontrolleri [results/val_table.md](results/val_table.md) içindedir. Deney, kalitatif analiz ve doğrulama raporları: [results/model1_data_fraction.md](results/model1_data_fraction.md), [results/model1_glove.md](results/model1_glove.md), [report/model2_durum_20261108.md](report/model2_durum_20261108.md), [report/model2_b_tamamlayici_20261112.md](report/model2_b_tamamlayici_20261112.md), [report/kalitatif_karsilastirma_4model.md](report/kalitatif_karsilastirma_4model.md), [report/demo_dogrulama.md](report/demo_dogrulama.md).
 
 ## Repo yapısı
 
@@ -98,8 +112,8 @@ pip install -r requirements.txt
 
 - GPU için PyTorch'u CUDA sürümüyle kurun, örneğin CUDA 12.4: `pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124` ([pytorch.org/get-started](https://pytorch.org/get-started/locally/)). Önbellek bu projede `torch 2.6.0+cu124` ve `torchvision 0.21.0+cu124` ile üretildi.
 - METEOR Java ister (`java -version` çalışmalı). Java yoksa BLEU, ROUGE-L ve CIDEr yine hesaplanır. Türkçe yerel ayarlı Windows'ta bilinen sorun ve çözümü: [Değerlendirme](#değerlendirme).
-- `requirements.txt` sürümleri henüz sabitlenmedi. <!-- TODO(Üye C): requirements.txt sürümlerini sabitle ve bu satırı kaldır. -->
-- Kurulumu doğrulamak için: `pip install pytest` ve `python -m pytest tests`.
+- Test edilmiş paket sürümleri Python 3.12.3 ile doğrulanıp [requirements.txt](requirements.txt) içinde sabitlenmiştir ([demo ve ortam doğrulama raporu](report/demo_dogrulama.md)).
+- Kurulumu doğrulamak için: `python -m pytest tests` (`pytest==9.1.1`, [requirements.txt](requirements.txt) içinde yer alır).
 
 ## Veri
 
@@ -265,14 +279,20 @@ BLIP için [Kaggle notebook’u](notebooks/member_c_blip_kaggle.ipynb) ve aşağ
 
 ### 9. Test kümesi (final, bir kez)
 
-Model seçimi dondurulduktan sonra her model için bir kez:
+Model seçimi dondurulduktan sonra her model için greedy ve beam-3 koşuları bir kez çalıştırılır:
 
 ```bash
 python -m src.predict --checkpoint checkpoints/<ad>/best.pt --method greedy --split test --allow-test --output-dir results/<ad>/test
+python -m src.predict --checkpoint checkpoints/<ad>/best.pt --method beam --beam-size 3 --split test --allow-test --output-dir results/<ad>/test
 python -m src.evaluate --predictions results/<ad>/test/test_captions_greedy.json --model-name <ad> --split test --allow-test --meteor --output results/<ad>/test/test_metrics_greedy.json
+python -m src.evaluate --predictions results/<ad>/test/test_captions_beam3.json --model-name <ad> --method beam --beam-size 3 --split test --allow-test --meteor --output results/<ad>/test/test_metrics_beam3.json
 ```
 
-⏳ Henüz çalıştırılmadı. <!-- TODO(Ekip, final): Test klasör adını ve beam-3 komutlarını kesinleştir; results_table şu an yalnız doğrulama tablosu üretir. -->
+Model 1 (`model1_lstm`), Model 2 (`checkpoints/model2_attention_lstm_full_20261104_01/best.pt` → `results/model2_attention_lstm/test/`, `--model-name model2_attention_lstm`), Model 3 (`model3_transformer`) ve BLIP'in iki varyantı (`results/model4_blip_pretrained/test/`, `results/model4_blip_finetuned/test/`) test değerlendirmeleri tamamlanarak `results/<ad>/test/` altına kaydedilmiştir. Fine-tune'lu BLIP için checkpoint klasörü (`checkpoints/model4_blip/best`, repoda yok) ile:
+
+```bash
+python -m src.blip evaluate --source checkpoints/model4_blip/best --checkpoint-epoch 2 --model-name model4_blip_finetuned --images-dir data/flickr8k/Images --captions data/flickr8k/captions.txt --output results/model4_blip_finetuned/test --split test --allow-test --meteor
+``` `python -m src.results_table` yalnız doğrulama tablosunu ürettiğinden test metrikleri doğrudan `results/<ad>/test/test_metrics*.json` dosyalarından raporlanır.
 
 ## Sabit kararlar
 
@@ -392,7 +412,7 @@ python -m app.app
 
 Tarayıcıda `http://127.0.0.1:7860` açılır. Fotoğraf yüklenir; dört modelin altyazısı, çıkarım süresi ve parametre sayısı yan yana görünür, attention destekleyen modelde kelime başına harita çizilir. Greedy ve beam arasında geçiş ve beam genişliği ayarı vardır. Checkpoint'i olmayan model kutusunda açık bir mesaj görünür.
 
-- Checkpoint yolları yalnız `app/config.yaml` içindedir. Ayrıntı ve Model 3 / BLIP bağlama adımları: `app/README.md`.
+- Checkpoint yolları yalnız `app/config.yaml` içindedir. Ayrıntı ve Model 3 / BLIP bağlama adımları: `app/README.md`. Uçtan uca CPU doğrulama sonuçları ve ortam raporu: [report/demo_dogrulama.md](report/demo_dogrulama.md).
 - Seçenekler: `--config`, `--device` (`auto` / `cpu` / `cuda`), `--host`, `--port`, `--share`.
 - Sunucu varsayılan olarak yalnız bu bilgisayarda (`127.0.0.1`) açılır. `--share` herkese açık geçici bir bağlantı oluşturur; yalnız sunum sırasında kullanın.
 
@@ -409,12 +429,12 @@ Test dosyaları: `tests/test_lstm.py` (Model 1), `tests/test_decode.py` (çözme
 
 - **Tek seed:** her eğitim koşusu seed 42 ile bir kez yapıldı. Tablolar varyans ya da güven aralığı içermez; küçük farklar (ör. GloVe beam-3'te +0.008 CIDEr) gürültü sınırında olabilir. Yalnız nucleus deneyi üç seed ile tekrarlandı ve bu tekrar yalnız örneklemeyi değiştirir, eğitimi değil.
 - **Belirlenimcilik:** eğitim GPU'da AMP ile yapılır ve cuDNN belirlenimci kipe alınmaz; aynı komutlar başka donanımda (hatta aynı donanımda) birebir aynı sayıları vermeyebilir.
-- **Test kümesi henüz açılmadı:** tüm sayılar doğrulama kümesindendir ve checkpoint seçimi de doğrulama CIDEr'iyle yapıldığı için iyimser olabilir.
+- **Test kümesi bir kez açıldı:** Dört modelin (BLIP iki varyantıyla) test sonuçları `results/<ad>/test/` altındadır. Tüm modellerde checkpoint seçimi doğrulama kümesindeki greedy CIDEr üzerinden yapılmıştır. Fine-tune'lu BLIP Kaggle'da (`transformers 4.57.1`) eğitildi, test çıkarımı yerelde (`transformers 5.17.0`) yapıldı; 100 doğrulama görüntüsünde greedy cümleler 100/100, beam-3 cümleler 96/100 aynı çıktı.
 - **GloVe Kaggle kopyası:** resmi Stanford sunucusuna erişilemediği için Kaggle'daki bir kopya kullanıldı. Kopya dosya boyutu, satır sayısı, ilk satır ve basit analoji / komşu testleriyle doğrulandı (`results/model1_glove.md`); resmi dosya indirilip doğrudan karşılaştırılmadı.
 - **METEOR Java'ya bağlı:** Java yoksa METEOR hesaplanmaz; Türkçe yerel ayarda yukarıdaki ortam değişkeni gerekir.
-- **Sürümler sabit değil:** `requirements.txt` henüz sabitlenmedi; farklı kütüphane sürümleri küçük sayısal farklar doğurabilir.
+- **Sabitlenmiş paket sürümleri:** Test edilen paket sürümleri Python 3.12.3 ortamında [requirements.txt](requirements.txt) içinde sabitlenmiştir ([report/demo_dogrulama.md](report/demo_dogrulama.md)); yine de farklı donanım veya CUDA sürümleri küçük sayısal farklar doğurabilir.
 - **Model 2 checkpoint'i repoda yok:** Model 2 sonuçları commit'li JSON'lardan okunabilir; yeniden puanlama ve demo için checkpoint ekip içinden alınmalı ya da yeniden eğitilmelidir.
-- Rapordaki genel sınırlılıklar (hallucination, veri yanlılığı, küçük veride jenerik cümleler) için: ⏳ rapor. <!-- TODO(Ekip): rapor tamamlanınca bağlantı ekle. -->
+- Kalitatif karşılaştırma ve 40 görüntülük hata incelemesi [report/kalitatif_karsilastirma_4model.md](report/kalitatif_karsilastirma_4model.md) içindedir; rapordaki genel sınırlılıklar (hallucination, veri yanlılığı, küçük veride jenerik cümleler) için: ⏳ rapor. <!-- TODO(Ekip): rapor tamamlanınca bağlantı ekle. -->
 
 ## Kaynakça
 
@@ -453,5 +473,4 @@ python -m src.blip finetune --images-dir data/flickr8k/Images --captions data/fl
 çıkarım süresini yazar. Test bölmesi bu komutlarda açılmaz. METEOR ayrıca hesaplanır.
 Fine-tuning tamamlanınca demo için `app/config.yaml` BLIP `model_id` alanını
 `checkpoints/model4_blip/best` yapın ve etiketi fine-tune edilmiş olarak değiştirin.
-Çalışan ortamın sürümleri her koşuda `environment.txt` olarak kaydedilir; ortak
-requirements sürümlerinin sabitlenmesi GPU ve demo doğrulamasından sonra yapılacaktır.
+Çalışan ortamın sürümleri her koşuda `environment.txt` olarak kaydedilir; ortak bağımlılık sürümleri demo doğrulamasının ardından [requirements.txt](requirements.txt) içinde sabitlenmiştir ([report/demo_dogrulama.md](report/demo_dogrulama.md)).
