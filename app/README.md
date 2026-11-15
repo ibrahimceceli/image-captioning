@@ -34,7 +34,7 @@ Süreler tek görüntü içindir. Önbellek tabanlı modellerde (1, 2, 3) toplam
 | Dosya | İçerik |
 |---|---|
 | `app/config.yaml` | **Tek kayıt yeri:** modellerin sırası, etiketleri, adaptör türleri (`kind`), checkpoint yolları, cihaz |
-| `app/captioners.py` | Adaptör katmanı: `CaptionResult`, `PreparedImage`, `SharedEncoder`, `CheckpointCaptioner`, `TransformerCaptioner`, `BlipCaptioner` (yer tutucu), `CaptionerRegistry`, `register_adapter` |
+| `app/captioners.py` | Adaptör katmanı: `CaptionResult`, `PreparedImage`, `SharedEncoder`, `CheckpointCaptioner`, `TransformerCaptioner`, `BlipCaptioner`, `CaptionerRegistry`, `register_adapter` |
 | `app/app.py` | Gradio arayüzü |
 
 ## Adaptör arayüzü
@@ -62,23 +62,11 @@ CaptionResult(
 
 ### Model 3 (Transformer): `kind: transformer` → `TransformerCaptioner`
 
-1. Modeli `src/train.py` içindeki `MODELS` sözlüğüne ekleyin (ör. `"transformer": CaptionTransformer`). Checkpoint, Model 1/2 ile aynı state'i taşımalı: `model`, `config` (`config["model"]["type"]` = MODELS anahtarı), `vocab_size`, `epoch`.
-2. Forward sözleşmesi Model 1/2 ile aynıdır: `forward(features [B,2048,7,7] | [B,49,2048], tokens [B,T]) -> (logits [B,T,V], attention)`. `attention` şunlardan biri olabilir:
-   - `[B, T, 49]`: son katman cross-attention'ı, kafalar ortalanmış;
-   - `[B, T, H, 49]`: kafa başına; `TransformerCaptioner` kafaların ortalamasını alır;
-   - `None`: harita gösterilmez.
-3. `app/config.yaml` içindeki `model3.checkpoint` yolunu gerçek klasörle değiştirin (şu an yer tutucu: `checkpoints/model3_transformer/best.pt`).
-
-Başka değişiklik gerekmez. Durum mesajları şöyle değişir:
-
-- Checkpoint yoksa: `checkpoint bulunamadı`
-- Tür MODELS'ta yoksa: `henüz bağlanmadı: model türü '…' src/train.py MODELS kaydında yok`
-
-Farklı bir çözümleme gerekiyorsa `TransformerCaptioner.generate`'i ezin, ama `CaptionResult` döndürmeye devam edin.
+Model 3 ortak model kaydında `transformer` adıyla bulunur. Demo, eğitim çıktısı `checkpoints/model3_transformer/best.pt` üzerinden yükler ve son katmanın kafa ortalamalı ağırlıklarını kelime başına 49 bölgeyle eşleştirir.
 
 ### Model 4 (BLIP): `kind: blip` → `BlipCaptioner`
 
-`app/captioners.py` içindeki `BlipCaptioner.load()` ve `generate()` metotlarını doldurun. Docstring'de çalışan bir taslak var.
+`BlipCaptioner.load()` ve `generate()` bağlandı. Model ve processor, `src.blip.load_blip` üzerinden yüklenir; üretim ayarları eğitim sonrası değerlendirmeyle ortaktır. Gerçek ağırlıklarla demo kontrolü henüz yapılmadı.
 
 - `needs_features = False`. BLIP paylaşılan ResNet50'yi ve 224 kırpımı kullanmaz. `generate` içinde `image.original` (ön işlenmemiş RGB PIL) alınır ve BLIP'in kendi `BlipProcessor`'ına verilir.
 - Model kimliği `app/config.yaml` → `blip.model_id` alanındadır (şu an `Salesforce/blip-image-captioning-base`; fine-tune edilmiş bir yerel klasör de olabilir).

@@ -71,8 +71,8 @@ class ResultsTableTests(unittest.TestCase):
 
     def test_empty_results_dir_does_not_crash(self):
         md, rows, console = build(self.root)
-        self.assertEqual(md.count("| henüz yok |"), 8 + 6 + 5 + 4 + 4)
-        self.assertEqual([r[3] for r in rows[1:]], ["henüz yok"] * 8)
+        self.assertEqual(md.count("| henüz yok |"), 10 + 6 + 5 + 4 + 4)
+        self.assertEqual([r[3] for r in rows[1:]], ["henüz yok"] * 10)
         self.assertTrue(any("model3_transformer/" in line for line in console))
 
     def test_numbers_come_from_json_with_four_decimals(self):
@@ -84,7 +84,7 @@ class ResultsTableTests(unittest.TestCase):
         self.assertIn("| 0.4697 | 90 | 30.00 | 11,159,565 | 10 |", md)   # Model 2 summary başka klasörde
         self.assertIn("0.1642", md)
         self.assertIn("| Model 3 — Transformer | greedy | henüz yok |", md)
-        self.assertIn("| Model 4 — BLIP | beam-3 | henüz yok |", md)
+        self.assertIn("| Model 4 — BLIP (fine-tune edilmeden) | beam-3 | henüz yok |", md)
         self.assertIn("- `model2_attention_lstm_full_20261104_01/summary.json`", md)
         self.assertIn("**Uyarılar:**\n\n- Yok.", md)
         self.assertNotIn("model2_attention_lstm/summary.json", md)
@@ -142,7 +142,7 @@ class ResultsTableTests(unittest.TestCase):
             self.assertEqual(main(["--results-dir", str(self.root)]), 0)
         self.assertTrue((self.root / "val_table.md").read_text(encoding="utf-8").startswith("# Birleşik"))
         with (self.root / "val_table.csv").open(encoding="utf-8", newline="") as handle:
-            self.assertEqual(len(list(csv.reader(handle))), 9)
+            self.assertEqual(len(list(csv.reader(handle))), 11)
 
 
 if __name__ == "__main__":

@@ -30,7 +30,8 @@ MAIN_RUNS = [
     {"label": "Model 2 — Attention LSTM", "run": "model2_attention_lstm",
      "summary": "model2_attention_lstm_full_20261104_01/summary.json"},
     {"label": "Model 3 — Transformer", "run": "model3_transformer"},
-    {"label": "Model 4 — BLIP", "run": "model4_blip"},
+    {"label": "Model 4 — BLIP (fine-tune edilmeden)", "run": "model4_blip_pretrained"},
+    {"label": "Model 4 — BLIP (fine-tune edilmiş)", "run": "model4_blip_finetuned"},
 ]
 
 # (a) veri miktarı: aynı config, tek fark data.train_fraction. Δ referansı: %100.
@@ -483,7 +484,7 @@ def build(results_dir: Path, repo_root: Path | None = None) -> tuple[str, list[l
               "yalnız (b) çeşitlilik deneyinde raporlanır.")
     md += ["", "**Kaynak dosyalar** (`results/` altında):", ""]
     md += [f"- `{s}`" for s in sorted(col.sources)] or ["- (hiçbiri)"]
-    md += ["", "## Ana tablo — 4 model × greedy / beam-3", ""]
+    md += ["", "## Ana tablo — 4 model (BLIP iki varyant) × greedy / beam-3", ""]
     md.append(md_table(MAIN_HEADER, main_table_rows(main_rows), ["l", "l"] + ["r"] * 11))
     md += ["", "Metrikler `val_metrics_{greedy,beam3}.json` (src/evaluate.py); farklı cümle, ms/görüntü ve "
            "checkpoint epoch `val_metrics.json` (src/predict.py, cihaz: " + devices_note(main_rows) + "); "
