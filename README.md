@@ -474,3 +474,7 @@ Test files: `tests/test_lstm.py` (Model 1), `tests/test_transformer.py` (Model 3
 ## Team workflow
 
 Branches, file ownership and pull request rules: [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+The code in this repository is released under the [MIT License](LICENSE). The license covers only the code and documents written for this project. The Flickr8k images (including those shown in the figures under `results/`), the pretrained BLIP and ResNet50 weights and the GloVe vectors remain under their own terms.

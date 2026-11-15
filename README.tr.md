@@ -475,3 +475,7 @@ Test dosyaları: `tests/test_lstm.py` (Model 1), `tests/test_transformer.py` (Mo
 ## Ekip içi çalışma
 
 Dallar, dosya sahipliği ve Pull Request kuralları: [CONTRIBUTING.tr.md](CONTRIBUTING.tr.md).
+
+## Lisans
+
+Bu repodaki kod [MIT Lisansı](LICENSE) ile yayımlanmıştır. Lisans yalnız bu proje için yazılan kodu ve belgeleri kapsar. Flickr8k görüntüleri (`results/` altındaki şekillerde görünenler dahil), önceden eğitilmiş BLIP ve ResNet50 ağırlıkları ve GloVe vektörleri kendi koşullarına tabidir.
